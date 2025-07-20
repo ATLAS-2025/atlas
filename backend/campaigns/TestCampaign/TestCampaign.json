@@ -1,0 +1,13 @@
+{
+    "name": "TestCampaign",
+    "folder_path": "campaigns\\TestCampaign",
+    "start_date": "2025-07-13",
+    "duration_days": 30,
+    "assigned_people": [
+        1
+    ],
+    "assigned_equipment": [
+        1
+    ],
+    "assigned_sensors": []
+}

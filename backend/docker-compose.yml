@@ -1,0 +1,56 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    command: bash -c "alembic upgrade head && uvicorn core.server:app --host 0.0.0.0 --port 8000 --reload"
+    volumes:
+      - ./:/app
+      - ./campaigns:/app/campaigns
+    env_file:
+      - .env
+    depends_on:
+      - postgresql
+      - redis
+      - rabbitmq
+
+
+  postgresql:
+    image: postgres:14.2-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: fastapi-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ../pgdata:/var/lib/postgresql/data
+
+  # postgresql-test:
+  #   image: postgres:14.2-alpine
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: password123
+  #     POSTGRES_DB: db-test
+  #   ports:
+  #     - "5433:5432"
+  #   volumes:
+  #     - ./postgresql-test:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2.7
+    ports:
+      - "6370:6370"
+    volumes:
+      - redis:/data
+
+  rabbitmq:
+    image: rabbitmq:3.9.7
+    ports:
+      - "5672:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbit
+      - RABBITMQ_DEFAULT_PASS=password
+
+volumes:
+  redis:

@@ -1,0 +1,44 @@
+/*
+ * Copyright (c) 2025. Sayat Raykul
+ */
+
+"use client";
+
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarHeader,
+} from "@/shared/components/ui/sidebar";
+import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { useProfile } from "@/features/authentication";
+import { RenderRouteGroup } from "./RenderSidebarGroup";
+import { useRoutes } from "@/core/hooks/useRoutes"; // Импортируем отдельные функции
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { data: session } = useSession();
+  const { data: profile } = useProfile();
+  const { COMMON_ROUTES, MANAGER_ROUTES } = useRoutes();
+
+  return (
+    <Sidebar variant="inset" className="gap-2" {...props}>
+      {/* Header с логотипом */}
+      <SidebarHeader className="h-9 flex-row p-0 mb-2 items-center">
+        <Image
+          src="/assets/logo-transparent.png"
+          alt="logo"
+          width={36}
+          height={36}
+        />
+        <span className="text-xl font-bold">Atlas Planner</span>
+      </SidebarHeader>
+
+      <SidebarContent className="gap-2">
+        <RenderRouteGroup routes={COMMON_ROUTES} />
+        {session && profile?.is_superuser && (
+          <RenderRouteGroup routes={MANAGER_ROUTES} />
+        )}
+      </SidebarContent>
+    </Sidebar>
+  );
+}

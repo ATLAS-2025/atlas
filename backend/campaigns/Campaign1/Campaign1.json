@@ -1,0 +1,13 @@
+{
+    "name": "Campaign1",
+    "folder_path": "C:\\Users\\zisan\\Desktop\\Work\\ATLAS\\backend\\campaigns\\Campaign1",
+    "start_date": "2025-07-13",
+    "duration_days": 40,
+    "assigned_people": [
+        1
+    ],
+    "assigned_equipment": [],
+    "assigned_sensors": [
+        1
+    ]
+}
