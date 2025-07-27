@@ -242,7 +242,6 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async registerUserV1UsersPost(body: RegisterUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UserResponse>>> {
-            console.log(configuration, body);
             const localVarAxiosArgs = await UsersApiAxiosParamCreator(configuration).registerUserV1UsersPost(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};

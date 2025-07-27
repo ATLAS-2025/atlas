@@ -1,0 +1,183 @@
+{
+  "app": {
+    "Welcome User": "Welcome test, {{username}}!",
+    "not-found": {
+      "404": "404",
+      "Return Home": "Return Home"
+    }
+  },
+  "core": {
+    "components": {
+      "Footer": {
+        "Created with ❤️": "Created with ❤️"
+      },
+      "Header": {
+        "authorize": "authorize",
+        "search": "search",
+        "Login": "Login",
+        "Log in": "Log in",
+        "Sign up": "Sign up",
+        "Loading": "Loading"
+      }
+    },
+    "hooks": {
+      "useDynamicBreadcrumb": {
+        "Home": "Home"
+      },
+      "useRoutes": {
+        "About": "About",
+        "Group 1": "Group 1",
+        "Home": "Home",
+        "Profile": "Profile",
+        "Settings": "Settings",
+        "People": "人",
+        "Equipment": "Equipment",
+        "Sensor": "Sensor",
+        "Campaign Management": "Campaign Management"
+      }
+    }
+  },
+  "features": {
+    "authentication": {
+      "components": {
+        "EmailSentDialog": {
+          "Body": "Body",
+          "Close": "Close",
+          "Head": "Head"
+        },
+        "LoginDialog": {
+          "No account?": "Don't have an account?",
+          "Email": "Email",
+          "Forgot?": "Forgot?",
+          "Login": "Login",
+          "Password": "Password",
+          "Register": "Register",
+          "Remember": "Remember",
+          "Submit": "Submit",
+          "Success": "Success",
+          "Unexpected error occured": "Unexpected error occured"
+        },
+        "ProfileDialog": {
+          "Cancel": "Cancel",
+          "Contacts": "Contacts",
+          "Edit": "Edit",
+          "Email": "Email",
+          "Failed to update image": "Failed to update image",
+          "Failed to update profile": "Failed to update profile",
+          "Firstname": "Firstname",
+          "Full name": "Full name",
+          "Image updated successfully": "Image updated successfully",
+          "Lastname": "Lastname",
+          "Logout": "Logout",
+          "PNG, JPEG up to 15 MB": "PNG, JPEG up to 15 MB",
+          "Phone": "Phone",
+          "Profile": "Profile",
+          "Profile picture": "Profile picture",
+          "Profile updated successfully": "Profile updated successfully",
+          "Save": "Save",
+          "Upload photo": "Upload photo"
+        },
+        "RegisterDialog": {
+          "City": "City",
+          "Confirm password": "Confirm password",
+          "Email": "Email",
+          "Firstname": "Firstname",
+          "Lastname": "Lastname",
+          "Password": "Password",
+          "Phone": "Phone",
+          "Register": "Register",
+          "Submit": "Submit",
+          "Success": "Success",
+          "Unexpected error occurred": "Unexpected error occurred",
+          "Already registered?": "Already registered?",
+          "Login": "Login"
+        },
+        "ResetDialog": {
+          "Already registered?": "Already registered?",
+          "Email": "Email",
+          "Login": "Login",
+          "Reset": "Reset",
+          "Submit": "Submit",
+          "Unexpected error occurred": "Unexpected error occurred"
+        }
+      },
+      "lib": {
+        "zod": {
+          "Birthdate is required": "Birthdate is required",
+          "City is required": "City is required",
+          "Email is invalid": "Email is invalid",
+          "Email is required": "Email is required",
+          "Firstname is min": "Firstname is min",
+          "username is required": "Username is required",
+          "IIN is required": "IIN is required",
+          "Lastname is min": "Lastname is min",
+          "Lastname is required": "Lastname is required",
+          "Password and Confirm mismatch": "Password and Confirm mismatch",
+          "Password is min": "Password is min",
+          "Password is weak": "Password is weak",
+          "Password must be at least {{symbols}} symbols": "Password must be at least {{symbols}} symbols",
+          "Phone is invalid": "Phone is invalid",
+          "Phone is max": "Phone is max",
+          "Phone is min": "Phone is min",
+          "address is min": "Address is min",
+          "birthdate is min": "Birthdate is min",
+          "city is required": "City is required",
+          "email is invalid": "Email is invalid",
+          "email is required": "Email is required",
+          "iin is min": "iin is min",
+          "middle_name is min": "Middle name is min",
+          "phone is invalid": "Phone is invalid",
+          "phone is max": "Phone is max",
+          "phone is min": "Phone is min",
+          "Address is required": "Address is required",
+          "Enter 11 symbols at least": "Enter 11 symbols at least",
+          "Enter 15 symbols at most": "Enter 15 symbols at most",
+          "Invalid phone number": "Invalid phone number",
+          "Middle name is required": "Middle name is required"
+        }
+      }
+    }
+  },
+  "shared": {
+    "components": {
+      "LanguageSelect": {
+        "English": "English",
+        "Chinese": "Chinese",
+        "Swedish": "Swedish",
+        "Language": "Language"
+      },
+      "ThemeSelect": {
+        "Dark": "Dark",
+        "Light": "Light",
+        "System": "System",
+        "Theme": "Theme"
+      }
+    },
+    "services": {
+      "api": {
+        "Server error": "Server error",
+        "Unknown Error": "Unknown Error",
+        "ECONNABORTED": "Connection was aborted",
+        "ERR_BAD_OPTION": "Bad option provided",
+        "ERR_BAD_OPTION_VALUE": "Invalid value for the option",
+        "ERR_BAD_REQUEST": "Bad request",
+        "ERR_BAD_RESPONSE": "Received a bad response",
+        "ERR_CANCELED": "Request was canceled",
+        "ERR_DEPRECATED": "The feature is deprecated",
+        "ERR_FR_TOO_MANY_REDIRECTS": "Too many redirects",
+        "ERR_INVALID_URL": "Invalid URL",
+        "ERR_NETWORK": "Network error",
+        "ERR_NOT_SUPPORT": "Feature not supported",
+        "ETIMEDOUT": "Request timed out",
+        "ECONNREFUSED": "Connection refused",
+        "EACCES": "Permission denied",
+        "EAI_AGAIN": "DNS temporarily unavailable",
+        "ECONNRESET": "Connection reset",
+        "EHOSTUNREACH": "Host unreachable",
+        "ENETUNREACH": "Network unreachable",
+        "ENOTFOUND": "Host not found",
+        "EPIPE": "Broken pipe"
+      }
+    }
+  }
+}

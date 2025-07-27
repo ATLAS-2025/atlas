@@ -1,6 +1,3 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
 
 import { useTranslation } from "@/i18n";
 import { IAppRoute } from "@/core/types/routes";
@@ -8,6 +5,7 @@ import {
   Group,
   Home,
   Info,
+  PanelsTopLeftIcon,
   PieChart,
   Settings,
   Sheet,
@@ -24,21 +22,36 @@ export function useRoutes() {
       icon: Home,
     },
     {
-      title: t("Group 1"),
-      url: "/group-1",
-      icon: Group,
-      subRoutes: [
-        {
-          title: t("About"),
-          url: "/group-1/about",
-          icon: Info,
-        },
-        {
-          title: t("Profile"),
-          url: "/group-1/profile",
-          icon: SquareUser,
-        },
-      ],
+      title: t("People"),
+      url: "/people",
+      icon: PanelsTopLeftIcon,
+      // subRoutes: [
+      //   {
+      //     title: t("Sensor"),
+      //     url: "/group-1/about",
+      //     icon: Info,
+      //   },
+      //   {
+      //     title: t("Equipment"),
+      //     url: "/group-1/profile",
+      //     icon: SquareUser,
+      //   },
+      // ],
+    },
+    {
+      title: t("Equipment"),
+      url: "/equipment",
+      icon: Settings,
+    },
+    {
+      title: t("Sensor"),
+      url: "/sensor",
+      icon: Settings,
+    },
+    {
+      title: t("Campaign Management"),
+      url: "/campaign",
+      icon: Settings,
     },
     {
       title: t("Settings"),

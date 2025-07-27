@@ -4,18 +4,14 @@
 
 import NextAuth, { CredentialsSignin } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import {
-  loginUser,
-  refreshToken,
-  registerUser,
-} from "@/features/authentication/services/server";
+
 import { jwtDecode } from "jwt-decode";
 import { IUser } from "@/shared";
 import {
   getLoginSchema,
   getRegisterSchema,
 } from "@/features/authentication/lib/zodServer";
-import { usersApi } from "./apiServices";
+import { getApis } from "./apiServices";
 // import { skipCSRFCheck } from "@auth/core"; // for local production
 
 class InvalidLoginError extends CredentialsSignin {
@@ -63,27 +59,26 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           throw new InvalidLoginError(error.errors[0]?.message || "");
         }
         try {
-           const response = await usersApi.registerUserV1UsersPost(data);
-           // const response = await result();
-           console.log(response.data);
+          const {usersApi} = await getApis()
+          const response = await usersApi.registerUserV1UsersPost(data);
+          console.log("✅ Registered user:", response.data);
 
+          return {
+            id: response.data.uuid,
+            name: response.data.username,
+            email: response.data.email,
+          };
         } catch (error) {
-          console.log(error)
+          console.error("❌ Registration failed:", error);
+          throw new InvalidLoginError("Registration failed");
         }
-        const response = await usersApi.registerUserV1UsersPost(data);
-        // const response = await result();
-        console.log(response.data);
-
-        // ✅ If the backend returns access/refresh tokens, store them in the session immediately
-        // return result.data;
-        return response.data;
       },
     }),
     Credentials({
       id: "login",
       name: "Login",
       credentials: {
-        email: {},
+        username: {},
         password: {},
       },
       async authorize(credentials, _) {
@@ -95,13 +90,23 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         // 2. Attempt to login user
-        const result = await loginUser(data);
-        // console.log({ result });
-        if (!result.success) {
-          throw new InvalidLoginError(result.error);
-        }
+       try {
+          const {usersApi} = await getApis()
 
-        return result.data;
+         const response = await usersApi.loginUserV1UsersLoginPost(data);
+         console.log("✅ Registered user:", response.data);
+
+         return {
+           id: response.data.uuid,
+           name: response.data.username,
+           email: response.data.email,
+           access:  response.data.accessToken,
+           refresh:  response.data.refreshToken,
+         };
+       } catch (error) {
+         console.error("❌ Registration failed:", error);
+         throw new InvalidLoginError("Registration failed");
+       }
       },
     }),
   ],
@@ -129,15 +134,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           const currentTimeSeconds = Math.floor(Date.now() / 1000);
           const isExpired = decoded.exp <= currentTimeSeconds + 30; // Refresh 30 seconds before expiration
           // console.log({ isExpired });
-          if (isExpired) {
-            const refreshResponse = await refreshToken(token.refresh as string);
-            if (refreshResponse.success) {
-              token.access = refreshResponse.data.access;
-            } else {
-              console.log("refresh token failed");
-              return null;
-            }
-          }
+          // if (isExpired) {
+          //   const refreshResponse = await refreshToken(token.refresh as string);
+          //   if (refreshResponse.success) {
+          //     token.access = refreshResponse.data.access;
+          //   } else {
+          //     console.log("refresh token failed");
+          //     return null;
+          //   }
+          // }
         } catch (error) {
           console.error("⚠️ Error refreshing token:", error);
           return null;

@@ -1,0 +1,180 @@
+{
+  "app.(ui).group-1.about.page": {
+    "Welcome, {{username}}": "Välkommen, {{username}}"
+  },
+  "app.(ui).group-1.page": {
+    "Welcome, {{username}}": "Välkommen, {{username}}"
+  },
+  "app.(ui).group-1.profile.page": {
+    "Welcome, {{username}}": "Välkommen, {{username}}"
+  },
+  "app.(ui).group-2.analytics.page": {
+    "Welcome, {{username}}": "Välkommen, {{username}}"
+  },
+  "app.(ui).group-2.dashboard.page": {
+    "Welcome, {{username}}": "Välkommen, {{username}}"
+  },
+  "app.(ui).group-2.page": {
+    "Welcome, {{username}}": "Välkommen, {{username}}"
+  },
+  "app.(ui).page": {
+    "Welcome, {{username}}": "Välkommen, {{username}}"
+  },
+  "app.(ui).settings.page": {
+    "Welcome, {{username}}": "Välkommen, {{username}}"
+  },
+  "app.not-found": {
+    "404": "404",
+    "Return Home": "Återgå hem"
+  },
+  "core.components.Footer": {
+    "Created with ❤️": "Skapad med ❤️"
+  },
+  "core.components.Header": {
+    "authorize": "auktorisera",
+    "search": "sök",
+    "Login": "Logga in",
+    "Log in": "Logga in",
+    "Sign up": "Registrera dig",
+    "Loading": "Laddar"
+  },
+  "core.hooks.useDynamicBreadcrumb": {
+    "Home": "Hem"
+  },
+  "core.hooks.useRoutes": {
+    "About": "Om",
+    "Group 1": "Grupp 1",
+    "Home": "Hem",
+    "Profile": "Profil",
+    "Settings": "Inställningar"
+  },
+  "features.authentication.components.EmailSentDialog": {
+    "Body": "Kropp",
+    "Close": "Stäng",
+    "Head": "Rubrik"
+  },
+  "features.authentication.components.LoginDialog": {
+    "Don't have an account?": "Har du inget konto?",
+    "Email": "E-post",
+    "Forgot?": "Glömt?",
+    "Login": "Logga in",
+    "Password": "Lösenord",
+    "Register": "Registrera",
+    "Remember": "Kom ihåg",
+    "Submit": "Skicka",
+    "Success": "Framgång",
+    "Unexpected error occured": "Oväntat fel uppstod"
+  },
+  "features.authentication.components.ProfileDialog": {
+    "Cancel": "Avbryt",
+    "Contacts": "Kontakter",
+    "Edit": "Redigera",
+    "Email": "E-post",
+    "Failed to update image": "Misslyckades med att uppdatera bild",
+    "Failed to update profile": "Misslyckades med att uppdatera profil",
+    "Firstname": "Förnamn",
+    "Full name": "Fullständigt namn",
+    "Image updated successfully": "Bilden uppdaterades framgångsrikt",
+    "Lastname": "Efternamn",
+    "Logout": "Logga ut",
+    "PNG, JPEG up to 15 MB": "PNG, JPEG upp till 15 MB",
+    "Phone": "Telefon",
+    "Profile": "Profil",
+    "Profile picture": "Profilbild",
+    "Profile updated successfully": "Profilen uppdaterades framgångsrikt",
+    "Save": "Spara",
+    "Upload photo": "Ladda upp foto"
+  },
+  "features.authentication.components.RegisterDialog": {
+    "City": "Stad",
+    "Confirm password": "Bekräfta lösenord",
+    "Email": "E-post",
+    "Firstname": "Förnamn",
+    "Lastname": "Efternamn",
+    "Password": "Lösenord",
+    "Phone": "Telefon",
+    "Register": "Registrera",
+    "Submit": "Skicka",
+    "Success": "Framgång",
+    "Unexpected error occurred": "Oväntat fel uppstod",
+    "Already registered?": "Redan registrerad?",
+    "Login": "Logga in"
+  },
+  "features.authentication.components.ResetDialog": {
+    "Already registered?": "Redan registrerad?",
+    "Email": "E-post",
+    "Login": "Logga in",
+    "Reset": "Återställ",
+    "Submit": "Skicka",
+    "Unexpected error occurred": "Oväntat fel uppstod"
+  },
+  "features.authentication.lib.zod": {
+    "Birthdate is required": "Födelsedatum krävs",
+    "City is required": "Stad krävs",
+    "Email is invalid": "E-post är ogiltig",
+    "Email is required": "E-post krävs",
+    "Firstname is min": "Förnamn är min",
+    "username is required": "Användarnamn krävs",
+    "IIN is required": "IIN krävs",
+    "Lastname is min": "Efternamn är min",
+    "Lastname is required": "Efternamn krävs",
+    "Password and Confirm mismatch": "Lösenord och bekräftelse matchar inte",
+    "Password is min": "Lösenord är min",
+    "Password is weak": "Lösenordet är svagt",
+    "Password must be at least {{symbols}} symbols": "Lösenordet måste vara minst {{symbols}} symboler",
+    "Phone is invalid": "Telefon är ogiltig",
+    "Phone is max": "Telefon är max",
+    "Phone is min": "Telefon är min",
+    "address is min": "Adress är min",
+    "birthdate is min": "Födelsedatum är min",
+    "city is required": "Stad krävs",
+    "email is invalid": "E-post är ogiltig",
+    "email is required": "E-post krävs",
+    "iin is min": "IIN är min",
+    "middle_name is min": "Mellannamn är min",
+    "phone is invalid": "Telefon är ogiltig",
+    "phone is max": "Telefon är max",
+    "phone is min": "Telefon är min",
+    "Address is required": "Adress krävs",
+    "Enter 11 symbols at least": "Ange minst 11 symboler",
+    "Enter 15 symbols at most": "Ange högst 15 symboler",
+    "Invalid phone number": "Ogiltigt telefonnummer",
+    "Middle name is required": "Mellannamn krävs"
+  },
+  "shared.components.LanguageSelect": {
+    "English": "Engelska",
+    "Kazakh": "Kazakiska",
+    "Language": "Språk",
+    "Russian": "Ryska"
+  },
+  "shared.components.ThemeSelect": {
+    "Dark": "Mörk",
+    "Light": "Ljus",
+    "System": "System",
+    "Theme": "Tema"
+  },
+  "shared.services.api": {
+    "Server error": "Serverfel",
+    "Unknown Error": "Okänt fel",
+    "ECONNABORTED": "Anslutningen avbröts",
+    "ERR_BAD_OPTION": "Dåligt alternativ angivet",
+    "ERR_BAD_OPTION_VALUE": "Ogiltigt värde för alternativet",
+    "ERR_BAD_REQUEST": "Dålig förfrågan",
+    "ERR_BAD_RESPONSE": "Fick ett dåligt svar",
+    "ERR_CANCELED": "Förfrågan avbröts",
+    "ERR_DEPRECATED": "Funktionen är föråldrad",
+    "ERR_FR_TOO_MANY_REDIRECTS": "För många omdirigeringar",
+    "ERR_INVALID_URL": "Ogiltig URL",
+    "ERR_NETWORK": "Nätverksfel",
+    "ERR_NOT_SUPPORT": "Funktionen stöds inte",
+    "ETIMEDOUT": "Förfrågan tog för lång tid",
+    "ECONNREFUSED": "Anslutning nekades",
+    "EACCES": "Åtkomst nekades",
+    "EAI_AGAIN": "DNS tillfälligt otillgänglig",
+    "ECONNRESET": "Anslutningen återställdes",
+    "EHOSTUNREACH": "Värd oåtkomlig",
+    "ENETUNREACH": "Nätverk oåtkomligt",
+    "ENOTFOUND": "Värd hittades inte",
+    "EPIPE": "Trasig pipe"
+  }
+}

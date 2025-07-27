@@ -8,12 +8,12 @@ import { useProfile } from "@/features/authentication";
 
 export default function Page() {
   const { data } = useProfile();
-  const { t } = useTranslation("app.(ui).group-2.dashboard.page");
+  const { t } = useTranslation("app");
   return (
     <div className="flex flex-col h-full items-center justify-center w-full">
       <span>
-        {t("Welcome, {{username}}", {
-          username: data?.firstname ?? "User",
+        {t("Welcome User", {
+          username: data?.email ?? "User",
         })}
       </span>
     </div>

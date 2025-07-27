@@ -31,7 +31,7 @@ export async function loadNamespace(
     process.cwd(),
     "src/i18n/locales",
     lng,
-    `${ns}.json`,
+    `translation.json`,
   );
   try {
     const file = await fs.readFile(filePath, "utf-8");
@@ -43,7 +43,14 @@ export async function loadNamespace(
 }
 
 async function initI18nextOnce(lng: string, ns: (typeof NAMESPACES)[number]) {
-  const translations = await loadNamespace(lng, ns);
+   const filePath = path.resolve(
+     process.cwd(),
+     "src/i18n/locales",
+     lng,
+     `translation.json`
+   );
+     const file = await fs.readFile(filePath, "utf-8");
+  const translations = JSON.parse(file);
   return createInstance(
     {
       lng,
@@ -51,9 +58,7 @@ async function initI18nextOnce(lng: string, ns: (typeof NAMESPACES)[number]) {
       ns: [ns],
       defaultNS: ns,
       resources: {
-        [lng]: {
-          [ns]: translations,
-        },
+        [lng]:translations
       },
       returnNull: false,
       returnEmptyString: true,

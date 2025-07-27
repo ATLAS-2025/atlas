@@ -22,6 +22,24 @@ export interface Token {
      * @type {string}
      * @memberof Token
      */
+    email: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Token
+     */
+    username: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Token
+     */
+    uuid: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Token
+     */
     accessToken: string;
     /**
      * 
