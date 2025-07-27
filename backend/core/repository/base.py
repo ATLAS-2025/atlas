@@ -30,6 +30,24 @@ class BaseRepository(Generic[ModelType]):
         self.session.add(model)
         return model
 
+
+    async def update_by_id(self, pk: Any, attributes: dict[str, Any] = None) -> ModelType:
+        """
+        Updates the model instance by primary key.
+
+        :param pk: The primary key of the model instance to update.
+        :param attributes: The attributes to update the model with.
+        :return: The updated model instance.
+        """
+        if attributes is None:
+            attributes = {}
+        instance = await self.session.get(self.model_class, pk)
+        if not instance:
+            raise ValueError(f"{self.model_class.__name__} with pk={pk} not found.")
+        for key, value in attributes.items():
+            setattr(instance, key, value)
+        self.session.add(instance)
+        return instance
     async def get_all(
         self, skip: int = 0, limit: int = 100, join_: set[str] | None = None
     ) -> list[ModelType]:

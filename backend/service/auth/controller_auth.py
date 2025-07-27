@@ -48,6 +48,9 @@ class AuthController(BaseController[User]):
         return Token(
             access_token=JWTHandler.encode(payload={"user_id": user.id}),
             refresh_token=JWTHandler.encode(payload={"sub": "refresh_token"}),
+            email=user.email,
+            username=user.username,
+            uuid=user.uuid
         )
 
     async def refresh_token(self, access_token: str, refresh_token: str) -> Token:
