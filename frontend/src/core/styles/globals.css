@@ -115,7 +115,7 @@ html, body {
     --card-foreground: var(--bg-lvl6);
     --popover: #FFFFFF;
     --popover-foreground: var(--bg-lvl6);
-    --primary: var(--border4);
+    --primary: #4A00EA;
     --primary-foreground: var(--white);
     --secondary: #F1F3F4;
     --secondary-foreground: var(--bg-lvl6);
@@ -136,8 +136,8 @@ html, body {
     --sidebar-foreground: var(--bg-lvl6);
     --sidebar-primary: var(--border4);
     --sidebar-primary-foreground: var(--white);
-    --sidebar-accent: #F1F3F4;
-    --sidebar-accent-foreground: var(--bg-lvl6);
+    --sidebar-accent: var(--primary);
+    --sidebar-accent-foreground: var(--accent);
     --sidebar-border: #E1E5E9;
     --sidebar-ring: var(--border4);
 
