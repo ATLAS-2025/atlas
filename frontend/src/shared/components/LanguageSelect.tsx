@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
-
 "use client";
 
 import { useEffect, useState, useTransition } from "react";
@@ -16,13 +12,13 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/shared/components/ui/popover";
-import { KZ, RU, US, type FlagComponent } from "country-flag-icons/react/3x2";
+import {  CN, US, type FlagComponent, SE } from "country-flag-icons/react/3x2";
 import { Check, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const localeFlags: Record<TLanguage, FlagComponent> = {
-  kk: KZ,
-  ru: RU,
+  sv: SE,
+  cn: CN,
   en: US,
 };
 
@@ -36,19 +32,16 @@ export function LanguageSelect() {
   const [isPreloading, setIsPreloading] = useState(true);
 
   const labeledLanguage: { label: string; value: TLanguage }[] = [
-    { label: t("Kazakh"), value: "kk" },
-    { label: t("Russian"), value: "ru" },
+    { label: t("Swedish"), value: "sv" },
+    { label: t("Chinese"), value: "cn" },
     { label: t("English"), value: "en" },
   ];
-
   useEffect(() => {
     // Прелоадим все переводы для всех языков один раз при инициализации
     const preloadAllLanguages = async () => {
       for (const locale of languages) {
-        await Promise.allSettled(
-          NAMESPACES.map(async (ns) => {
-            try {
-              const data = await import(`@/i18n/locales/${locale}/${ns}.json`);
+        const data = await import(`@/i18n/locales/${locale}/translation.json`);
+          NAMESPACES.map((ns) => {
               i18n.addResourceBundle(
                 locale,
                 ns,
@@ -56,16 +49,12 @@ export function LanguageSelect() {
                 true,
                 true,
               );
-            } catch {}
-          }),
-        );
-      }
+          });
       setIsPreloading(false);
-    };
-
+    }
+  }
     preloadAllLanguages();
   }, [i18n]);
-
   const handleLocaleChange = (locale: TLanguage) => {
     startTransition(async () => {
       await i18n.changeLanguage(locale);

@@ -168,7 +168,7 @@ export const LoginDialog: React.FC<ILoginDialogProps> = ({
 
         {/* REGISTER LINK */}
         <div className="flex items-center justify-center text-muted-foreground">
-          <p>{t("Don't have an account?")} </p>
+          <p>{t("No account?")} </p>
           <Button
             variant="link"
             className="text-button text-md hover:text-button-accent font-medium"

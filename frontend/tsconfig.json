@@ -45,6 +45,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@/components/ui/*":[
+        "./src/shared/components/ui/*"
       ]
     }
   },
@@ -62,6 +65,7 @@
     "build",
     ".next",
     "node_modules",
+    "src/apiClient"
 //    "**/*.test.ts"
   ],
   "ts-node": {

@@ -18,7 +18,7 @@ i18next
   .use(
     resourcesToBackend((language: string, namespace: string) => {
       try {
-        return import(`@/i18n/locales/${language}/${namespace}.json`);
+        return import(`@/i18n/locales/${language}/translation.json`);
       } catch (error) {}
     }),
   )

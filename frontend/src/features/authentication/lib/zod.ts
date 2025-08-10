@@ -16,7 +16,7 @@ export const createRegisterSchema = (
         })
         .email(t("Email is invalid")),
       username: z.string({
-        required_error: t("Username is required"),
+        required_error: t("username is required"),
       }),
       password: z
         .string()
@@ -59,7 +59,7 @@ export const createEditProfileSchema = (
       })
       .email(t("Email is invalid")),
     firstname: z.string({
-      required_error: t("Firstname is required"),
+      required_error: t("Firstname is min"),
     }),
     lastname: z.string({
       required_error: t("Lastname is required"),

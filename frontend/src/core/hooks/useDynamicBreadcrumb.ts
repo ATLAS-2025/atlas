@@ -27,7 +27,7 @@ export const useDynamicBreadcrumb = () => {
       {
         name: t("Home"),
         href: "/",
-        icon: FLATTENED_ROUTES["/"]?.icon,
+        // icon: FLATTENED_ROUTES["/"]?.icon,
       },
     ];
   }

@@ -1,0 +1,35 @@
+appId: ai.atlas.planner
+productName: ATLAS PLANNER
+
+directories:
+  output: dist
+  buildResources: assets
+
+asar: false
+# Uncomment if you want to unpack specific files
+# asarUnpack:
+#   - '**/.next/cache/**/*'
+
+files:
+  - build
+  - '.next/standalone/demo/**/*'
+  - '!.next/standalone/demo/node_modules/electron'
+
+mac:
+  category: public.app-category.developer-tools
+  target:
+    - target: dir
+      arch:
+        - arm64
+        - x64
+
+linux:
+  category: Development
+  target:
+    - AppImage
+    - deb
+  maintainer: ZISAN <tauhidul.zisan@atlas-group.ai>
+  synopsis: A developer tool built with Next.js and Electron
+  description: |
+    Cross-platform app built using Electron and Next.js with support for server components.
+  artifactName: "${productName}-${version}-${os}-${arch}.${ext}"

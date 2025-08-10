@@ -1,0 +1,32 @@
+
+import { getApis } from "@/apiServices";
+import { getTranslation } from "@/i18n";
+import React from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Pencil, Trash2, Plus } from "lucide-react";
+import { PeopleResponse } from "@/apiClient";
+import Link from "next/link";
+import EditPeople from "./EditPeople";
+interface Params {
+  id: string;
+}
+
+export default async function Page({ params }: { params: Promise<Params> }) {
+ const { id } = await params;
+    const { peopleApi } = await getApis()
+  const {data} = await peopleApi.getPeoplesV1PeopleIdGet(parseInt(id))
+  return (
+    <div className="flex flex-col h-full  w-full">
+       <EditPeople defaultValues={data}/>
+    </div>
+  );
+}
+export const dynamic = 'force-dynamic'; 

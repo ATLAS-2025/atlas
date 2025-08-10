@@ -1,7 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
-
+'use client'
 import { Fragment, memo } from "react";
 import {
   SidebarGroup,
@@ -34,7 +31,7 @@ const RenderMenuItem = memo(function RenderMenuItem({
               : "text-sidebar-foreground",
           )}
         >
-          {route.icon && <route.icon />}
+          {/* {route.icon && <route.icon />} */}
           <span className="text-sm">{route.title}</span>
         </Link>
       </SidebarMenuButton>
