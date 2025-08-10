@@ -2,5 +2,7 @@ pgdata
 .history
 .qodo
 .vscode
-
-oldF
+.next
+dist
+node_modules
+__pycache__

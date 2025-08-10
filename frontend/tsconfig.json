@@ -65,6 +65,7 @@
     "build",
     ".next",
     "node_modules",
+    "src/apiClient"
 //    "**/*.test.ts"
   ],
   "ts-node": {

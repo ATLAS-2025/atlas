@@ -8,13 +8,10 @@ import { useProfile } from "@/features/authentication";
 
 export default function Home() {
   const { data } = useProfile();
-  const { t } = useTranslation("app.(ui).page");
   return (
     <div className="flex flex-col h-full items-center justify-center w-full">
       <span>
-        {t("Welcome, {{username}}", {
-          username: data?.firstname ?? "User",
-        })}
+        Home page
       </span>
     </div>
   );

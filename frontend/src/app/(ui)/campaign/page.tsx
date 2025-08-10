@@ -56,11 +56,11 @@ export default async function Page() {
           <TableBody>
             {campaignData.map((campaign: CampaignResponse) => (
               <TableRow key={campaign.campaignName}>
-                <TableCell>{campaign.campaign_name}</TableCell>
-                {/* <TableCell>{campaign.folder_path}</TableCell> */}
+                {/* <TableCell>{campaign.campaign_name}</TableCell>
+                 <TableCell>{campaign.folder_path}</TableCell>
                 <TableCell>{campaign.start_date}</TableCell>
                 <TableCell>{campaign.duration_days}</TableCell>
-                <TableCell>{campaign.folder_path ?? "N/A"}</TableCell>
+                <TableCell>{campaign.folder_path ?? "N/A"}</TableCell> */}
                 <TableCell className="text-right space-x-2">
                   {/* <Link href={`/campaigns/edit/${encodeURIComponent(campaign.campaignName)}`}>
                     <Button variant="outline" size="icon">
