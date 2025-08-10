@@ -32,83 +32,120 @@ html, body {
 }
 
 :root {
-    --background: oklch(0.985 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.646 0.222 41.116);
-    --chart-2: oklch(0.6 0.118 184.704);
-    --chart-3: oklch(0.398 0.07 227.392);
-    --chart-4: oklch(0.828 0.189 84.429);
-    --chart-5: oklch(0.769 0.188 70.08);
-    --sidebar: oklch(0.925 0 0);
-    --sidebar-foreground: oklch(0.205 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+    /* Base colors from design system - now used as defaults */
+    --text-icon-primary: #DCDCE1;
+    --text-icon-secondary: #8B8B9D;
+    --text-icon-info: #676776;
+    --text-icon-highlight: #FFFFFF;
+    
+    /* Background levels - now used as defaults */
+    --bg-lvl6: #0D0A19;
+    --bg-lvl5: #191627;
+    --bg-lvl4: #1F1B2D;
+    --bg-lvl3: #1F1E28;
+    --bg-lvl2: #302C40;
+    --bg-lvl1: #26252E;
+    
+    /* Border colors - now used as defaults */
+    --border1: #34343F;
+    --border2: #22212B;
+    --border3: #1D1D26;
+    --border4: #8C54EF;
+    
+    /* Background with opacity - now used as defaults */
+    --bg-16: #4D4D67;
+    --bg-32: #3C3C47;
+    --bg-72: #201D2F;
+    --bg-90: #15151C;
+    
+    /* Accent colors - now used as defaults */
+    --white: #FFFFFF;
+    --green: #0EFF4F;
+    
+    /* Updated CSS variables using design system colors as defaults */
+    --background: var(--bg-lvl6);
+    --foreground: var(--text-icon-primary);
+    --card: var(--bg-lvl5);
+    --card-foreground: var(--text-icon-primary);
+    --popover: var(--bg-lvl4);
+    --popover-foreground: var(--text-icon-primary);
+    --primary: var(--border4);
+    --primary-foreground: var(--text-icon-highlight);
+    --secondary: var(--bg-lvl3);
+    --secondary-foreground: var(--text-icon-primary);
+    --muted: var(--bg-lvl2);
+    --muted-foreground: var(--text-icon-secondary);
+    --accent: var(--bg-lvl1);
+    --accent-foreground: var(--text-icon-primary);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: var(--border1);
+    --input: var(--bg-lvl2);
+    --ring: var(--border4);
+    --chart-1: var(--border4);
+    --chart-2: var(--green);
+    --chart-3: var(--text-icon-highlight);
+    --chart-4: var(--text-icon-secondary);
+    --chart-5: var(--text-icon-info);
+    --sidebar: var(--bg-lvl5);
+    --sidebar-foreground: var(--text-icon-primary);
+    --sidebar-primary: var(--border4);
+    --sidebar-primary-foreground: var(--text-icon-highlight);
+    --sidebar-accent: var(--bg-lvl4);
+    --sidebar-accent-foreground: var(--text-icon-primary);
+    --sidebar-border: var(--border2);
+    --sidebar-ring: var(--border4);
 
-    /* Custom variables */
-    --button: hsl(216, 100%, 77%);
-    --button-foreground: hsl(213 11% 15%);
-    --button-accent: hsl(169, 63%, 8%);
-    --inactive: hsl(264, 6%, 84%);
+    /* Custom variables using design system colors */
+    --button: var(--border4);
+    --button-foreground: var(--text-icon-highlight);
+    --button-accent: var(--green);
+    --inactive: var(--text-icon-info);
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.488 0.243 264.376);
-    --chart-2: oklch(0.696 0.17 162.48);
-    --chart-3: oklch(0.769 0.188 70.08);
-    --chart-4: oklch(0.627 0.265 303.9);
-    --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+    /* Dark theme is now the default, but we can add specific overrides here if needed */
+    /* All variables are inherited from :root by default */
+}
 
-    /* Custom variables */
-    --button: hsl(215 100% 46%);
-    --button-foreground: hsl(255 11% 100%);
-    --button-accent: hsl(79, 47%, 51%);
-    --inactive: hsl(271, 16%, 28%);
+.light {
+    /* Light theme overrides using lighter design system colors */
+    --background: var(--white);
+    --foreground: var(--bg-lvl6);
+    --card: #F8F9FA;
+    --card-foreground: var(--bg-lvl6);
+    --popover: #FFFFFF;
+    --popover-foreground: var(--bg-lvl6);
+    --primary: var(--border4);
+    --primary-foreground: var(--white);
+    --secondary: #F1F3F4;
+    --secondary-foreground: var(--bg-lvl6);
+    --muted: #F8F9FA;
+    --muted-foreground: var(--text-icon-info);
+    --accent: #F1F3F4;
+    --accent-foreground: var(--bg-lvl6);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: #E1E5E9;
+    --input: #F8F9FA;
+    --ring: var(--border4);
+    --chart-1: var(--border4);
+    --chart-2: var(--green);
+    --chart-3: var(--bg-lvl6);
+    --chart-4: var(--text-icon-info);
+    --chart-5: var(--text-icon-secondary);
+    --sidebar: #F8F9FA;
+    --sidebar-foreground: var(--bg-lvl6);
+    --sidebar-primary: var(--border4);
+    --sidebar-primary-foreground: var(--white);
+    --sidebar-accent: #F1F3F4;
+    --sidebar-accent-foreground: var(--bg-lvl6);
+    --sidebar-border: #E1E5E9;
+    --sidebar-ring: var(--border4);
+
+    /* Custom variables for light theme */
+    --button: var(--border4);
+    --button-foreground: var(--white);
+    --button-accent: var(--green);
+    --inactive: var(--text-icon-secondary);
 }
 
 /*
@@ -118,6 +155,33 @@ html, body {
 @theme inline {
     --font-libre: Libre Franklin, sans-serif;
 
+    /* Design system color mappings */
+    --color-text-icon-primary: var(--text-icon-primary);
+    --color-text-icon-secondary: var(--text-icon-secondary);
+    --color-text-icon-info: var(--text-icon-info);
+    --color-text-icon-highlight: var(--text-icon-highlight);
+    
+    --color-bg-lvl6: var(--bg-lvl6);
+    --color-bg-lvl5: var(--bg-lvl5);
+    --color-bg-lvl4: var(--bg-lvl4);
+    --color-bg-lvl3: var(--bg-lvl3);
+    --color-bg-lvl2: var(--bg-lvl2);
+    --color-bg-lvl1: var(--bg-lvl1);
+    
+    --color-border1: var(--border1);
+    --color-border2: var(--border2);
+    --color-border3: var(--border3);
+    --color-border4: var(--border4);
+    
+    --color-bg-16: var(--bg-16);
+    --color-bg-32: var(--bg-32);
+    --color-bg-72: var(--bg-72);
+    --color-bg-90: var(--bg-90);
+    
+    --color-white: var(--white);
+    --color-green: var(--green);
+
+    /* Legacy color mappings for backward compatibility */
     --color-background: var(--background);
     --color-foreground: var(--foreground);
 
@@ -151,6 +215,7 @@ html, body {
     --color-chart-4: var(--chart-4);
     --color-chart-5: var(--chart-5);
 
+    --color-sidebar: var(--sidebar);
     --color-sidebar-foreground: var(--sidebar-foreground);
     --color-sidebar-primary: var(--sidebar-primary);
     --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
@@ -163,17 +228,54 @@ html, body {
     --color-button-foreground: var(--button-foreground);
     --color-button-accent: var(--button-accent);
 
+    /* Enhanced shadows and effects */
     --shadow-glow-blue: 0 0 20px rgba(0, 123, 255, 0.6);
+    --shadow-glow-purple: 0 0 20px rgba(140, 84, 239, 0.4);
+    --shadow-glow-green: 0 0 20px rgba(14, 255, 79, 0.4);
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-elevated: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
+    /* Animation variables */
     --animate-spin-slow: spin 3s linear infinite;
+    --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animate-bounce-slow: bounce 2s infinite;
 
+    /* Border radius system */
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
     --radius-sm: calc(var(--radius) - 4px);
+    --radius-xs: calc(var(--radius) - 6px);
 
+    /* Accordion animations */
     --animate-accordion-down: accordion-down 0.2s ease-out;
     --animate-accordion-up: accordion-up 0.2s ease-out;
-    --color-sidebar: var(--sidebar);
+    
+    /* Spacing system */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    /* Typography scale */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    
+    /* Line heights */
+    --line-height-tight: 1.25;
+    --line-height-snug: 1.375;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.625;
+    --line-height-loose: 2;
+    
     /*
     ---break---
   */
@@ -196,6 +298,49 @@ html, body {
             height: 0;
         }
     }
+    
+    /* Additional keyframes for enhanced animations */
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slide-in-from-top {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slide-in-from-bottom {
+        from {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes scale-in {
+        from {
+            transform: scale(0.95);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
 }
 
 /*
@@ -209,5 +354,96 @@ html, body {
 
     body {
         @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
     }
+    
+    /* Enhanced typography */
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-semibold tracking-tight;
+    }
+    
+    h1 {
+        @apply text-4xl;
+    }
+    
+    h2 {
+        @apply text-3xl;
+    }
+    
+    h3 {
+        @apply text-2xl;
+    }
+    
+    h4 {
+        @apply text-xl;
+    }
+    
+    h5 {
+        @apply text-lg;
+    }
+    
+    h6 {
+        @apply text-base;
+    }
+    
+    /* Enhanced focus states */
+    :focus-visible {
+        @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+    }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Selection styling */
+    ::selection {
+        @apply bg-primary/20 text-primary-foreground;
+    }
+    
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        @apply bg-muted;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        @apply bg-muted-foreground/50 rounded-full;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-muted-foreground/70;
+    }
+}
+
+/* Utility classes for design system colors */
+@layer utilities {
+    .text-icon-primary { color: var(--text-icon-primary); }
+    .text-icon-secondary { color: var(--text-icon-secondary); }
+    .text-icon-info { color: var(--text-icon-info); }
+    .text-icon-highlight { color: var(--text-icon-highlight); }
+    
+    .bg-lvl6 { background-color: var(--bg-lvl6); }
+    .bg-lvl5 { background-color: var(--bg-lvl5); }
+    .bg-lvl4 { background-color: var(--bg-lvl4); }
+    .bg-lvl3 { background-color: var(--bg-lvl3); }
+    .bg-lvl2 { background-color: var(--bg-lvl2); }
+    .bg-lvl1 { background-color: var(--bg-lvl1); }
+    
+    .border-border1 { border-color: var(--border1); }
+    .border-border2 { border-color: var(--border2); }
+    .border-border3 { border-color: var(--border3); }
+    .border-border4 { border-color: var(--border4); }
+    
+    .bg-opacity-16 { background-color: var(--bg-16); }
+    .bg-opacity-32 { background-color: var(--bg-32); }
+    .bg-opacity-72 { background-color: var(--bg-72); }
+    .bg-opacity-90 { background-color: var(--bg-90); }
+    
+    .text-green { color: var(--green); }
+    .bg-green { background-color: var(--green); }
 }

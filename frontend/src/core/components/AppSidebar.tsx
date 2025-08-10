@@ -22,7 +22,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {/* Header с логотипом */}
       <SidebarHeader className="h-9 flex-row p-0 mb-2 items-center">
         <Image
-          src="/assets/logo-transparent.png"
+          src="/assets/logo.svg"
           alt="logo"
           width={36}
           height={36}

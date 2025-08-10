@@ -30,14 +30,14 @@ export function ThemeSelect() {
 
   const themeOptions: TThemeItem[] = [
     {
-      value: "light",
-      label: t("Light"),
-      icon: (props) => <Sun {...props} />,
-    },
-    {
       value: "dark",
       label: t("Dark"),
       icon: (props) => <Moon {...props} />,
+    },
+    {
+      value: "light",
+      label: t("Light"),
+      icon: (props) => <Sun {...props} />,
     },
     {
       value: "system",
@@ -47,7 +47,7 @@ export function ThemeSelect() {
   ];
 
   const CurrentIcon =
-    themeOptions.find((option) => option.value === theme)?.icon || Laptop;
+    themeOptions.find((option) => option.value === theme)?.icon || Moon;
 
   return (
     <Popover>
