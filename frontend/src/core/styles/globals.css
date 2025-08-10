@@ -69,7 +69,7 @@ html, body {
     --card-foreground: var(--text-icon-primary);
     --popover: var(--bg-lvl4);
     --popover-foreground: var(--text-icon-primary);
-    --primary: var(--border4);
+    --primary: #4A00EA;
     --primary-foreground: var(--text-icon-highlight);
     --secondary: var(--bg-lvl3);
     --secondary-foreground: var(--text-icon-primary);
@@ -90,7 +90,7 @@ html, body {
     --sidebar-foreground: var(--text-icon-primary);
     --sidebar-primary: var(--border4);
     --sidebar-primary-foreground: var(--text-icon-highlight);
-    --sidebar-accent: var(--bg-lvl4);
+    --sidebar-accent: var(--primary);
     --sidebar-accent-foreground: var(--text-icon-primary);
     --sidebar-border: var(--border2);
     --sidebar-ring: var(--border4);
