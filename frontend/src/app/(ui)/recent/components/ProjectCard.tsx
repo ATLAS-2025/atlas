@@ -55,7 +55,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {/* Tag */}
         <div className="flex justify-center">
           <span
-            className={`inline-flex items-center px-0.5 rounded-full text-xs font-medium border bg-transparent ${project.tagColor}`}
+            className={`inline-flex items-center px-0.5 px-1 rounded-full text-xs font-medium border bg-transparent ${project.tagColor}`}
           >
             {project.tag}
           </span>
