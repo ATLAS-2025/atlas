@@ -47,6 +47,10 @@ export const getApis = async () => {
     peopleApi: new PeopleApi(config, undefined, axiosInstance),
     sensorApi: new SensorApi(config, undefined, axiosInstance),
     equipmentApi: new EquipmentApi(config, undefined, axiosInstance),
-    campaignManagementApi: new CampaignManagementApi(config, undefined, axiosInstance),
+    campaignManagementApi: new CampaignManagementApi(
+      config,
+      undefined,
+      axiosInstance
+    ),
   };
 };

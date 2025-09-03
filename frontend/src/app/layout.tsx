@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Manrope } from "next/font/google";
 import "@/core/styles/globals.css";
 import { ToastContainer } from "react-toastify";
 import { ClientProvidersWrapper } from "@/core/providers/ClientProvidersWrapper";
@@ -13,6 +13,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -89,7 +94,7 @@ export default async function RootLayout({
         <title>Altas Planner</title>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
       >
         <ClientProvidersWrapper>
           {children}

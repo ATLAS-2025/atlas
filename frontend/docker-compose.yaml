@@ -2,11 +2,11 @@ services:
   atlas-planner-frontend:
     build:
       context: .
-#    image: next-i18n-auth-development
+    #    image: next-i18n-auth-development
     ports:
       - "3000:3000"
     volumes:
-      - .:/app  # Sync the local project folder with the container
-      - /app/node_modules  # Use node_modules from the container, not the host
+      - .:/app # Sync the local project folder with the container
+      - /app/node_modules # Use node_modules from the container, not the host
     env_file:
       - .env

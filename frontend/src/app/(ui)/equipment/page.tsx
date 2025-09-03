@@ -1,4 +1,3 @@
-
 import { getApis } from "@/apiServices";
 import { getTranslation } from "@/i18n";
 import React from "react";
@@ -19,15 +18,17 @@ import { getCacheOptions } from "@/features/cacheOption";
 
 export default async function Page() {
   // const  t  = await getTranslation("app.(ui).group-1.page");
-  const { equipmentApi } = await getApis()
-  const {data} = await equipmentApi.getAllEquipmentV1EquipmentGet({fetchOptions:{
-    next:{
-    ...(await getCacheOptions("equipment")),
-    cache: "force-cache",
-  }
-  }})
+  const { equipmentApi } = await getApis();
+  const { data } = await equipmentApi.getAllEquipmentV1EquipmentGet({
+    fetchOptions: {
+      next: {
+        ...(await getCacheOptions("equipment")),
+        cache: "force-cache",
+      },
+    },
+  });
   return (
-     <div className="flex flex-col h-full w-full">
+    <div className="flex flex-col h-full w-full">
       <div className="p-4">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold">Equipment Management</h2>

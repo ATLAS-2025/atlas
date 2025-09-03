@@ -16,5 +16,5 @@ export function toAbsolutePath(path: string): string {
 }
 
 export function waitForSeconds(seconds: number) {
-  return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+  return new Promise(resolve => setTimeout(resolve, seconds * 1000));
 }

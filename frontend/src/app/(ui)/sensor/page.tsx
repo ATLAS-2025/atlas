@@ -1,4 +1,3 @@
-
 import { getApis } from "@/apiServices";
 import { getTranslation } from "@/i18n";
 import React from "react";
@@ -17,7 +16,6 @@ import Link from "next/link";
 import { DeleteButton } from "./deleteButton";
 import { getCacheOptions } from "@/features/cacheOption";
 
-
 export default async function Page() {
   const { sensorApi } = await getApis();
   const { data: sensorData } = await sensorApi.getAllSensorsV1SensorGet({
@@ -28,7 +26,7 @@ export default async function Page() {
       },
     },
   });
-  
+
   return (
     <div className="flex flex-col h-full w-full">
       <div className="p-4">
@@ -61,7 +59,9 @@ export default async function Page() {
                 <TableCell>{sensor.model}</TableCell>
                 <TableCell>{sensor.serialNumber}</TableCell>
                 <TableCell>
-                 {sensor.calibrationDate ? sensor.calibrationDate.toLocaleDateString() : "-"}
+                  {sensor.calibrationDate
+                    ? sensor.calibrationDate.toLocaleDateString()
+                    : "-"}
                 </TableCell>
                 <TableCell>{sensor.notes ?? "-"}</TableCell>
                 <TableCell className="text-right space-x-2">

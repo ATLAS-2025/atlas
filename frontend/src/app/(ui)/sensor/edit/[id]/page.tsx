@@ -1,4 +1,3 @@
-
 import { getApis } from "@/apiServices";
 import { getTranslation } from "@/i18n";
 import React from "react";
@@ -20,12 +19,12 @@ interface Params {
 }
 
 export default async function Page({ params }: { params: Promise<Params> }) {
- const { id } = await params;
-    const { sensorApi } = await getApis()
-  const {data} = await sensorApi.getSensorV1SensorIdGet(parseInt(id))
+  const { id } = await params;
+  const { sensorApi } = await getApis();
+  const { data } = await sensorApi.getSensorV1SensorIdGet(parseInt(id));
   return (
     <div className="flex flex-col h-full  w-full">
-       <EditSensor defaultValues={data}/>
+      <EditSensor defaultValues={data} />
     </div>
   );
 }

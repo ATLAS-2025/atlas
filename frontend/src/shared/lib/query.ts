@@ -10,7 +10,7 @@ export const buildQueryParams = (params: QueryParams): string => {
     .filter(([_, value]) => value !== undefined && value !== null)
     .map(
       ([key, value]) =>
-        `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`,
+        `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`
     )
     .join("&");
   return query ? `?${query}` : "";

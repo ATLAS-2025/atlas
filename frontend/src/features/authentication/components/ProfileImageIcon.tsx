@@ -38,7 +38,7 @@ export function ProfileImageIcon({ className }: ProfileImageIconProps) {
           alt="Profile"
           className={cn(
             "size-9 rounded-full object-cover border-2 border-green-500 cursor-pointer",
-            className,
+            className
           )}
           onClick={() => setIsImageModalOpen(true)}
         />
@@ -72,7 +72,7 @@ export function ProfileImageIcon({ className }: ProfileImageIconProps) {
       <div
         className={cn(
           "size-9 flex items-center justify-center rounded-full bg-muted text-primary text-3xl font-medium",
-          className,
+          className
         )}
       >
         {initials.toUpperCase()}
@@ -84,7 +84,7 @@ export function ProfileImageIcon({ className }: ProfileImageIconProps) {
     <div
       className={cn(
         "size-9 flex items-center justify-center rounded-full bg-muted",
-        className,
+        className
       )}
     >
       <User className="w-full h-full text-muted-foreground" />

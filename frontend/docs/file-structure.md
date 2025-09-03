@@ -6,8 +6,8 @@ This document provides an overview of the **project file structure** to help you
 file organization follows a **customized version of Feature Sliced Design (FSD)[^1]**, which focuses on modularity,
 scalability, and maintainability. Key differences from classic FSD include:
 
-* **Shared components** are housed in `/shared/components` instead of a dedicated **widgets** layer.
-* **Types** are defined directly within each feature under a **types** slice, replacing the **entities** layer.
+- **Shared components** are housed in `/shared/components` instead of a dedicated **widgets** layer.
+- **Types** are defined directly within each feature under a **types** slice, replacing the **entities** layer.
 
 ---
 
@@ -123,7 +123,7 @@ src/
 │   │   ├── svg/            // SVG components (e.g., Loading)
 │   │   ├── ui/             // UI components from shadcn/ui
 │   │   │   ├── accordion.tsx
-│   │   │   ├── ............... 
+│   │   │   ├── ...............
 │   │   │   └── tooltip.tsx
 │   │   ├── app-sidebar.tsx
 │   │   ├── Checkbox.tsx
@@ -172,44 +172,44 @@ The **`app/`** directory is used to organize **pages** and **layouts** using the
 modular approach, grouping pages and components into feature slices under their respective folders (e.g., `group-1`,
 `group-2`). Each page is represented by a `page.tsx` file, and layouts are defined in `layout.tsx`.
 
-* **Pages**: Organized under their respective groups (e.g., `about`, `profile`, `dashboard`).
-* **API Routes**: Defines API routes for authentication and proxy.
+- **Pages**: Organized under their respective groups (e.g., `about`, `profile`, `dashboard`).
+- **API Routes**: Defines API routes for authentication and proxy.
 
 ### **`src/core/`**
 
 The **`core/`** directory provides the foundational **structure for pages** but does not share components. It
 encapsulates essential components, hooks, types, and utilities needed for building the pages.
 
-* **Components**: Core layout components like `Header`, `Footer`, and `Sidebar`.
-* **Hooks**: Custom hooks like `useDynamicBreadcrumb` and `useRoutes`.
-* **Styles**: Global styles (e.g., Tailwind CSS and Shadcn configuration) stored in `globals.css`.
+- **Components**: Core layout components like `Header`, `Footer`, and `Sidebar`.
+- **Hooks**: Custom hooks like `useDynamicBreadcrumb` and `useRoutes`.
+- **Styles**: Global styles (e.g., Tailwind CSS and Shadcn configuration) stored in `globals.css`.
 
 ### **`src/features/`**
 
 Each feature of the app is contained within its own folder under the **`features/`** directory. Features are organized
 with their respective components, hooks, services, and types.
 
-* **Authentication**: Logic related to user login, registration, and profile management.
-* **Services**: API services for handling requests related to the features.
-* **Types**: Type definitions specific to each feature.
+- **Authentication**: Logic related to user login, registration, and profile management.
+- **Services**: API services for handling requests related to the features.
+- **Types**: Type definitions specific to each feature.
 
 ### **`src/i18n/`**
 
 The **`i18n/`** directory contains everything related to **internationalization** (i18n). It includes translation files,
 configurations, and logic for handling translations across both client and server sides. See [i18n-structure](./i18n-structure.md) for more information.
 
-* **Generated Files**: Automatically generated files like `namespaces.ts` and translation types.
-* **Config**: Contains the main configuration for language settings and fallback language.
-* **Locales**: Translation files for each language (e.g., `en.json`, `kk.json`, `ru.json`).
+- **Generated Files**: Automatically generated files like `namespaces.ts` and translation types.
+- **Config**: Contains the main configuration for language settings and fallback language.
+- **Locales**: Translation files for each language (e.g., `en.json`, `kk.json`, `ru.json`).
 
 ### **`src/shared/`**
 
 Contains **shared resources** used across multiple features of the application, including **UI components**, **hooks**,
 **utilities**, and **data** like environment configurations.
 
-* **UI Components**: Reusable UI components like `Button`, `Checkbox`, `Input`.
-* **Hooks**: Shared hooks like `useToast` for toast notifications.
-* **Data**: Environment variables (validation for both client and server-side).
+- **UI Components**: Reusable UI components like `Button`, `Checkbox`, `Input`.
+- **Hooks**: Shared hooks like `useToast` for toast notifications.
+- **Data**: Environment variables (validation for both client and server-side).
 
 ### **`src/__tests__/`**
 
@@ -229,8 +229,8 @@ reducing complexity.
 
 ## 📚 Related Projects
 
-* [`@sayyyat/smart-i18n`](https://www.npmjs.com/package/@sayyyat/smart-i18n) — The core CLI engine that provides scanning, merging, and type generation.
-* [`@sayyyat/smart-i18n-react`](https://www.npmjs.com/package/@sayyyat/smart-i18n-react) — Feature-scaffolding CLI tool that integrates smart-i18n into React/Next.js projects with zero configs.
+- [`@sayyyat/smart-i18n`](https://www.npmjs.com/package/@sayyyat/smart-i18n) — The core CLI engine that provides scanning, merging, and type generation.
+- [`@sayyyat/smart-i18n-react`](https://www.npmjs.com/package/@sayyyat/smart-i18n-react) — Feature-scaffolding CLI tool that integrates smart-i18n into React/Next.js projects with zero configs.
 
 ---
 

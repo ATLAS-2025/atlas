@@ -3,11 +3,7 @@
     // Good choice for Next.js, especially if you’re using latest features
     "target": "ESNext",
     // Next.js often uses these libs for DOM, iteration, and newer features
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     // Good for allowing .js in TypeScript if needed
     "allowJs": true,
     // Skips checking .d.ts files in node_modules (improves build speed)
@@ -31,10 +27,7 @@
     // Speeds up subsequent builds
     "incremental": true,
     // Ensures next-auth custom declarations are merged
-    "types": [
-      "@testing-library/jest-dom",
-      "next-auth"
-    ],
+    "types": ["@testing-library/jest-dom", "next-auth"],
     // Next.js plugin for better IntelliSense
     "plugins": [
       {
@@ -43,12 +36,8 @@
     ],
     // Path aliases for simpler imports
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@/components/ui/*":[
-        "./src/shared/components/ui/*"
-      ]
+      "@/*": ["./src/*"],
+      "@/components/ui/*": ["./src/shared/components/ui/*"]
     }
   },
   "include": [
@@ -66,7 +55,7 @@
     ".next",
     "node_modules",
     "src/apiClient"
-//    "**/*.test.ts"
+    //    "**/*.test.ts"
   ],
   "ts-node": {
     "esm": true,

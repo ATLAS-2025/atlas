@@ -57,19 +57,19 @@ vi.mock("@/i18n", () => ({
 // Mock profile hook
 vi.mock("@/features/authentication", () => ({
   EmailSentDialog: vi.fn(({ open, children }) =>
-    open ? <div data-testid="email-sent-dialog">{children}</div> : null,
+    open ? <div data-testid="email-sent-dialog">{children}</div> : null
   ),
   LoginDialog: vi.fn(({ open, children }) =>
-    open ? <div data-testid="login-dialog">{children}</div> : null,
+    open ? <div data-testid="login-dialog">{children}</div> : null
   ),
   ProfileDialog: vi.fn(({ open, children }) =>
-    open ? <div data-testid="profile-dialog">{children}</div> : null,
+    open ? <div data-testid="profile-dialog">{children}</div> : null
   ),
   RegisterDialog: vi.fn(({ open, children }) =>
-    open ? <div data-testid="register-dialog">{children}</div> : null,
+    open ? <div data-testid="register-dialog">{children}</div> : null
   ),
   ResetDialog: vi.fn(({ open, children }) =>
-    open ? <div data-testid="reset-dialog">{children}</div> : null,
+    open ? <div data-testid="reset-dialog">{children}</div> : null
   ),
   useProfile: () => mockUseProfile(),
 }));
@@ -107,7 +107,7 @@ vi.mock("@/shared/components/ThemeSelect", () => ({
 }));
 
 vi.mock("@/shared/components/ui/sidebar", () => ({
-  SidebarTrigger: vi.fn((props) => (
+  SidebarTrigger: vi.fn(props => (
     <button data-testid="sidebar-trigger" {...props}>
       Sidebar Trigger
     </button>
@@ -403,7 +403,7 @@ describe("Header", () => {
   describe("Translation integration", () => {
     it("should translate loading text", () => {
       mockUseSession.mockReturnValue({ status: "loading" });
-      mockT.mockImplementation((key) => (key === "Loading" ? "Загрузка" : key));
+      mockT.mockImplementation(key => (key === "Loading" ? "Загрузка" : key));
 
       render(<Header />);
 
@@ -412,7 +412,7 @@ describe("Header", () => {
 
     it("should translate button texts", () => {
       mockUseSession.mockReturnValue({ status: "unauthenticated" });
-      mockT.mockImplementation((key) => {
+      mockT.mockImplementation(key => {
         if (key === "Log in") return "Войти";
         if (key === "Sign up") return "Регистрация";
         return key;

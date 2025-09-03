@@ -1,4 +1,3 @@
-
 "use server";
 import { createInstance } from "i18next";
 import { safeT } from "./safety";
@@ -19,11 +18,11 @@ export async function getUserLanguage(): Promise<TLanguage> {
 
 export async function loadNamespace(
   lng: string,
-  ns: (typeof NAMESPACES)[number],
+  ns: (typeof NAMESPACES)[number]
 ): Promise<Record<string, any>> {
   if (!NAMESPACES.includes(ns)) {
     throw new Error(
-      `Namespace "${ns}" is not in the list of known namespaces.`,
+      `Namespace "${ns}" is not in the list of known namespaces.`
     );
   }
 
@@ -31,7 +30,7 @@ export async function loadNamespace(
     process.cwd(),
     "src/i18n/locales",
     lng,
-    `translation.json`,
+    `translation.json`
   );
   try {
     const file = await fs.readFile(filePath, "utf-8");
@@ -43,13 +42,13 @@ export async function loadNamespace(
 }
 
 async function initI18nextOnce(lng: string, ns: (typeof NAMESPACES)[number]) {
-   const filePath = path.resolve(
-     process.cwd(),
-     "src/i18n/locales",
-     lng,
-     `translation.json`
-   );
-     const file = await fs.readFile(filePath, "utf-8");
+  const filePath = path.resolve(
+    process.cwd(),
+    "src/i18n/locales",
+    lng,
+    `translation.json`
+  );
+  const file = await fs.readFile(filePath, "utf-8");
   const translations = JSON.parse(file);
   return createInstance(
     {
@@ -58,7 +57,7 @@ async function initI18nextOnce(lng: string, ns: (typeof NAMESPACES)[number]) {
       ns: [ns],
       defaultNS: ns,
       resources: {
-        [lng]:translations
+        [lng]: translations,
       },
       returnNull: false,
       returnEmptyString: true,
@@ -69,16 +68,16 @@ async function initI18nextOnce(lng: string, ns: (typeof NAMESPACES)[number]) {
     },
     () => {
       // console.log("initI18nextOnce Loaded");
-    },
+    }
   );
 }
 
 export async function getTranslation<N extends TNamespace>(
-  ns: N,
+  ns: N
 ): Promise<{
   t: <K extends TNamespaceTranslationKeys[N]>(
     key: K,
-    options?: Record<string, unknown>,
+    options?: Record<string, unknown>
   ) => string;
 }> {
   const language = await getUserLanguage();

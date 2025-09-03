@@ -32,22 +32,22 @@ export function ThemeSelect() {
     {
       value: "dark",
       label: t("Dark"),
-      icon: (props) => <Moon {...props} />,
+      icon: props => <Moon {...props} />,
     },
     {
       value: "light",
       label: t("Light"),
-      icon: (props) => <Sun {...props} />,
+      icon: props => <Sun {...props} />,
     },
     {
       value: "system",
       label: t("System"),
-      icon: (props) => <Laptop {...props} />,
+      icon: props => <Laptop {...props} />,
     },
   ];
 
   const CurrentIcon =
-    themeOptions.find((option) => option.value === theme)?.icon || Moon;
+    themeOptions.find(option => option.value === theme)?.icon || Moon;
 
   return (
     <Popover>
@@ -83,7 +83,7 @@ export function ThemeSelect() {
           transition={{ duration: 0.15, ease: "easeOut" }}
           className="flex flex-col gap-1"
         >
-          {themeOptions.map((option) => {
+          {themeOptions.map(option => {
             const Icon = option.icon;
             const isActive = theme === option.value;
 
@@ -95,7 +95,7 @@ export function ThemeSelect() {
                   "flex w-full items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors",
                   isActive
                     ? "bg-muted font-semibold"
-                    : "hover:bg-accent hover:text-accent-foreground",
+                    : "hover:bg-accent hover:text-accent-foreground"
                 )}
                 aria-current={isActive ? "true" : undefined}
               >

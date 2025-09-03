@@ -1,4 +1,3 @@
-
 import { getApis } from "@/apiServices";
 import { getTranslation } from "@/i18n";
 import React from "react";
@@ -21,8 +20,8 @@ export default async function Page() {
 
   return (
     <div className="flex flex-col h-full  w-full">
-       <AddPeoplePage />
+      <AddPeoplePage />
     </div>
   );
 }
-export const dynamic = 'force-dynamic'; 
+export const dynamic = "force-dynamic";

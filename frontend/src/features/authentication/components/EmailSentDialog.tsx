@@ -26,7 +26,7 @@ export const EmailSentDialog: React.FC<IEmailSentDialogProps> = ({
   setCurrentModal,
 }) => {
   const { t } = useTranslation(
-    "features.authentication.components.EmailSentDialog",
+    "features.authentication.components.EmailSentDialog"
   );
 
   return (

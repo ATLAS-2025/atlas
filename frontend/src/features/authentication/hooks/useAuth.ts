@@ -27,7 +27,7 @@ export const useAuth = () => {
       await queryClient.invalidateQueries({ queryKey: QUERY_KEYS.session });
       await queryClient.invalidateQueries({ queryKey: QUERY_KEYS.profile });
     },
-    onError: (error) => {
+    onError: error => {
       toast.error(error.message);
     },
   });
@@ -47,7 +47,7 @@ export const useAuth = () => {
       await queryClient.invalidateQueries({ queryKey: QUERY_KEYS.session });
       await queryClient.invalidateQueries({ queryKey: QUERY_KEYS.profile });
     },
-    onError: (error) => {
+    onError: error => {
       toast.error(error.message);
     },
   });

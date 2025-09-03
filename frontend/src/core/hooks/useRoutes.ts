@@ -1,4 +1,3 @@
-
 import { useTranslation } from "@/i18n";
 import { IAppRoute } from "@/core/types/routes";
 import {
@@ -10,53 +9,52 @@ import {
   Settings,
   Sheet,
   SquareUser,
+  Database,
+  Calendar,
 } from "lucide-react";
+import {
+  RecentIcon,
+  AllProjectsIcon,
+  TrashIcon,
+} from "@/shared/components/icons";
 
 export function useRoutes() {
   const { t } = useTranslation("core.hooks.useRoutes");
 
   const COMMON_ROUTES: IAppRoute[] = [
     {
-      title: t("Home"),
+      title: "Recent",
       url: "/",
-      icon: Home,
+      icon: RecentIcon,
     },
     {
-      title: t("People"),
-      url: "/people",
-      icon: PanelsTopLeftIcon,
-      // subRoutes: [
-      //   {
-      //     title: t("Sensor"),
-      //     url: "/group-1/about",
-      //     icon: Info,
-      //   },
-      //   {
-      //     title: t("Equipment"),
-      //     url: "/group-1/profile",
-      //     icon: SquareUser,
-      //   },
-      // ],
+      title: "All Projects",
+      url: "/projects",
+      icon: AllProjectsIcon,
     },
     {
-      title: t("Equipment"),
-      url: "/equipment",
-      icon: Settings,
+      title: "Trash",
+      url: "/trash",
+      icon: TrashIcon,
     },
+  ];
+
+  // Settings and Management Routes
+  const SETTINGS_ROUTES: IAppRoute[] = [
     {
-      title: t("Sensor"),
-      url: "/sensor",
-      icon: Settings,
-    },
-    {
-      title: t("Campaign Management"),
-      url: "/campaign",
-      icon: Settings,
-    },
-    {
-      title: t("Settings"),
+      title: "Preferences and Settings",
       url: "/settings",
       icon: Settings,
+    },
+    {
+      title: "Manage Database",
+      url: "/database",
+      icon: Database,
+    },
+    {
+      title: "Global Test Schedule",
+      url: "/schedule",
+      icon: Calendar,
     },
   ];
 
@@ -94,10 +92,15 @@ export function useRoutes() {
     routes.forEach(addRoute);
     return map;
   }
-  const FLATTENED_ROUTES = flattenRoutes([...COMMON_ROUTES, ...MANAGER_ROUTES]);
+  const FLATTENED_ROUTES = flattenRoutes([
+    ...COMMON_ROUTES,
+    ...SETTINGS_ROUTES,
+    ...MANAGER_ROUTES,
+  ]);
 
   return {
     COMMON_ROUTES,
+    SETTINGS_ROUTES,
     MANAGER_ROUTES,
     FLATTENED_ROUTES,
     flattenRoutes,

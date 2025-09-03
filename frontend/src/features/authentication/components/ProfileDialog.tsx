@@ -43,7 +43,7 @@ export const ProfileDialog: React.FC<IProfileDialogProps> = ({
   setCurrentModal,
 }) => {
   const { t } = useTranslation(
-    "features.authentication.components.ProfileDialog",
+    "features.authentication.components.ProfileDialog"
   );
   const {
     data: profile,
@@ -82,7 +82,7 @@ export const ProfileDialog: React.FC<IProfileDialogProps> = ({
   }, [profile, isEditing, form]);
 
   // ✅ Handle profile update
-  const onSubmit = form.handleSubmit((data) => {
+  const onSubmit = form.handleSubmit(data => {
     console.log({ data });
     updateProfileMutation.mutate(data, {
       onSuccess: () => {
@@ -95,7 +95,7 @@ export const ProfileDialog: React.FC<IProfileDialogProps> = ({
 
   // ✅ Handle profile image upload
   const handleImageUpload = async (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -175,7 +175,7 @@ export const ProfileDialog: React.FC<IProfileDialogProps> = ({
                             {...field}
                             label={t("Firstname")}
                             value={field.value}
-                            onChange={(e) => {
+                            onChange={e => {
                               form.setValue("firstname", e.target.value);
                             }}
                           />
@@ -194,7 +194,7 @@ export const ProfileDialog: React.FC<IProfileDialogProps> = ({
                             {...field}
                             label={t("Lastname")}
                             value={field.value}
-                            onChange={(e) => {
+                            onChange={e => {
                               form.setValue("lastname", e.target.value);
                             }}
                           />
@@ -231,7 +231,7 @@ export const ProfileDialog: React.FC<IProfileDialogProps> = ({
                             {...field}
                             label={t("Phone")}
                             value={field.value}
-                            onChange={(e) => {
+                            onChange={e => {
                               form.setValue("phone_number", e.target.value);
                             }}
                           />
@@ -250,7 +250,7 @@ export const ProfileDialog: React.FC<IProfileDialogProps> = ({
                             {...field}
                             label={t("Email")}
                             value={field.value}
-                            onChange={(e) => {
+                            onChange={e => {
                               form.setValue("email", e.target.value);
                             }}
                           />

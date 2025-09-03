@@ -1,4 +1,3 @@
-
 import { getApis } from "@/apiServices";
 import { getTranslation } from "@/i18n";
 import React from "react";
@@ -20,12 +19,14 @@ interface Params {
 }
 
 export default async function Page({ params }: { params: Promise<Params> }) {
- const { id } = await params;
-    const { equipmentApi } = await getApis()
-  const {data} = await equipmentApi.getEquipmentV1EquipmentIdGet(parseInt(id))
+  const { id } = await params;
+  const { equipmentApi } = await getApis();
+  const { data } = await equipmentApi.getEquipmentV1EquipmentIdGet(
+    parseInt(id)
+  );
   return (
     <div className="flex flex-col h-full  w-full">
-       <EditPeople defaultValues={data}/>
+      <EditPeople defaultValues={data} />
     </div>
   );
 }

@@ -1,4 +1,3 @@
-
 import { i18n, TFunction } from "i18next";
 
 export function safeT(t: i18n["t"]): TFunction {

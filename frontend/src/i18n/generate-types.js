@@ -56,7 +56,7 @@ function generateNamespaces(obj, parent = [], namespaces = new Set()) {
   if (
     currentPath &&
     Object.values(obj).every(
-      (value) =>
+      value =>
         typeof value === "object" && value !== null && !Array.isArray(value)
     )
   ) {
@@ -84,20 +84,20 @@ readFile(translationFilePath, "utf8", (err, data) => {
 
     const topLevelNamespaces = Object.keys(translation); // ✅ dynamic
     const allTranslationKeys = generateTranslationKeys(translation);
-const groupedKeys = generateNamespaceTranslationKeys(translation);
+    const groupedKeys = generateNamespaceTranslationKeys(translation);
     const allNamespaces = Object.keys(groupedKeys);
 
-const namespaceTranslationKeys = `export type TNamespaceTranslationKeys = {\n${Object.entries(
-  groupedKeys
-)
-  .map(
-    ([ns, keys]) =>
-      `  '${ns}':\n    | ${keys.map((k) => `"${k}"`).join("\n    | ")};`
-  )
-  .join("\n")}\n}`;
-    const translationKeysType = `export type TAllTranslationKeys =\n  | ${allTranslationKeys.map((key) => `'${key}'`).join("\n  | ")};`;
+    const namespaceTranslationKeys = `export type TNamespaceTranslationKeys = {\n${Object.entries(
+      groupedKeys
+    )
+      .map(
+        ([ns, keys]) =>
+          `  '${ns}':\n    | ${keys.map(k => `"${k}"`).join("\n    | ")};`
+      )
+      .join("\n")}\n}`;
+    const translationKeysType = `export type TAllTranslationKeys =\n  | ${allTranslationKeys.map(key => `'${key}'`).join("\n  | ")};`;
 
-    const namespaceType = `export type TNamespace =\n  | ${allNamespaces.map((ns) => `'${ns}'`).join("\n  | ")};`;
+    const namespaceType = `export type TNamespace =\n  | ${allNamespaces.map(ns => `'${ns}'`).join("\n  | ")};`;
 
     const content = `/* eslint-disable */
 // This file is auto-generated.
@@ -112,30 +112,27 @@ ${translationKeysType}
 
 `;
 
-    const namespaceConst = `export const NAMESPACES = [${allNamespaces.map((ns, i) => `'${ns}'${i == allNamespaces.length-1?"":","}`).join("\n")}];`;
+    const namespaceConst = `export const NAMESPACES = [${allNamespaces.map((ns, i) => `'${ns}'${i == allNamespaces.length - 1 ? "" : ","}`).join("\n")}];`;
 
     // Ensure output directory exists
     mkdirSync(dirname(outputPath), { recursive: true });
     mkdirSync(dirname(outputPath2), { recursive: true });
 
-    writeFile(outputPath, content, (err) => {
+    writeFile(outputPath, content, err => {
       if (err) {
         console.error("❌ Error writing types file:", err);
         return;
       }
       console.log("✅ i18n types generated successfully at:", outputPath);
     });
-     writeFile(outputPath2, namespaceConst, (err) => {
-       if (err) {
-         console.error("❌ Error writing types file:", err);
-         return;
-       }
-       console.log("✅ i18n types generated successfully at:", outputPath);
-     });
+    writeFile(outputPath2, namespaceConst, err => {
+      if (err) {
+        console.error("❌ Error writing types file:", err);
+        return;
+      }
+      console.log("✅ i18n types generated successfully at:", outputPath);
+    });
   } catch (parseError) {
     console.error("❌ Error parsing JSON:", parseError);
   }
-  
 });
-
-

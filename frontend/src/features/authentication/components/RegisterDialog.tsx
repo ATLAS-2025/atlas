@@ -50,7 +50,7 @@ export const RegisterDialog: React.FC<IRegisterDialogProps> = ({
   setCurrentModal,
 }) => {
   const { t } = useTranslation(
-    "features.authentication.components.RegisterDialog",
+    "features.authentication.components.RegisterDialog"
   );
   const { data: cities } = useCities();
   const { registerMutation } = useAuth();
@@ -111,7 +111,6 @@ export const RegisterDialog: React.FC<IRegisterDialogProps> = ({
             className="flex flex-col gap-8"
           >
             {/* FIRSTNAME */}
-     
 
             {/* LASTNAME */}
             <FormField
@@ -126,9 +125,7 @@ export const RegisterDialog: React.FC<IRegisterDialogProps> = ({
                       name="username"
                       label={t("Lastname")}
                       value={field.value}
-                      onChange={(e) =>
-                        form.setValue("username", e.target.value)
-                      }
+                      onChange={e => form.setValue("username", e.target.value)}
                     />
                   </FormControl>
                   <FormMessage />
@@ -149,7 +146,7 @@ export const RegisterDialog: React.FC<IRegisterDialogProps> = ({
                       name="email"
                       label={t("Email")}
                       value={field.value}
-                      onChange={(e) => form.setValue("email", e.target.value)}
+                      onChange={e => form.setValue("email", e.target.value)}
                     />
                   </FormControl>
                 </FormItem>
@@ -220,7 +217,7 @@ export const RegisterDialog: React.FC<IRegisterDialogProps> = ({
                         name="password"
                         label={t("Password")}
                         value={field.value}
-                        onChange={(e) =>
+                        onChange={e =>
                           form.setValue("password", e.target.value)
                         }
                       />
@@ -243,9 +240,7 @@ export const RegisterDialog: React.FC<IRegisterDialogProps> = ({
                         name="confirm"
                         label={t("Confirm password")}
                         value={field.value}
-                        onChange={(e) =>
-                          form.setValue("confirm", e.target.value)
-                        }
+                        onChange={e => form.setValue("confirm", e.target.value)}
                       />
                     </FormControl>
                   </FormControl>

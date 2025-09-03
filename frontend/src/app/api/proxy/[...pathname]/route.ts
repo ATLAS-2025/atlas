@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     console.error("Proxy Error:", error);
     return NextResponse.json(
       { error: "Failed to fetch data" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -52,7 +52,7 @@ export async function GET(req: Request) {
     console.log("New:", `${endpoint}`);
     console.log(
       "Proxying GET request to:",
-      `${API_BASE_URL}${endpoint}${search}`,
+      `${API_BASE_URL}${endpoint}${search}`
     );
 
     // Forward request to actual backend
@@ -71,7 +71,7 @@ export async function GET(req: Request) {
     console.error("Proxy Error:", error);
     return NextResponse.json(
       { error: "Failed to fetch data" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

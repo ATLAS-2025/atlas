@@ -12,7 +12,7 @@ import { forwardRef } from "react";
 
 // Мокаем window.matchMedia
 if (!window.matchMedia) {
-  window.matchMedia = vi.fn().mockImplementation((query) => ({
+  window.matchMedia = vi.fn().mockImplementation(query => ({
     matches: false,
     media: query,
     onchange: null,

@@ -1,5 +1,10 @@
 "use server";
-import { CreateCampaignRequest, LoadCampaignRequest, PeopleCreateRequest, PeopleUpdateRequest } from "@/apiClient";
+import {
+  CreateCampaignRequest,
+  LoadCampaignRequest,
+  PeopleCreateRequest,
+  PeopleUpdateRequest,
+} from "@/apiClient";
 import { getApis } from "@/apiServices";
 import { getCacheTag } from "../cacheOption";
 import { revalidateTag } from "next/cache";
@@ -9,7 +14,8 @@ import { revalidateTag } from "next/cache";
 export const createCampaign = async (data: CreateCampaignRequest) => {
   try {
     const { campaignManagementApi } = await getApis();
-    const res = await campaignManagementApi.createCampaignV1CampaignsCreatePost(data);
+    const res =
+      await campaignManagementApi.createCampaignV1CampaignsCreatePost(data);
     console.log(res.data);
     const peopleCacheTag = await getCacheTag("people");
     revalidateTag(peopleCacheTag);
@@ -37,7 +43,8 @@ export const createCampaign = async (data: CreateCampaignRequest) => {
 export const loadCampaign = async (body: LoadCampaignRequest) => {
   try {
     const { campaignManagementApi } = await getApis();
-    const res = await campaignManagementApi.loadCampaignV1CampaignsLoadPost(body);
+    const res =
+      await campaignManagementApi.loadCampaignV1CampaignsLoadPost(body);
     console.log(res.data);
     const peopleCacheTag = await getCacheTag("people");
     revalidateTag(peopleCacheTag);

@@ -1,5 +1,3 @@
-
-
 export const getCacheTag = async (tag: string): Promise<string> => {
   try {
     return `${tag}-cache`;
@@ -8,7 +6,6 @@ export const getCacheTag = async (tag: string): Promise<string> => {
   }
 };
 
-
 export const getCacheOptions = async (
   tag: string
 ): Promise<{ tags: string[] } | object> => {
@@ -16,7 +13,7 @@ export const getCacheOptions = async (
     return {};
   }
 
-  const cacheTag =await getCacheTag(tag)
+  const cacheTag = await getCacheTag(tag);
 
   if (!cacheTag) {
     return {};

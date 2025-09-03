@@ -1,6 +1,6 @@
-import {IPaginationParams} from "@/shared";
+import { IPaginationParams } from "@/shared";
 
 export const DEFAULT_PAGINATION_PARAMS: IPaginationParams = {
-    limit: 100,
-    offset: 0,
-}
+  limit: 100,
+  offset: 0,
+};

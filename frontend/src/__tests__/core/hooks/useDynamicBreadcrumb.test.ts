@@ -264,7 +264,7 @@ describe("useDynamicBreadcrumb", () => {
     const { result } = renderHook(() => useDynamicBreadcrumb());
 
     expect(mockUseTranslation).toHaveBeenCalledWith(
-      "core.hooks.useDynamicBreadcrumb",
+      "core.hooks.useDynamicBreadcrumb"
     );
     expect(mockT).toHaveBeenCalledWith("Home");
     expect(result.current[0].name).toBe("Главная");

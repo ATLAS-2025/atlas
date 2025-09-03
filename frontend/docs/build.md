@@ -34,15 +34,15 @@ Next, follow the steps below to set up your **Docker** environments.
 
 In this setup, we have **two environments**:
 
-* **Development**: For testing during development.
-* **Production**: For the live environment used by users.
+- **Development**: For testing during development.
+- **Production**: For the live environment used by users.
 
 Each environment has its own configuration files:
 
-* `/docker/development/docker-compose.yml`
-* `/docker/development/Dockerfile`
-* `/docker/production/docker-compose.yml`
-* `/docker/production/Dockerfile`
+- `/docker/development/docker-compose.yml`
+- `/docker/development/Dockerfile`
+- `/docker/production/docker-compose.yml`
+- `/docker/production/Dockerfile`
 
 ### Running the Development Environment
 
@@ -120,9 +120,9 @@ This file contains the configuration for running the Next.js application in the 
 
 ### Notes on `docker-compose.yml`
 
-* **`docker compose up --build`**: This command builds the Docker images and starts the containers.
-* **Development Configuration**: In the development environment, the application is typically set up for live reloading (e.g., `next dev` mode), which allows you to see changes instantly while developing.
-* **Production Configuration**: In the production environment, you would typically run the application using `next start` after building the app (`next build`), with optimizations for performance and security.
+- **`docker compose up --build`**: This command builds the Docker images and starts the containers.
+- **Development Configuration**: In the development environment, the application is typically set up for live reloading (e.g., `next dev` mode), which allows you to see changes instantly while developing.
+- **Production Configuration**: In the production environment, you would typically run the application using `next start` after building the app (`next build`), with optimizations for performance and security.
 
 ---
 
@@ -132,10 +132,9 @@ With Docker Compose, managing different environments for your Next.js applicatio
 
 If you have any questions or need further clarification, feel free to reach out!
 
-
 ---
 
 ## 📚 Related Projects
 
-* [`@sayyyat/smart-i18n`](https://www.npmjs.com/package/@sayyyat/smart-i18n) — The core CLI engine that provides scanning, merging, and type generation.
-* [`@sayyyat/smart-i18n-react`](https://www.npmjs.com/package/@sayyyat/smart-i18n-react) — Feature-scaffolding CLI tool that integrates smart-i18n into React/Next.js projects with zero configs.
+- [`@sayyyat/smart-i18n`](https://www.npmjs.com/package/@sayyyat/smart-i18n) — The core CLI engine that provides scanning, merging, and type generation.
+- [`@sayyyat/smart-i18n-react`](https://www.npmjs.com/package/@sayyyat/smart-i18n-react) — Feature-scaffolding CLI tool that integrates smart-i18n into React/Next.js projects with zero configs.
