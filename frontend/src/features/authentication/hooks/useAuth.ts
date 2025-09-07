@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import { signIn, signOut } from "next-auth/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";

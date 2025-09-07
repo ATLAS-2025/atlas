@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import { IPaginatedResponse, IResponse } from "@/shared";
 import { useCentralApi } from "@/shared/services/client";

@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";

@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import React, { useState } from "react";
 import { toast } from "react-toastify";

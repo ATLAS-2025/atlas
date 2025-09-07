@@ -1,11 +1,9 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 "use client";
 
 import { ProjectCard } from "./components/ProjectCard";
-import { RecentTopBar } from "./components/RecentTopBar";
+import { PageTopBar } from "@/shared/components/PageTopBar";
 
 // Mock data for recent projects - this would come from your API
 const recentProjects = [
@@ -78,7 +76,7 @@ export function RecentPageContent() {
   return (
     <div className="flex flex-col h-full w-full bg-background">
       {/* Top Bar */}
-      <RecentTopBar />
+      <PageTopBar title="Recent" />
 
       {/* Main Content */}
       <div className="flex-1 p-6">

@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import { z } from "zod";
 import { TFunction } from "@/i18n";

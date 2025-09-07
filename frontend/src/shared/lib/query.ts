@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 // lib/query.ts
 type QueryParams = Record<string, string | number | boolean | null | undefined>;

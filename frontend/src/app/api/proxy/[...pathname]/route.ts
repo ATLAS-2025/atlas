@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import { NextResponse } from "next/server";
 import { env } from "@/shared/data/env/server";
