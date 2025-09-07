@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import React, { useState } from "react";
 import { X } from "lucide-react";
@@ -43,7 +41,7 @@ export const LoginDialog: React.FC<ILoginDialogProps> = ({
   setCurrentModal,
 }) => {
   const { t } = useTranslation(
-    "features.authentication.components.LoginDialog",
+    "features.authentication.components.LoginDialog"
   );
   const { loginMutation } = useAuth();
 
@@ -108,7 +106,7 @@ export const LoginDialog: React.FC<ILoginDialogProps> = ({
                       name="email"
                       label={t("Email")}
                       value={field.value}
-                      onChange={(e) => form.setValue("email", e.target.value)}
+                      onChange={e => form.setValue("email", e.target.value)}
                     />
                   </FormControl>
                   <FormMessage />
@@ -128,9 +126,7 @@ export const LoginDialog: React.FC<ILoginDialogProps> = ({
                       name="password"
                       label={t("Password")}
                       value={field.value}
-                      onChange={(e) =>
-                        form.setValue("password", e.target.value)
-                      }
+                      onChange={e => form.setValue("password", e.target.value)}
                     />
                   </FormControl>
                   <FormMessage />

@@ -1,23 +1,22 @@
-'use client';
+"use client";
 
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-import { addSensor } from '@/features/sensor/service'; // Make sure this exists
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { addSensor } from "@/features/sensor/service"; // Make sure this exists
 
 const formSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  type: z.string().min(2, 'Type must be at least 2 characters'),
-  model: z.string().min(1, 'Model is required'),
-  serialNumber: z.string().min(1, 'Serial number is required'),
-  calibrationDate: z.string().refine(
-    val => !isNaN(Date.parse(val)),
-    'Invalid date format'
-  ),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  type: z.string().min(2, "Type must be at least 2 characters"),
+  model: z.string().min(1, "Model is required"),
+  serialNumber: z.string().min(1, "Serial number is required"),
+  calibrationDate: z
+    .string()
+    .refine(val => !isNaN(Date.parse(val)), "Invalid date format"),
   notes: z.string().optional(),
 });
 
@@ -41,10 +40,10 @@ export default function AddSensorPage() {
       };
       await addSensor(payload);
       reset();
-      alert('Sensor created!');
+      alert("Sensor created!");
     } catch (error) {
       console.error(error);
-      alert('Error creating sensor.');
+      alert("Error creating sensor.");
     }
   };
 
@@ -56,14 +55,21 @@ export default function AddSensorPage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            {['name', 'type', 'model', 'serialNumber', 'calibrationDate', 'notes'].map((field) => (
+            {[
+              "name",
+              "type",
+              "model",
+              "serialNumber",
+              "calibrationDate",
+              "notes",
+            ].map(field => (
               <div key={field}>
                 <Label htmlFor={field} className="capitalize">
-                  {field.replaceAll('_', ' ')}
+                  {field.replaceAll("_", " ")}
                 </Label>
                 <Input
                   id={field}
-                  type={field === 'calibrationDate' ? 'date' : 'text'}
+                  type={field === "calibrationDate" ? "date" : "text"}
                   {...register(field as keyof FormData)}
                 />
                 {errors[field as keyof FormData] && (
@@ -74,7 +80,7 @@ export default function AddSensorPage() {
               </div>
             ))}
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Saving...' : 'Add Sensor'}
+              {isSubmitting ? "Saving..." : "Add Sensor"}
             </Button>
           </form>
         </CardContent>

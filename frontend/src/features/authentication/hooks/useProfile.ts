@@ -33,7 +33,7 @@ export const useProfile = () => {
       await queryClient.invalidateQueries({ queryKey: QUERY_KEYS.profile }); // ✅ Refresh profile
       // toast.success("Profile updated successfully!");
     },
-    onError: (error) => {
+    onError: error => {
       console.error("Profile update error:", error);
       // toast.error(error.message || "Failed to update profile.");
     },
@@ -51,7 +51,7 @@ export const useProfile = () => {
       await queryClient.invalidateQueries({ queryKey: QUERY_KEYS.profile });
       // toast.success("Profile image updated successfully!");
     },
-    onError: (error) => {
+    onError: error => {
       console.error("Image upload error:", error);
       // toast.error(error.message || "Failed to upload image.");
     },

@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import { IPaginatedResponse, IResponse } from "@/shared";
 import { useCentralApi } from "@/shared/services/client";
@@ -23,7 +21,7 @@ export const useAuthenticationApi = (): IAuthenticationApi => {
   const api = useCentralApi();
 
   const resetPassword = async (
-    payload: IResetPayload,
+    payload: IResetPayload
   ): Promise<IResponse<IResetResponse>> => {
     return api.postWithHandle<IResetResponse>("/api/password-reset/", {
       email: payload.email,
@@ -37,18 +35,18 @@ export const useAuthenticationApi = (): IAuthenticationApi => {
     api.getWithHandle<IProfile>("/api/user/profile/");
 
   const updateProfile = (
-    data: Partial<IProfile>,
+    data: Partial<IProfile>
   ): Promise<IResponse<IProfile>> =>
     api.patchWithHandle<IProfile>("/api/user/profile/", data);
 
   const updateProfileImage = (
-    imageFile: File,
+    imageFile: File
   ): Promise<IResponse<IProfile>> => {
     const formData = new FormData();
     formData.append("file", imageFile);
     return api.postFormWithHandle<IProfile>(
       "/api/user/profile/photo/",
-      formData,
+      formData
     );
   };
 

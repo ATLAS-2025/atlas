@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 "use client";
 import axios from "axios";
@@ -21,7 +19,7 @@ const apiClient = axios.create({
 });
 
 apiClient.interceptors.request.use(
-  async (config) => {
+  async config => {
     let token = tokenStore.get();
 
     if (!token) {
@@ -36,15 +34,15 @@ apiClient.interceptors.request.use(
 
     return config;
   },
-  (error) => {
+  error => {
     return Promise.reject(error);
-  },
+  }
 );
 
 // Response interceptor to handle 401 errors
 apiClient.interceptors.response.use(
-  (response) => response, // Return response if successful
-  async (error) => {
+  response => response, // Return response if successful
+  async error => {
     if (error.response?.status === 401) {
       tokenStore.clear(); // сброс токена
       console.warn("⚠️ Unauthorized! Signing out...");
@@ -52,7 +50,7 @@ apiClient.interceptors.response.use(
       // window.location.href = "/login";  // Redirect to login page
     }
     return Promise.reject(error); // Pass the error to the calling function
-  },
+  }
 );
 
 function useHandleResponse() {
@@ -60,7 +58,7 @@ function useHandleResponse() {
 
   // handleResponse will handle API responses with proper error translation
   return async function handleResponse<T>(
-    request: Promise<any>,
+    request: Promise<any>
   ): Promise<IResponse<T>> {
     try {
       const response = await request;
@@ -82,11 +80,11 @@ export function useCentralApi() {
 
       getPaginatedWithHandle: <T>(
         url: string,
-        params: IPaginationParams = DEFAULT_PAGINATION_PARAMS,
+        params: IPaginationParams = DEFAULT_PAGINATION_PARAMS
       ) => {
         const query = buildQueryParams(params);
         return handleResponse<IPaginatedResponse<T>>(
-          apiClient.get(`${url}${query}`),
+          apiClient.get(`${url}${query}`)
         );
       },
 
@@ -103,12 +101,12 @@ export function useCentralApi() {
         handleResponse<T>(
           apiClient.post(url, formData, {
             headers: { "Content-Type": "multipart/form-data" },
-          }),
+          })
         ),
 
       deleteWithHandle: <T>(url: string, payload: unknown) =>
         handleResponse<T>(apiClient.delete(url)),
     }),
-    [apiClient, handleResponse],
+    [apiClient, handleResponse]
   );
 }

@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 export { LoginDialog } from "./components/LoginDialog";
 export { RegisterDialog } from "./components/RegisterDialog";

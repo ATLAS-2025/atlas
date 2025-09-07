@@ -1,12 +1,10 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import { z } from "zod";
 import { TFunction } from "@/i18n";
 
 export const createRegisterSchema = (
-  t: TFunction<"features.authentication.lib.zod">,
+  t: TFunction<"features.authentication.lib.zod">
 ) => {
   return z
     .object({
@@ -30,14 +28,14 @@ export const createRegisterSchema = (
 
       confirm: z.string(),
     })
-    .refine((data) => data.password === data.confirm, {
+    .refine(data => data.password === data.confirm, {
       message: t("Password and Confirm mismatch"),
       path: ["confirm"],
     });
 };
 
 export const createLoginSchema = (
-  t: TFunction<"features.authentication.lib.zod">,
+  t: TFunction<"features.authentication.lib.zod">
 ) => {
   return z.object({
     email: z
@@ -50,7 +48,7 @@ export const createLoginSchema = (
 };
 
 export const createEditProfileSchema = (
-  t: TFunction<"features.authentication.lib.zod">,
+  t: TFunction<"features.authentication.lib.zod">
 ) => {
   return z.object({
     email: z
@@ -90,7 +88,7 @@ export const createEditProfileSchema = (
 };
 
 export const createResetSchema = (
-  t: TFunction<"features.authentication.lib.zod">,
+  t: TFunction<"features.authentication.lib.zod">
 ) => {
   return z.object({
     email: z

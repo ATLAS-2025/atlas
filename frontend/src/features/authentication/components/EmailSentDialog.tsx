@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import React from "react";
 import { useTranslation } from "@/i18n";
@@ -26,7 +24,7 @@ export const EmailSentDialog: React.FC<IEmailSentDialogProps> = ({
   setCurrentModal,
 }) => {
   const { t } = useTranslation(
-    "features.authentication.components.EmailSentDialog",
+    "features.authentication.components.EmailSentDialog"
   );
 
   return (

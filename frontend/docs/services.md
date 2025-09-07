@@ -26,36 +26,42 @@ Here's an elegant way to handle requests and errors on the server:
 
 ```typescript
 const apiClient = axios.create({
-    baseURL: env.API_URL,
-    headers: { "Content-Type": "application/json" },
+  baseURL: env.API_URL,
+  headers: { "Content-Type": "application/json" },
 });
 
 async function handleResponse<T>(request: Promise<any>): Promise<IResponse<T>> {
-    try {
-        const response = await request;
-        return { success: true, data: response.data as T };
-    } catch (error) {
-        const { t } = await getTranslation("shared.services.api"); // Fetch translation for errors
-        const extractedError = await extractErrorMessage(error, t); // Handle and translate error
-        return { success: false, error: extractedError };
-    }
+  try {
+    const response = await request;
+    return { success: true, data: response.data as T };
+  } catch (error) {
+    const { t } = await getTranslation("shared.services.api"); // Fetch translation for errors
+    const extractedError = await extractErrorMessage(error, t); // Handle and translate error
+    return { success: false, error: extractedError };
+  }
 }
 
 export const getWithHandle = async <T>(url: string): Promise<IResponse<T>> =>
-    await handleResponse<T>(apiClient.get(url));
+  await handleResponse<T>(apiClient.get(url));
 
-export const postWithHandle = async <T>(url: string, payload: unknown): Promise<IResponse<T>> =>
-    await handleResponse<T>(apiClient.post(url, payload));
+export const postWithHandle = async <T>(
+  url: string,
+  payload: unknown
+): Promise<IResponse<T>> =>
+  await handleResponse<T>(apiClient.post(url, payload));
 
-export const patchWithHandle = async <T>(url: string, payload: unknown): Promise<IResponse<T>> =>
-    await handleResponse<T>(apiClient.patch(url, payload));
+export const patchWithHandle = async <T>(
+  url: string,
+  payload: unknown
+): Promise<IResponse<T>> =>
+  await handleResponse<T>(apiClient.patch(url, payload));
 ```
 
 ### Key Benefits of This Approach:
 
-* **Elegance**: Each request function (`getWithHandle`, `postWithHandle`, etc.) is written in just a couple of lines, reducing redundancy and keeping the code concise.
-* **Centralized Error Handling**: Error handling is abstracted into the `handleResponse` function, making it easy to maintain and update error-handling logic across the application.
-* **Translation Integration**: Errors are automatically translated based on user preferences, providing a consistent multilingual experience.
+- **Elegance**: Each request function (`getWithHandle`, `postWithHandle`, etc.) is written in just a couple of lines, reducing redundancy and keeping the code concise.
+- **Centralized Error Handling**: Error handling is abstracted into the `handleResponse` function, making it easy to maintain and update error-handling logic across the application.
+- **Translation Integration**: Errors are automatically translated based on user preferences, providing a consistent multilingual experience.
 
 ## Client-Side Request Handling with useTranslation
 
@@ -65,55 +71,61 @@ In the client-side code, we wanted to achieve the same level of elegance as on t
 
 ```typescript
 const apiClient = axios.create({
-    baseURL: env.NEXT_PUBLIC_API_URL,
-    headers: { "Content-Type": "application/json" },
+  baseURL: env.NEXT_PUBLIC_API_URL,
+  headers: { "Content-Type": "application/json" },
 });
 
 apiClient.interceptors.request.use(
-    async (config) => {
-        let token = tokenStore.get();
-        if (!token) {
-            const session = await getSession();
-            token = session?.access ?? null;
-            tokenStore.set(token); // Save token
-        }
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-    },
-    (error) => Promise.reject(error)
+  async config => {
+    let token = tokenStore.get();
+    if (!token) {
+      const session = await getSession();
+      token = session?.access ?? null;
+      tokenStore.set(token); // Save token
+    }
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => Promise.reject(error)
 );
 
 function useHandleResponse() {
-    const { t } = useTranslation("shared.services.api");
+  const { t } = useTranslation("shared.services.api");
 
-    return async function handleResponse<T>(request: Promise<any>): Promise<IResponse<T>> {
-        try {
-            const response = await request;
-            return { success: true, data: response.data as T };
-        } catch (error) {
-            const extracted = await extractErrorMessage(error, t); // Extract and translate error
-            return { success: false, error: extracted };
-        }
-    };
+  return async function handleResponse<T>(
+    request: Promise<any>
+  ): Promise<IResponse<T>> {
+    try {
+      const response = await request;
+      return { success: true, data: response.data as T };
+    } catch (error) {
+      const extracted = await extractErrorMessage(error, t); // Extract and translate error
+      return { success: false, error: extracted };
+    }
+  };
 }
 
 export function useCentralApi() {
-    const handleResponse = useHandleResponse();
+  const handleResponse = useHandleResponse();
 
-    return useMemo(
-        () => ({
-            getWithHandle: <T>(url: string) => handleResponse<T>(apiClient.get(url)),
-            postWithHandle: <T>(url: string, payload: unknown) =>
-                handleResponse<T>(apiClient.post(url, payload)),
-            patchWithHandle: <T>(url: string, payload: unknown) =>
-                handleResponse<T>(apiClient.patch(url, payload)),
-            postFormWithHandle: <T>(url: string, formData: FormData) =>
-                handleResponse<T>(apiClient.post(url, formData, { headers: { "Content-Type": "multipart/form-data" } })),
-        }),
-        [apiClient, handleResponse]
-    );
+  return useMemo(
+    () => ({
+      getWithHandle: <T>(url: string) => handleResponse<T>(apiClient.get(url)),
+      postWithHandle: <T>(url: string, payload: unknown) =>
+        handleResponse<T>(apiClient.post(url, payload)),
+      patchWithHandle: <T>(url: string, payload: unknown) =>
+        handleResponse<T>(apiClient.patch(url, payload)),
+      postFormWithHandle: <T>(url: string, formData: FormData) =>
+        handleResponse<T>(
+          apiClient.post(url, formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+          })
+        ),
+    }),
+    [apiClient, handleResponse]
+  );
 }
 ```
 
@@ -128,36 +140,44 @@ export function useCentralApi() {
 
 ```typescript
 export const useAuthenticationApi = (): IAuthenticationApi => {
-    const api = useCentralApi();
+  const api = useCentralApi();
 
-    const resetPassword = (payload: IResetPayload): Promise<IResponse<IResetResponse>> => {
-        return api.postWithHandle<IResetResponse>("/api/password-reset/", { email: payload.email });
-    };
+  const resetPassword = (
+    payload: IResetPayload
+  ): Promise<IResponse<IResetResponse>> => {
+    return api.postWithHandle<IResetResponse>("/api/password-reset/", {
+      email: payload.email,
+    });
+  };
 
-    const getCities = (): Promise<IResponse<IPaginatedResponse<ICity>>> =>
-        api.getWithHandle<IPaginatedResponse<ICity>>("/api/cities/");
+  const getCities = (): Promise<IResponse<IPaginatedResponse<ICity>>> =>
+    api.getWithHandle<IPaginatedResponse<ICity>>("/api/cities/");
 
-    return {
-        resetPassword,
-        getCities,
-    };
+  return {
+    resetPassword,
+    getCities,
+  };
 };
 ```
 
 ### Example of Usage in Server-Side Features
 
 ```typescript
-export const registerUser = async (payload: IRegisterPayload): Promise<IResponse<IUser>> =>
-    await postWithHandle<IUser>("/api/auth/register/", payload);
+export const registerUser = async (
+  payload: IRegisterPayload
+): Promise<IResponse<IUser>> =>
+  await postWithHandle<IUser>("/api/auth/register/", payload);
 
-export const loginUser = async (payload: ILoginPayload): Promise<IResponse<IUser>> =>
-    await postWithHandle<IUser>("/api/auth/login/", payload);
+export const loginUser = async (
+  payload: ILoginPayload
+): Promise<IResponse<IUser>> =>
+  await postWithHandle<IUser>("/api/auth/login/", payload);
 ```
 
 ## Elegance in Code
 
-* **Server-side**: The server-side code is concise and handles API requests and errors in just a few lines, abstracting the complexity of error handling and translation into reusable functions like `handleResponse`.
-* **Client-side**: Although we had to introduce `useTranslation`, the client-side code still follows a clean and modular approach with `useCentralApi`, ensuring the error handling and translations are managed centrally. Despite the requirement for `useTranslation`, the logic remains consistent and elegant.
+- **Server-side**: The server-side code is concise and handles API requests and errors in just a few lines, abstracting the complexity of error handling and translation into reusable functions like `handleResponse`.
+- **Client-side**: Although we had to introduce `useTranslation`, the client-side code still follows a clean and modular approach with `useCentralApi`, ensuring the error handling and translations are managed centrally. Despite the requirement for `useTranslation`, the logic remains consistent and elegant.
 
 ### Conclusion
 

@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import React, { useState } from "react";
 import { toast } from "react-toastify";
@@ -46,7 +44,7 @@ export const ResetDialog: React.FC<IResetDialogProps> = ({
   setCurrentModal,
 }) => {
   const { t } = useTranslation(
-    "features.authentication.components.ResetDialog",
+    "features.authentication.components.ResetDialog"
   );
   const { resetPassword } = useAuthenticationApi();
 
@@ -123,7 +121,7 @@ export const ResetDialog: React.FC<IResetDialogProps> = ({
                           "absolute text-gray-500 transition-all px-1 pointer-events-none",
                           String(field.value).length > 0
                             ? "-top-2 left-3 text-xs bg-background"
-                            : "top-2 left-3 text-base",
+                            : "top-2 left-3 text-base"
                         )}
                       >
                         {t("Email")}

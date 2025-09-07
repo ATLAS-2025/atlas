@@ -126,7 +126,7 @@ describe("AppSidebar", () => {
 
     render(<AppSidebar />);
     expect(
-      screen.queryByTestId("render-routes-Admin Panel"),
+      screen.queryByTestId("render-routes-Admin Panel")
     ).not.toBeInTheDocument();
   });
 });

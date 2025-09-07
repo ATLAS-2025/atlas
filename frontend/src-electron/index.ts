@@ -6,7 +6,7 @@ import { createHandler } from "next-electron-rsc";
 let mainWindow: Electron.BrowserWindow | null;
 
 interface Interceptor {
-    (): void;
+  (): void;
 }
 
 let stopIntercept: Interceptor | undefined;

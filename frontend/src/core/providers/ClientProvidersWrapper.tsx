@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 "use client";
 import { SessionProvider } from "next-auth/react";

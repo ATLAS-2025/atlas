@@ -2,11 +2,11 @@
 
 > A complete, production-grade Next.js starter with internationalization, authentication, UI components, testing, and more.
 >
-> * Are you tired of manually managing translation files in your projects?  
-> * Do you want to streamline your internationalization workflow with fully automated tooling?  
-> * Are you looking for a robust, scalable architecture that combines authentication, localization, theming, and type safety — all in one place?  
-> * Would you benefit from a modern stack with built-in support for testing, reusable UI components, and strict typing from end to end?  
-> * Do you want to future-proof your application with a maintainable and extensible codebase?
+> - Are you tired of manually managing translation files in your projects?
+> - Do you want to streamline your internationalization workflow with fully automated tooling?
+> - Are you looking for a robust, scalable architecture that combines authentication, localization, theming, and type safety — all in one place?
+> - Would you benefit from a modern stack with built-in support for testing, reusable UI components, and strict typing from end to end?
+> - Do you want to future-proof your application with a maintainable and extensible codebase?
 >
 > If so, this boilerplate is for you. Fork it, customize it, and accelerate your development with a solid foundation that eliminates repetitive work and allows you to focus on what really matters — building great products.
 
@@ -33,15 +33,15 @@ Visit the live demo: **[Next i18n Auth Boilerplate Live](https://next-i18n-auth.
 
 ## Features
 
-* ⚡️ **Next.js 15**: Fast and scalable React framework with App Router.
-* 🌍 **i18next**: Internationalization (i18n) with fully [automated](./docs/automation.md) typed translations.
-* 🔒 **Next-Auth v5**: Authentication with JWT, OAuth, and social providers.
-* 🎨 **shadcn/ui**: Beautiful accessible components with Tailwind CSS.
-* 🛡️ **Zod**: End-to-end type-safe validation.
-* 🚀 **TypeScript**: 100% typed full-stack application.
-* 🌓 **Dark Mode**: Light/dark mode with system preference.
-* 📈 **React Query**: Powerful data fetching and caching.
-* 🧪 **Vitest & Playwright**: Full testing stack (unit, integration, e2e).
+- ⚡️ **Next.js 15**: Fast and scalable React framework with App Router.
+- 🌍 **i18next**: Internationalization (i18n) with fully [automated](./docs/automation.md) typed translations.
+- 🔒 **Next-Auth v5**: Authentication with JWT, OAuth, and social providers.
+- 🎨 **shadcn/ui**: Beautiful accessible components with Tailwind CSS.
+- 🛡️ **Zod**: End-to-end type-safe validation.
+- 🚀 **TypeScript**: 100% typed full-stack application.
+- 🌓 **Dark Mode**: Light/dark mode with system preference.
+- 📈 **React Query**: Powerful data fetching and caching.
+- 🧪 **Vitest & Playwright**: Full testing stack (unit, integration, e2e).
 
 ---
 
@@ -51,9 +51,9 @@ Visit the live demo: **[Next i18n Auth Boilerplate Live](https://next-i18n-auth.
 
 Make sure you have the following installed:
 
-* Node.js >= 22.x
-* Yarn (preferred) or npm
-* Git
+- Node.js >= 22.x
+- Yarn (preferred) or npm
+- Git
 
 ### Installation
 
@@ -101,30 +101,31 @@ You can find the file structure of the project in the [File Structure](./docs/fi
 
 ### Authentication
 
-* **Sign Up**: Use the `register` modal to create a new account. The backend API handles user registration and returns
+- **Sign Up**: Use the `register` modal to create a new account. The backend API handles user registration and returns
   access and refresh tokens.
-* **Log In**: Use the `login` modal to authenticate users. Tokens are stored securely, and JWT is decoded for user
+- **Log In**: Use the `login` modal to authenticate users. Tokens are stored securely, and JWT is decoded for user
   details.
 
 ### Localization
-* The project uses `i18next` for localization. See [i18next](https://www.i18next.com/) for more details.
-* The localization process is fully automated. See [Automation](./docs/automation.md) for more details.
-![Translation process](public/assets/generate-translations-log.png)
-* Full autocomplete for namespaces and translation keys thanks to auto type generation
-![i18n Autocomplete Preview](./public/assets/autocomplete.png)
-* Supported languages: `Kazakh`, `English`, and `Russian`.
-* Language can be changed using the dropdown in the header.
-![Language dropdown](./public/assets/language-dropdown.png)
+
+- The project uses `i18next` for localization. See [i18next](https://www.i18next.com/) for more details.
+- The localization process is fully automated. See [Automation](./docs/automation.md) for more details.
+  ![Translation process](public/assets/generate-translations-log.png)
+- Full autocomplete for namespaces and translation keys thanks to auto type generation
+  ![i18n Autocomplete Preview](./public/assets/autocomplete.png)
+- Supported languages: `Kazakh`, `English`, and `Russian`.
+- Language can be changed using the dropdown in the header.
+  ![Language dropdown](./public/assets/language-dropdown.png)
 
 ### Toast Notifications
 
-* Feedback is provided using `react-toastify`.
-* Example: Error messages during authentication or form validation feedback.
+- Feedback is provided using `react-toastify`.
+- Example: Error messages during authentication or form validation feedback.
 
 ### Zod Validation
 
-* Zod is used for client-side schema validation for forms.
-* Errors are displayed with translations based on the current locale.
+- Zod is used for client-side schema validation for forms.
+- Errors are displayed with translations based on the current locale.
 
 ---
 
@@ -157,7 +158,8 @@ You can find the file structure of the project in the [File Structure](./docs/fi
    ```
 
    That's it! Your new language should now be added to the system.
-> **Note:** See [Automation](./docs/automation.md) for more details..
+
+   > **Note:** See [Automation](./docs/automation.md) for more details..
 
 ### Add New Pages
 
@@ -170,7 +172,7 @@ You can find the file structure of the project in the [File Structure](./docs/fi
 ## 📚 Tech Stack
 
 | Technology                                                      | Description                                           |
-|-----------------------------------------------------------------|-------------------------------------------------------|
+| --------------------------------------------------------------- | ----------------------------------------------------- |
 | **[Next.js](https://nextjs.org/)**                              | React framework with server-side rendering            |
 | **[Next-Auth](https://authjs.dev/)**                            | Authentication system for Next.js apps                |
 | **[i18next](https://www.i18next.com/)**                         | Localization and translation management               |
@@ -234,21 +236,21 @@ We use **Playwright** for writing end-to-end tests.
 
 ### Notes:
 
-* Ensure the application is running locally before starting E2E tests.
-* Configure environment variables in `.env.test` for test-specific setups.
+- Ensure the application is running locally before starting E2E tests.
+- Configure environment variables in `.env.test` for test-specific setups.
 
 ---
 
 ### 3. **Test Setup**
 
-* **Unit Testing Framework**: [Vitest](https://vitest.dev/)
-* **E2E Testing Framework**: [Playwright](https://playwright.dev/)
-* **Component Testing**: [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- **Unit Testing Framework**: [Vitest](https://vitest.dev/)
+- **E2E Testing Framework**: [Playwright](https://playwright.dev/)
+- **Component Testing**: [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
 #### Test Directory Structure
 
-* Unit tests: `src/` (next to each component)
-* E2E tests: `src/tests/e2e/`
+- Unit tests: `src/` (next to each component)
+- E2E tests: `src/tests/e2e/`
 
 ---
 
@@ -266,5 +268,3 @@ We use **Playwright** for writing end-to-end tests.
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-

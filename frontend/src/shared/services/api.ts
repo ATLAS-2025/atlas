@@ -6,7 +6,7 @@ import { TNamespaceTranslationKeys } from "@/i18n";
 
 export async function extractErrorMessage(
   error: unknown,
-  t: TFunction<"shared.services.api">,
+  t: TFunction<"shared.services.api">
 ): Promise<string> {
   console.log(chalk.yellow(error));
 
@@ -16,7 +16,7 @@ export async function extractErrorMessage(
     if (!response) {
       const translated = t(
         code as TNamespaceTranslationKeys["shared.services.api"],
-        {},
+        {}
       );
       return translated !== code ? translated : t("Unknown Error");
     }
@@ -41,7 +41,7 @@ export async function extractErrorMessage(
 }
 
 export async function dummyTranslationsForScanner(
-  t: TFunction<"shared.services.api">,
+  t: TFunction<"shared.services.api">
 ) {
   // Static error keys to be translated automatically by i18next-scanner
   // These are predefined error codes, and i18next-scanner will automatically generate their translations

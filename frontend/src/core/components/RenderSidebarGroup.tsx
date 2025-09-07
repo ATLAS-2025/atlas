@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Fragment, memo } from "react";
 import {
   SidebarGroup,
@@ -18,6 +18,7 @@ const RenderMenuItem = memo(function RenderMenuItem({
   route: IAppRoute;
 }) {
   const pathname = usePathname();
+  const isActive = pathname === route.url;
 
   return (
     <SidebarMenuItem key={route.url}>
@@ -25,13 +26,22 @@ const RenderMenuItem = memo(function RenderMenuItem({
         <Link
           href={route.url}
           className={clsx(
-            "flex items-center rounded-xl transition-all",
-            pathname === route.url
-              ? "text-sidebar-accent-foreground font-semibold bg-sidebar-accent"
-              : "text-sidebar-foreground",
+            "flex items-center gap-3 rounded-xl transition-all px-3 py-2",
+            isActive
+              ? "text-white font-semibold bg-primary"
+              : "text-sidebar-foreground hover:text-white hover:bg-sidebar-accent"
           )}
         >
-          {/* {route.icon && <route.icon />} */}
+          {route.icon && (
+            <div
+              className={clsx(
+                "flex items-center justify-center",
+                isActive ? "text-white" : "text-sidebar-foreground"
+              )}
+            >
+              <route.icon className="w-5 h-5" />
+            </div>
+          )}
           <span className="text-sm">{route.title}</span>
         </Link>
       </SidebarMenuButton>
@@ -50,19 +60,19 @@ const RenderRouteGroup = memo(function RenderRouteGroup({
     <SidebarGroup className="gap-2 p-0">
       <SidebarGroupContent>
         <SidebarMenu className="gap-2">
-          {routes.map((route) =>
+          {routes.map(route =>
             route.subRoutes ? (
               <Fragment key={route.url}>
                 <RenderMenuItem route={route} />
                 <SidebarGroupContent className="pl-4 flex flex-col gap-1">
-                  {route.subRoutes.map((subRoute) => (
+                  {route.subRoutes.map(subRoute => (
                     <RenderMenuItem key={subRoute.url} route={subRoute} />
                   ))}
                 </SidebarGroupContent>
               </Fragment>
             ) : (
               <RenderMenuItem key={route.url} route={route} />
-            ),
+            )
           )}
         </SidebarMenu>
       </SidebarGroupContent>

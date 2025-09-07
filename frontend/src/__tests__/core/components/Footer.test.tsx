@@ -17,7 +17,7 @@ let Footer: typeof import("@/core/components/Footer").Footer;
 describe("Footer", () => {
   beforeEach(async () => {
     vi.clearAllMocks();
-    mockT.mockImplementation((key) => key); // default passthrough
+    mockT.mockImplementation(key => key); // default passthrough
     Footer = (await import("@/core/components/Footer")).Footer;
   });
 

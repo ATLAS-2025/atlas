@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -16,5 +14,5 @@ export function toAbsolutePath(path: string): string {
 }
 
 export function waitForSeconds(seconds: number) {
-  return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+  return new Promise(resolve => setTimeout(resolve, seconds * 1000));
 }

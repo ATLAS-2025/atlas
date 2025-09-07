@@ -19,7 +19,8 @@ import type { CampaignResponse } from "@/apiClient"; // Adjust import path if ne
 export default async function Page() {
   const { campaignManagementApi } = await getApis();
 
-  const res = await campaignManagementApi.getAllCampaignsV1CampaignsGet({ // Adjust method name as per your API client
+  const res = await campaignManagementApi.getAllCampaignsV1CampaignsGet({
+    // Adjust method name as per your API client
     fetchOptions: {
       next: {
         ...(await getCacheOptions("campaigns")),
@@ -29,7 +30,7 @@ export default async function Page() {
   });
 
   const campaignData: CampaignResponse[] = res.data;
-  console.log(campaignData)
+  console.log(campaignData);
   return (
     <div className="flex flex-col h-full w-full">
       <div className="p-4">

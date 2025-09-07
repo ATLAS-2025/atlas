@@ -1,4 +1,3 @@
-
 import { getApis } from "@/apiServices";
 import { getTranslation } from "@/i18n";
 import React from "react";
@@ -20,13 +19,13 @@ interface Params {
 }
 
 export default async function Page({ params }: { params: Promise<Params> }) {
- const { id } = await params;
-    const { peopleApi } = await getApis()
-  const {data} = await peopleApi.getPeoplesV1PeopleIdGet(parseInt(id))
+  const { id } = await params;
+  const { peopleApi } = await getApis();
+  const { data } = await peopleApi.getPeoplesV1PeopleIdGet(parseInt(id));
   return (
     <div className="flex flex-col h-full  w-full">
-       <EditPeople defaultValues={data}/>
+      <EditPeople defaultValues={data} />
     </div>
   );
 }
-export const dynamic = 'force-dynamic'; 
+export const dynamic = "force-dynamic";

@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 "use server";
 import axios, { AxiosRequestConfig } from "axios";
@@ -35,40 +33,40 @@ export const getWithHandle = async <T>(url: string): Promise<IResponse<T>> =>
 
 export const getPaginatedWithHandle = async <T>(
   url: string,
-  params: IPaginationParams = DEFAULT_PAGINATION_PARAMS,
+  params: IPaginationParams = DEFAULT_PAGINATION_PARAMS
 ): Promise<IResponse<IPaginatedResponse<T>>> => {
   const query = buildQueryParams(params);
   return await handleResponse<IPaginatedResponse<T>>(
-    apiClient.get(`${url}${query}`),
+    apiClient.get(`${url}${query}`)
   );
 };
 
 export const postWithHandle = async <T>(
   url: string,
-  payload: unknown,
+  payload: unknown
 ): Promise<IResponse<T>> =>
   await handleResponse<T>(apiClient.post(url, payload));
 
 export const patchWithHandle = async <T>(
   url: string,
-  payload: unknown,
+  payload: unknown
 ): Promise<IResponse<T>> =>
   await handleResponse<T>(apiClient.patch(url, payload));
 
 export const putWithHandle = async <T>(
   url: string,
-  payload: unknown,
+  payload: unknown
 ): Promise<IResponse<T>> =>
   await handleResponse<T>(apiClient.put(url, payload));
 
 export const postFormWithHandle = async <T>(
   url: string,
-  formData: FormData,
+  formData: FormData
 ): Promise<IResponse<T>> =>
   await handleResponse<T>(
     apiClient.post(url, formData, {
       headers: { "Content-Type": "multipart/form-data" },
-    }),
+    })
   );
 
 export const deleteWithHandle = async <T>(url: string): Promise<IResponse<T>> =>

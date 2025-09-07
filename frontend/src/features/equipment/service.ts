@@ -1,5 +1,5 @@
 "use server";
-import { EquipmentCreateRequest, EquipmentUpdateRequest,} from "@/apiClient";
+import { EquipmentCreateRequest, EquipmentUpdateRequest } from "@/apiClient";
 import { getApis } from "@/apiServices";
 import { getCacheTag } from "../cacheOption";
 import { revalidateTag } from "next/cache";
@@ -34,7 +34,10 @@ export const deletEquipment = async (id: number) => {
   }
 };
 
-export const editEquipment = async (body: EquipmentUpdateRequest, id: number) => {
+export const editEquipment = async (
+  body: EquipmentUpdateRequest,
+  id: number
+) => {
   try {
     const { equipmentApi } = await getApis();
     const res = await equipmentApi.updateEquipmentV1EquipmentIdPut(body, id);

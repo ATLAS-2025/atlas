@@ -20,7 +20,7 @@ i18next
       try {
         return import(`@/i18n/locales/${language}/translation.json`);
       } catch (error) {}
-    }),
+    })
   )
   .init({
     fallbackLng: FALLBACK_LANGUAGE,
@@ -48,11 +48,11 @@ export default i18next;
  */
 
 export function useTranslation<N extends TNamespace>(
-  namespace: N,
+  namespace: N
 ): {
   t: <K extends TNamespaceTranslationKeys[N]>(
     key: K,
-    options?: Record<string, unknown>,
+    options?: Record<string, unknown>
   ) => string;
   i18n: i18n;
   ready: boolean;

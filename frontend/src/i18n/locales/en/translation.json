@@ -1,7 +1,6 @@
 {
   "app": {
-      "Welcome User": "Welcome test, {{username}}!"
-    ,
+    "Welcome User": "Welcome test, {{username}}!",
     "not-found": {
       "404": "404",
       "Return Home": "Return Home"
@@ -31,10 +30,10 @@
         "Home": "Home",
         "Profile": "Profile",
         "Settings": "Settings",
-        "People":"People",
-        "Equipment":"Equipment",
-        "Sensor":"Sensor",
-        "Campaign Management":"Campaign Management"
+        "People": "People",
+        "Equipment": "Equipment",
+        "Sensor": "Sensor",
+        "Campaign Management": "Campaign Management"
       }
     }
   },

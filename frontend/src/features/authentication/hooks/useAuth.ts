@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import { signIn, signOut } from "next-auth/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -27,7 +25,7 @@ export const useAuth = () => {
       await queryClient.invalidateQueries({ queryKey: QUERY_KEYS.session });
       await queryClient.invalidateQueries({ queryKey: QUERY_KEYS.profile });
     },
-    onError: (error) => {
+    onError: error => {
       toast.error(error.message);
     },
   });
@@ -47,7 +45,7 @@ export const useAuth = () => {
       await queryClient.invalidateQueries({ queryKey: QUERY_KEYS.session });
       await queryClient.invalidateQueries({ queryKey: QUERY_KEYS.profile });
     },
-    onError: (error) => {
+    onError: error => {
       toast.error(error.message);
     },
   });

@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import React from "react";
 import { SidebarInset, SidebarProvider } from "@/shared/components/ui/sidebar";

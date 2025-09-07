@@ -2,7 +2,7 @@ name: Next.js CI/CD
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: ["dev"]
 
   workflow_dispatch:
 
@@ -66,7 +66,7 @@ jobs:
       - name: Установка Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Кеширование зависимостей
         uses: actions/cache@v4
@@ -168,11 +168,12 @@ jobs:
   cleanup:
     runs-on: self-hosted
     if: always()
-    needs: [ build, deploy ]
+    needs: [build, deploy]
     steps:
       - name: Удалить неиспользуемые ресурсы Docker
         run: |
           docker image prune -af
           docker container prune -f
           docker network prune -f
+
 #          docker builder prune -af

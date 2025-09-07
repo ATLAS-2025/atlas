@@ -67,7 +67,7 @@ describe("DynamicBreadcrumb", () => {
 
     // Check for separators (should be n-1 where n = item count)
     expect(screen.getAllByRole("presentation", { hidden: true })).toHaveLength(
-      2,
+      2
     );
   });
 

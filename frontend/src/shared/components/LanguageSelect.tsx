@@ -12,7 +12,7 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/shared/components/ui/popover";
-import {  CN, US, type FlagComponent, SE } from "country-flag-icons/react/3x2";
+import { CN, US, type FlagComponent, SE } from "country-flag-icons/react/3x2";
 import { Check, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -27,7 +27,7 @@ export function LanguageSelect() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [currentLocale, setCurrentLocale] = useState<TLanguage>(
-    i18n.language as TLanguage,
+    i18n.language as TLanguage
   );
   const [isPreloading, setIsPreloading] = useState(true);
 
@@ -41,18 +41,12 @@ export function LanguageSelect() {
     const preloadAllLanguages = async () => {
       for (const locale of languages) {
         const data = await import(`@/i18n/locales/${locale}/translation.json`);
-          NAMESPACES.map((ns) => {
-              i18n.addResourceBundle(
-                locale,
-                ns,
-                data.default ?? data,
-                true,
-                true,
-              );
-          });
-      setIsPreloading(false);
-    }
-  }
+        NAMESPACES.map(ns => {
+          i18n.addResourceBundle(locale, ns, data.default ?? data, true, true);
+        });
+        setIsPreloading(false);
+      }
+    };
     preloadAllLanguages();
   }, [i18n]);
   const handleLocaleChange = (locale: TLanguage) => {
@@ -103,7 +97,7 @@ export function LanguageSelect() {
           transition={{ duration: 0.15, ease: "easeOut" }}
           className="flex flex-col gap-1"
         >
-          {labeledLanguage.map((lang) => {
+          {labeledLanguage.map(lang => {
             const Flag = localeFlags[lang.value];
             const isActive = lang.value === currentLocale;
 
@@ -115,7 +109,7 @@ export function LanguageSelect() {
                   "flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors",
                   isActive
                     ? "bg-muted font-semibold"
-                    : "hover:bg-accent hover:text-accent-foreground",
+                    : "hover:bg-accent hover:text-accent-foreground"
                 )}
               >
                 <Flag className="w-6 h-4 object-cover rounded-sm flex-shrink-0" />

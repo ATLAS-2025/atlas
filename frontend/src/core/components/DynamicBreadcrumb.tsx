@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 "use client";
 
@@ -25,12 +23,12 @@ export function DynamicBreadcrumb() {
         {breadcrumbItems?.map((item, index) => (
           <React.Fragment key={index}>
             <Link href={item.href}>
-            <BreadcrumbItem>
-              <BreadcrumbPage className="flex items-center gap-1">
-                {item.icon && <item.icon className="w-4 h-4" />}
-                {item.name}
-              </BreadcrumbPage>
-            </BreadcrumbItem>
+              <BreadcrumbItem>
+                <BreadcrumbPage className="flex items-center gap-1">
+                  {item.icon && <item.icon className="w-4 h-4" />}
+                  {item.name}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
             </Link>
             {index < breadcrumbItems.length - 1 && (
               <BreadcrumbSeparator className="flex items-end justify-center h-full">

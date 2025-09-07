@@ -7,6 +7,7 @@ The **i18n** system in this project is designed for **internationalization** (i1
 This documentation covers the **file structure**, **translation functions**, and key components of the i18n system, including how translation keys are handled, how translations are loaded, and how server-side translation functions are utilized.
 
 > **Note**: src/i18n/ folder is used by automated scripts. See [Automation](./automation.md) for more details.
+
 ---
 
 ## **File Structure**
@@ -38,10 +39,10 @@ src/
 
 This file serves as the **centralized entry point** for accessing translation functionality throughout the project. It exports the following:
 
-* **`useTranslation`**: Custom hook for client-side translation, providing strict typing for namespaces and keys.
-* **`getTranslation`**: Server-side translation utility for fetching translations in a type-safe manner.
-* **Types and Constants**: Exports types like `TFunction` and constants like `languages` and `FALLBACK_LANGUAGE` for consistent usage across the app.
-* **`NAMESPACES`**: A constant that holds the namespaces used in the translation files.
+- **`useTranslation`**: Custom hook for client-side translation, providing strict typing for namespaces and keys.
+- **`getTranslation`**: Server-side translation utility for fetching translations in a type-safe manner.
+- **Types and Constants**: Exports types like `TFunction` and constants like `languages` and `FALLBACK_LANGUAGE` for consistent usage across the app.
+- **`NAMESPACES`**: A constant that holds the namespaces used in the translation files.
 
 ```ts
 export { useTranslation, default as i18n } from "./lib/client";
@@ -56,22 +57,22 @@ export { NAMESPACES } from "./generated/namespaces";
 
 This file is responsible for initializing **i18next** on the **client-side**. It:
 
-* Uses the **`initReactI18next`** plugin to hook into **React**.
-* Loads translation files dynamically using **`resourcesToBackend`**.
-* Includes a custom **type-safe wrapper** (`createStrictT`) around `useTranslation` for strict typing of namespaces and keys.
+- Uses the **`initReactI18next`** plugin to hook into **React**.
+- Loads translation files dynamically using **`resourcesToBackend`**.
+- Includes a custom **type-safe wrapper** (`createStrictT`) around `useTranslation` for strict typing of namespaces and keys.
 
 **Key Code Example**:
 
 ```ts
 i18next
-    .use(initReactI18next)
-    .use(LanguageDetector)
-    .use(
-        resourcesToBackend((language: string, namespace: string) => {
-            return import(`@/i18n/locales/${language}/${namespace}.json`);
-        })
-    )
-    .init(baseInitOptions);
+  .use(initReactI18next)
+  .use(LanguageDetector)
+  .use(
+    resourcesToBackend((language: string, namespace: string) => {
+      return import(`@/i18n/locales/${language}/${namespace}.json`);
+    })
+  )
+  .init(baseInitOptions);
 ```
 
 The **`useTranslation`** function is typed to ensure that developers can only access the correct translation keys for the given namespace, avoiding errors from invalid keys.
@@ -82,8 +83,8 @@ The **`useTranslation`** function is typed to ensure that developers can only ac
 
 This file is responsible for initializing **i18next** on the **server-side**. It:
 
-* Initializes **i18next** on the server using the `createInstance` method.
-* Uses the **`getTranslation`** function to fetch translations based on the user locale, which is detected via cookies.
+- Initializes **i18next** on the server using the `createInstance` method.
+- Uses the **`getTranslation`** function to fetch translations based on the user locale, which is detected via cookies.
 
 **Key Code Example**:
 
@@ -105,9 +106,12 @@ The **`safeT`** function is used to create a **type-safe translation function**.
 
 ```ts
 export function safeT<T extends TNamespace>(rawT: any, namespace: T) {
-    return (key: TNamespaceTranslationKeys[T], options?: Record<string, unknown>) => {
-        return rawT(key, options); // Ensure strict typing on key
-    };
+  return (
+    key: TNamespaceTranslationKeys[T],
+    options?: Record<string, unknown>
+  ) => {
+    return rawT(key, options); // Ensure strict typing on key
+  };
 }
 ```
 
@@ -119,9 +123,9 @@ This adds strict typing for the translation function, improving developer experi
 
 This file contains basic configuration related to **languages** and **fallback language**. It defines:
 
-* **`languages`**: A constant array of supported languages (e.g., `en`, `kk`, `ru`).
-* **`FALLBACK_LANGUAGE`**: The default language used when a translation is unavailable for the selected language.
-* **`COOKIE_NAME`**: The name of the cookie used for storing the user's language preference.
+- **`languages`**: A constant array of supported languages (e.g., `en`, `kk`, `ru`).
+- **`FALLBACK_LANGUAGE`**: The default language used when a translation is unavailable for the selected language.
+- **`COOKIE_NAME`**: The name of the cookie used for storing the user's language preference.
 
 ```ts
 export const languages = ["kk", "ru", "en"] as const;
@@ -142,14 +146,16 @@ As part of the i18n system design, we follow a philosophy inspired by **Django g
 **Example**:
 
 ```js
-{t("Welcome, {{username}}", { username: data?.firstname ?? "" })}
+{
+  t("Welcome, {{username}}", { username: data?.firstname ?? "" });
+}
 ```
 
 This approach ensures that:
 
-* Translation keys are static and reusable across languages.
-* The translation system can handle dynamic content (e.g., user names, dates) using placeholders.
-* Translations are easily processed and auto-generated, even with placeholders.
+- Translation keys are static and reusable across languages.
+- The translation system can handle dynamic content (e.g., user names, dates) using placeholders.
+- Translations are easily processed and auto-generated, even with placeholders.
 
 ---
 
@@ -159,8 +165,11 @@ The translation keys and namespaces are generated using **Gulp** scripts. The **
 
 ```ts
 export type TFunction<N extends TNamespace> = <
-    K extends TNamespaceTranslationKeys[N]
->(key: K, options?: Record<string, unknown>) => string;
+  K extends TNamespaceTranslationKeys[N],
+>(
+  key: K,
+  options?: Record<string, unknown>
+) => string;
 ```
 
 This ensures that developers only use valid translation keys and namespaces, further improving the development experience and reducing potential bugs.
@@ -175,5 +184,5 @@ The **i18n system** in this project is designed to be scalable, maintainable, an
 
 ## 📚 Related Projects
 
-* [`@sayyyat/smart-i18n`](https://www.npmjs.com/package/@sayyyat/smart-i18n) — The core CLI engine that provides scanning, merging, and type generation.
-* [`@sayyyat/smart-i18n-react`](https://www.npmjs.com/package/@sayyyat/smart-i18n-react) — Feature-scaffolding CLI tool that integrates smart-i18n into React/Next.js projects with zero configs.
+- [`@sayyyat/smart-i18n`](https://www.npmjs.com/package/@sayyyat/smart-i18n) — The core CLI engine that provides scanning, merging, and type generation.
+- [`@sayyyat/smart-i18n-react`](https://www.npmjs.com/package/@sayyyat/smart-i18n-react) — Feature-scaffolding CLI tool that integrates smart-i18n into React/Next.js projects with zero configs.

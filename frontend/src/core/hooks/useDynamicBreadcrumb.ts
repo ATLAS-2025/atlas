@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2025. Sayat Raykul
- */
+
 
 import { usePathname } from "next/navigation";
 import { useTranslation } from "@/i18n";
