@@ -16,6 +16,7 @@ interface PageTopBarProps {
   onSearch?: (query: string) => void;
   onCreateProject?: (projectName: string) => void;
   onCreateTest?: (testData: any) => void;
+  isProject?:boolean
 }
 
 export function PageTopBar({
@@ -25,6 +26,7 @@ export function PageTopBar({
   onSearch,
   onCreateProject,
   onCreateTest,
+  isProject = false
 }: PageTopBarProps) {
   const [isCreateProjectModalOpen, setIsCreateProjectModalOpen] = useState(false);
   const [isCreateTestWizardOpen, setIsCreateTestWizardOpen] = useState(false);
@@ -76,22 +78,22 @@ export function PageTopBar({
       </div>
 
       {/* Right side - Create Buttons */}
-      <div className="flex items-center gap-3">
-        <Button
+    <div className="flex items-center gap-3">
+          {isProject ? <Button
+          className="flex items-center gap-2 h-8 px-3 bg-primary hover:bg-primary/90"
+          onClick={() => setIsCreateTestWizardOpen(true)}
+        >
+          <Plus className="h-4 w-4" />
+          Create a New Test
+        </Button>: <Button
           variant="outline"
           className="flex items-center gap-2 h-8 px-3"
           onClick={() => setIsCreateProjectModalOpen(true)}
         >
           <FolderPlus className="h-4 w-4" />
           Create a New Project
-        </Button>
-        <Button
-          className="flex items-center gap-2 h-8 px-3 bg-primary hover:bg-primary/90"
-          onClick={() => setIsCreateTestWizardOpen(true)}
-        >
-          <Plus className="h-4 w-4" />
-          Create a New Test
-        </Button>
+        </Button>}
+       
       </div>
 
       {/* Create Project Modal */}

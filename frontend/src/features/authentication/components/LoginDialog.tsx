@@ -66,9 +66,10 @@ export const LoginDialog: React.FC<ILoginDialogProps> = ({
       const res = await loginMutation.mutateAsync({
         ...data,
       });
-      if (res?.ok) {
-        setCurrentModal(undefined); // Close modal on success
-      }
+      // if (res?.ok) {
+
+      //   setCurrentModal(undefined); // Close modal on success
+      // }
     } catch {
     } finally {
       setLoading(false);

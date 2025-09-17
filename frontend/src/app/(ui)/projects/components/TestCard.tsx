@@ -2,10 +2,10 @@
 
 "use client";
 
-import { ProjectResponse } from "@/apiClient";
+// import { TestResponse } from "@/apiClient";
 import { FolderOpenIcon } from "@/shared/components/icons";
 
-interface Project {
+interface Test {
   id: string;
   date: string;
   name: string;
@@ -13,13 +13,13 @@ interface Project {
   tagColor: string;
 }
 
-interface ProjectCardProps {
-  project: ProjectResponse;
+interface TestCardProps {
+  test: any;
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
-  console.log(project)
-  const date = new Date(project.date)
+export function TestCard({ test }: TestCardProps) {
+  console.log(test)
+  const date = new Date(test.date)
   return (
     <div
       className="hover:bg-accent transition-colors cursor-pointer h-48 flex flex-col justify-between rounded-lg"
@@ -47,18 +47,18 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {date.toLocaleDateString('en-US')}
           </div>
 
-          {/* Project Name */}
+          {/* Test Name */}
           <div className="text-sm font-medium text-foreground flex-1">
-            {project.title}
+            {test.title}
           </div>
         </div>
 
         {/* Tag */}
         <div className="flex justify-center">
           <span
-            className={`inline-flex items-center px-0.5 px-1 rounded-full text-xs font-medium border bg-transparent ${project.tagColor}`}
+            className={`inline-flex items-center px-0.5 px-1 rounded-full text-xs font-medium border bg-transparent ${test.tagColor}`}
           >
-            {project.project_type}
+            {test.test_type}
           </span>
         </div>
       </div>

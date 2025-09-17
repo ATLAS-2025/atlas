@@ -32,12 +32,12 @@ export const useAuthenticationApi = (): IAuthenticationApi => {
     api.getWithHandle<IPaginatedResponse<ICity>>("/api/cities/");
 
   const getProfile = (): Promise<IResponse<IProfile>> =>
-    api.getWithHandle<IProfile>("/api/user/profile/");
+    api.getWithHandle<IProfile>("/api/user/me/");
 
   const updateProfile = (
     data: Partial<IProfile>
   ): Promise<IResponse<IProfile>> =>
-    api.patchWithHandle<IProfile>("/api/user/profile/", data);
+    api.patchWithHandle<IProfile>("/api/user/me/", data);
 
   const updateProfileImage = (
     imageFile: File

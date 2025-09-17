@@ -6,8 +6,10 @@ import {
   EquipmentApiFp,
   PeopleApi,
   PeopleApiFp,
+  ProjectApi,
   SensorApi,
   SensorApiFp,
+  TestsApi,
   UsersApi,
   UsersApiFactory,
   UsersApiFp,
@@ -52,5 +54,7 @@ export const getApis = async () => {
       undefined,
       axiosInstance
     ),
+    projectApi: new ProjectApi(config, undefined, axiosInstance),
+    testApi: new TestsApi(config, undefined, axiosInstance),
   };
 };

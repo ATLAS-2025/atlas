@@ -2,8 +2,10 @@
 
 "use client";
 
+import { ProjectResponse } from "@/apiClient/models/project-response";
 import { ProjectCard } from "./components/ProjectCard";
 import { PageTopBar } from "@/shared/components/PageTopBar";
+import { AllProjectsCard } from "../projects/components/AllProjectsCard";
 
 // Mock data for recent projects - this would come from your API
 const recentProjects = [
@@ -72,18 +74,22 @@ const recentProjects = [
   },
 ];
 
-export function RecentPageContent() {
+export function RecentPageContent({projectData}:{projectData:ProjectResponse[]}) {
+  console.log(projectData)
   return (
     <div className="flex flex-col h-full w-full bg-background">
       {/* Top Bar */}
-      <PageTopBar title="Recent" />
+      <PageTopBar title="Recent Projects" />
 
       {/* Main Content */}
       <div className="flex-1 p-6">
         <div className="grid grid-cols-5 gap-6 max-w-full mx-auto">
-          {recentProjects.map(project => (
+          {projectData.length>0?
+           projectData.map(project => (
             <ProjectCard key={project.id} project={project} />
-          ))}
+          ))
+          :<AllProjectsCard project={{} as any} isCreateNew={true} />}
+         
           {/* Empty slot to match design */}
           <div className="w-full h-48"></div>
         </div>

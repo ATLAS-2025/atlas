@@ -2,6 +2,7 @@
 
 "use client";
 
+import { ProjectResponse } from "@/apiClient";
 import { AllProjectsCard } from "./components/AllProjectsCard";
 import { PageTopBar } from "@/shared/components/PageTopBar";
 
@@ -37,7 +38,7 @@ const allProjects = [
   },
 ];
 
-export function AllProjectsPageContent() {
+export function AllProjectsPageContent({projectData}:{projectData:ProjectResponse[]}) {
   return (
     <div className="flex flex-col h-full w-full bg-background">
       {/* Top Bar */}
@@ -58,7 +59,7 @@ export function AllProjectsPageContent() {
           <AllProjectsCard project={{} as any} isCreateNew={true} />
           
           {/* Project Cards */}
-          {allProjects.map(project => (
+          {projectData.map(project => (
             <AllProjectsCard key={project.id} project={project} />
           ))}
           

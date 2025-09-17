@@ -13,13 +13,14 @@ export const useAuth = () => {
   // Login Mutation
   const loginMutation = useMutation({
     mutationFn: async (credentials: { email: string; password: string }) => {
-      const response = await signIn("login", {
+      // const response =
+       await signIn("login", {
         ...credentials,
-        redirect: false, // Prevent full-page reload
+        redirect: true, // Prevent full-page reload
       });
 
-      if (response?.error) throw new Error(response.code);
-      return response;
+      // if (response?.error) throw new Error(response.code);
+      // return response;
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: QUERY_KEYS.session });

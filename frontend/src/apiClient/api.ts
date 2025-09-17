@@ -15,6 +15,8 @@ export * from './apis/default-api';
 export * from './apis/equipment-api';
 export * from './apis/health-api';
 export * from './apis/people-api';
+export * from './apis/project-api';
 export * from './apis/sensor-api';
+export * from './apis/tests-api';
 export * from './apis/users-api';
 
