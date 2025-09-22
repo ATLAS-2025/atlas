@@ -1,19 +1,4 @@
 services:
-  web:
-    build: .
-    ports:
-      - "8000:8000"
-    command: bash -c "alembic upgrade head && uvicorn core.server:app --host 0.0.0.0 --port 8000 --reload"
-    volumes:
-      - ./:/app
-      - ./campaigns:/app/campaigns
-    env_file:
-      - .env
-    depends_on:
-      - postgresql
-      - redis
-      - rabbitmq
-
 
   postgresql:
     image: postgres:14.2-alpine
@@ -25,6 +10,27 @@ services:
       - "5432:5432"
     volumes:
       - ../pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d fastapi-db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    command: bash -c "sleep 10 && alembic upgrade head && uvicorn core.server:app --host 0.0.0.0 --port 8000 --reload"
+    volumes:
+      - ./:/app
+      - ./campaigns:/app/campaigns
+    env_file:
+      - .env
+    depends_on:
+      postgresql:
+        condition: service_healthy
+      
+
+
 
   # postgresql-test:
   #   image: postgres:14.2-alpine

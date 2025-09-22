@@ -46,7 +46,7 @@ export const TestsApiAxiosParamCreator = function (configuration?: Configuration
             if (testId === null || testId === undefined) {
                 throw new RequiredError('testId','Required parameter testId was null or undefined when calling addCategoryV1TestTestIdCategoriesPost.');
             }
-            const localVarPath = `/v1/test/{test_id}/categories`
+            const localVarPath = `/v1/test/{test_id}/categories/`
                 .replace(`{${"test_id"}}`, encodeURIComponent(String(testId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -188,6 +188,42 @@ export const TestsApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
             const localVarRequestOptions :AxiosRequestConfig = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication HTTPBearer required
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get All Categories
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllCategoriesV1TestCategoriesGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/v1/test/categories/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -457,6 +493,19 @@ export const TestsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get All Categories
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAllCategoriesV1TestCategoriesGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<CategoryResponse>>>> {
+            const localVarAxiosArgs = await TestsApiAxiosParamCreator(configuration).getAllCategoriesV1TestCategoriesGet(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Get All Tests
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -564,6 +613,15 @@ export const TestsApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @summary Get All Categories
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAllCategoriesV1TestCategoriesGet(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CategoryResponse>>> {
+            return TestsApiFp(configuration).getAllCategoriesV1TestCategoriesGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get All Tests
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -657,6 +715,16 @@ export class TestsApi extends BaseAPI {
      */
     public async deleteTestV1TestIdDelete(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<any>> {
         return TestsApiFp(this.configuration).deleteTestV1TestIdDelete(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Get All Categories
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TestsApi
+     */
+    public async getAllCategoriesV1TestCategoriesGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<CategoryResponse>>> {
+        return TestsApiFp(this.configuration).getAllCategoriesV1TestCategoriesGet(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

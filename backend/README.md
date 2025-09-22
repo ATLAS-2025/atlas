@@ -68,7 +68,10 @@ docker-compose up -d
 
 5. Run the migrations:
 ```bash
+poetry run  alembic revision --autogenerate -m "create projects table"
 poetry run alembic upgrade head
+python /migrations/seed.py
+
 ```
 or
 ```bash

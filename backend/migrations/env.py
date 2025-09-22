@@ -32,6 +32,7 @@ from module import Base
 from core.config import config as app_config
 
 target_metadata = Base.metadata
+print("Tables in metadata:", Base.metadata.tables.keys())
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

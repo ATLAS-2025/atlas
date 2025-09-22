@@ -18,6 +18,7 @@ import { Configuration } from '../configuration';
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { HTTPValidationError } from '../models';
 import { ProjectCreateRequest } from '../models';
+import { ProjectCreateResponse } from '../models';
 import { ProjectResponse } from '../models';
 import { ProjectUpdateRequest } from '../models';
 /**
@@ -258,7 +259,7 @@ export const ProjectApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createProjectV1ProjectPost(body: ProjectCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ProjectResponse>>> {
+        async createProjectV1ProjectPost(body: ProjectCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ProjectCreateResponse>>> {
             const localVarAxiosArgs = await ProjectApiAxiosParamCreator(configuration).createProjectV1ProjectPost(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -337,7 +338,7 @@ export const ProjectApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createProjectV1ProjectPost(body: ProjectCreateRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<ProjectResponse>> {
+        async createProjectV1ProjectPost(body: ProjectCreateRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<ProjectCreateResponse>> {
             return ProjectApiFp(configuration).createProjectV1ProjectPost(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -398,7 +399,7 @@ export class ProjectApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    public async createProjectV1ProjectPost(body: ProjectCreateRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<ProjectResponse>> {
+    public async createProjectV1ProjectPost(body: ProjectCreateRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<ProjectCreateResponse>> {
         return ProjectApiFp(this.configuration).createProjectV1ProjectPost(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**

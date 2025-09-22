@@ -7,3 +7,5 @@ from .people import *
 from .vehicles import *
 from .sensor import *
 from .user import *
+from .project import *
+from .tests import *

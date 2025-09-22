@@ -24,6 +24,7 @@ export * from './people-create-request';
 export * from './people-response';
 export * from './people-update-request';
 export * from './project-create-request';
+export * from './project-create-response';
 export * from './project-response';
 export * from './project-update-request';
 export * from './register-user-request';

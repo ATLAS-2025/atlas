@@ -8,6 +8,9 @@ from .session import (
 from .standalone_session import standalone_session
 from .transactional import Propagation, Transactional
 
+from datetime import datetime
+from sqlalchemy import Column, DateTime
+
 __all__ = [
     "Base",
     "session",
@@ -18,3 +21,10 @@ __all__ = [
     "Transactional",
     "Propagation",
 ]
+
+
+class TimestampMixin:
+    created_at = Column(DateTime, default=datetime.now(), nullable=False)
+    updated_at = Column(
+        DateTime, default=datetime.now(), onupdate=datetime.now(), nullable=False
+    )
