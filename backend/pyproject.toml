@@ -5,7 +5,7 @@ description = "Atlas Planner Backend"
 authors = ["ZISAN <zisan13407@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "3.11"
+python = "^3.11"
 alembic = "^1.9.4"
 SQLAlchemy = "^2.0.4"
 PyJWT = "^2.6.0"
