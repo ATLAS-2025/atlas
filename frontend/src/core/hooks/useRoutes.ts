@@ -138,8 +138,8 @@ export function useRoutes() {
       icon: TestSummaryIcon,
       subRoutes: [
         {
-          title: "item",
-          url: "/test-summary/reports",
+          title: "Projects",
+          url: "/projects",
           icon: Info,
         },
         {
