@@ -8,6 +8,7 @@ import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 import { CreateProjectModal } from "./CreateProjectModal";
 import { CreateTestWizard } from "./CreateTestWizard";
+import { CategoryResponse, EquipmentResponse, PeopleResponse, ProjectResponse } from "@/apiClient";
 
 interface PageTopBarProps {
   title: string;
@@ -17,6 +18,10 @@ interface PageTopBarProps {
   onCreateProject?: (projectName: string) => void;
   onCreateTest?: (testData: any) => void;
   isProject?:boolean
+  equiqments?: EquipmentResponse[]
+  categories?: CategoryResponse[]
+  peoples?: PeopleResponse[]
+  project?:ProjectResponse
 }
 
 export function PageTopBar({
@@ -26,7 +31,11 @@ export function PageTopBar({
   onSearch,
   onCreateProject,
   onCreateTest,
-  isProject = false
+  isProject = false,
+  equiqments,
+categories,
+peoples,
+project
 }: PageTopBarProps) {
   const [isCreateProjectModalOpen, setIsCreateProjectModalOpen] = useState(false);
   const [isCreateTestWizardOpen, setIsCreateTestWizardOpen] = useState(false);
@@ -108,6 +117,10 @@ export function PageTopBar({
         open={isCreateTestWizardOpen}
         onOpenChange={setIsCreateTestWizardOpen}
         onCreateTest={onCreateTest}
+        equiqments={equiqments}
+categories={categories}
+peoples={peoples}
+project={project}
       />
     </div>
   );

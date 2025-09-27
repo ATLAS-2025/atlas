@@ -20,7 +20,7 @@ interface TestCardProps {
 
 export function TestCard({ test }: TestCardProps) {
   console.log(test)
-  const date = new Date(test.date)
+  // const date = new Date(test.date)
   return (
     <Link
       className="hover:bg-accent transition-colors cursor-pointer h-48 flex flex-col justify-between rounded-lg"
@@ -46,7 +46,7 @@ export function TestCard({ test }: TestCardProps) {
         <div className="flex flex-col">
           {/* Date */}
           <div className="text-sm text-muted-foreground mb-2">
-            {date.toLocaleDateString('en-US')}
+            {test.schedule}
           </div>
 
           {/* Test Name */}

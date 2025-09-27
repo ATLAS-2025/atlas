@@ -8,12 +8,13 @@ class Test(TimestampMixin,Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     project_id = Column(Integer, ForeignKey("projects.id"), nullable=False)
-
+    name = Column(Text)
     schedule = Column(Text)
     safety = Column(Text)
     maps = Column(Text)
     simulation = Column(Text)
     summary = Column(Text)
+    tags = Column(Text)
 
     # Relationships
     project = relationship("Project", back_populates="tests")

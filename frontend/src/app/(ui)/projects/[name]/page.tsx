@@ -24,12 +24,21 @@ interface Params {
 
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { name } = await params;
-  const { projectApi } = await getApis();
+  const { projectApi,equipmentApi,testApi,peopleApi } = await getApis();
   const { data } = await projectApi.getProjectV1ProjectIdGet(parseInt(name));
-  console.log(data)
+  const { data:equiqments } = await equipmentApi.getAllEquipmentV1EquipmentGet();
+  const { data:categories } = await testApi.getAllCategoriesV1TestCategoriesGet();
+  const { data:peoples } = await peopleApi.getAllPeopleV1PeopleGet();
+  console.log(data,equiqments,
+categories,
+peoples)
   return (
     <div className="flex flex-col h-full  w-full">
-      <PageTopBar title={data.title} isProject/>
+      <PageTopBar title={data.title} isProject     equiqments={equiqments}
+          categories={categories}
+          peoples={peoples}
+          project={data}
+          />
 
       {/* <pre>{JSON.stringify(data)}</pre> */}
       <div className="flex-1 p-6">
@@ -38,7 +47,9 @@ export default async function Page({ params }: { params: Promise<Params> }) {
            data?.tests.map(test => (
             <TestCard key={test.id} test={test} />
           ))
-          :<CreateTestCard project={data}/>
+          :<CreateTestCard project={data} 
+
+          />
           
           }
          
@@ -46,6 +57,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           <div className="w-full h-48"></div>
         </div>
       </div>
+      
     </div>
   );
 }

@@ -32,7 +32,19 @@ class TestService:
         return await self.test_repository.get_by_id(test_obj.id, join_=True)
 
     async def get_test_by_id(self, test_id: int) -> Test | None:
-        return await self.test_repository.get_by_id(test_id, join_=True)
+        query = (
+            select(Test)
+            .where(Test.id == test_id)
+            .options(
+                selectinload(Test.categories)
+                    .selectinload(Category.people)
+                    .selectinload(CategoryPerson.person),
+                selectinload(Test.categories)
+                    .selectinload(Category.equipment)
+                    .selectinload(CategoryEquipment.equipment),
+            )
+        )
+        return await self.test_repository._first(query)
 
     async def get_all_tests(self) -> List[Test]:
         return await self.test_repository.get_all()
@@ -49,7 +61,7 @@ class TestService:
             else:
                 await self.add_category(test_id, cat_data)
 
-        return await self.test_repository.get_by_id(test_id, join_=True)
+        return await self.get_test_by_id(test_id)
 
     @Transactional()
     async def delete_test(self, test_id: int) -> None:
@@ -84,8 +96,8 @@ class TestService:
 
         # Fetch the category with its relationships directly from the session
         query = select(Category).where(Category.id == category.id).options(
-        selectinload(Category.people),
-        selectinload(Category.equipment),
+        selectinload(Category.people).selectinload(CategoryPerson.person),
+        selectinload(Category.equipment).selectinload(CategoryEquipment.equipment),
         )
         return await self.test_repository._first(query)
 
@@ -118,8 +130,8 @@ class TestService:
         await self.session.commit()
 
         query = select(Category).where(Category.id == category_id).options(
-        selectinload(Category.people),
-        selectinload(Category.equipment),
+        selectinload(Category.people).selectinload(CategoryPerson.person),
+        selectinload(Category.equipment).selectinload(CategoryEquipment.equipment),
         )
         return await self.test_repository._first(query)
 
@@ -131,7 +143,7 @@ class TestService:
 
     async def get_all_categories(self) -> List[Category]:
         query = select(Category).options(
-            selectinload(Category.people),
-            selectinload(Category.equipment),
+        selectinload(Category.people).selectinload(CategoryPerson.person),
+        selectinload(Category.equipment).selectinload(CategoryEquipment.equipment),
         )
         return await self.test_repository._all(query)

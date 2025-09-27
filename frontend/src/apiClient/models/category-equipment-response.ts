@@ -11,6 +11,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { EquipmentResponse } from './equipment-response';
 /**
  * 
  * @export
@@ -23,4 +24,10 @@ export interface CategoryEquipmentResponse {
      * @memberof CategoryEquipmentResponse
      */
     equipmentId: number;
+    /**
+     * 
+     * @type {EquipmentResponse}
+     * @memberof CategoryEquipmentResponse
+     */
+    equipment?: EquipmentResponse;
 }

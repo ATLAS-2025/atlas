@@ -31,7 +31,10 @@ class CategoryUpdateRequest(BaseModel):
 class TestCreateRequest(BaseModel):
     project_id: int
     schedule: Optional[str] = None
+    name: Optional[str] = None
+    tags: Optional[str] = None
     safety: Optional[str] = None
+    date: Optional[str] = None
     maps: Optional[str] = None
     simulation: Optional[str] = None
     summary: Optional[str] = None

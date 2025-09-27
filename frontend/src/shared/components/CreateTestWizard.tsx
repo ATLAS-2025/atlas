@@ -10,11 +10,14 @@ import { Label } from "@/shared/components/ui/label";
 import { Textarea } from "@/shared/components/ui/textarea";
 import { Badge } from "@/shared/components/ui/badge";
 import { Calendar } from "@/shared/components/ui/calendar";
-
+import { CategoryResponse, EquipmentResponse, PeopleResponse, ProjectResponse } from "@/apiClient";
 interface CreateTestWizardProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onCreateTest?: (testData: any) => void;
+  onCreateTest?: (testData: any) => void;  equiqments?: EquipmentResponse[]
+  categories?: CategoryResponse[]
+  peoples?: PeopleResponse[]
+  project?:ProjectResponse
 }
 
 const tabs = [
@@ -31,12 +34,14 @@ const tabs = [
 export function CreateTestWizard({
   open,
   onOpenChange,
-  onCreateTest,
+  onCreateTest,  equiqments,
+categories,
+peoples,project
 }: CreateTestWizardProps) {
   const [activeTab, setActiveTab] = useState("admin");
   const [testData, setTestData] = useState({
     testName: "Drop Test Project",
-    projectName: "Unassigned Tests",
+    projectName: project?.title,
     tags: ["#tag1", "#tag2", "#UAV", "#6Dof", "#Flight", "#Droptest", "#Balistics"],
     testLocation: "Test Location",
     subLocation: "",
@@ -473,8 +478,13 @@ export function CreateTestWizard({
         {/* Main Content */}
         <div className="flex-1 p-6 overflow-auto">
           {renderTabContent()}
+           <pre>Availabe People: {JSON.stringify(peoples)}</pre>
+      <pre>Availabe Equipments: {JSON.stringify(equiqments)}</pre>
+      <pre>Availabe Categories: {JSON.stringify(categories)}</pre>
         </div>
       </div>
+
+     
     </div>
   );
 }

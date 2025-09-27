@@ -11,6 +11,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { PeopleResponse } from './people-response';
 /**
  * 
  * @export
@@ -23,4 +24,10 @@ export interface CategoryPersonResponse {
      * @memberof CategoryPersonResponse
      */
     peopleId: number;
+    /**
+     * 
+     * @type {PeopleResponse}
+     * @memberof CategoryPersonResponse
+     */
+    person?: PeopleResponse;
 }
