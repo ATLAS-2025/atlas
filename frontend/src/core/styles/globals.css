@@ -104,7 +104,7 @@ body {
   /* Custom variables using design system colors */
   --button: var(--border4);
   --button-foreground: var(--text-icon-highlight);
-  --button-accent: var(--green);
+  --button-accent: var(--primary);
   --inactive: var(--text-icon-info);
 
   /* Figma sidebar design variables */
@@ -156,7 +156,7 @@ body {
   /* Custom variables for light theme */
   --button: var(--border4);
   --button-foreground: var(--white);
-  --button-accent: var(--green);
+  --button-accent: var(--primary);
   --inactive: var(--text-icon-secondary);
 }
 

@@ -3,6 +3,7 @@ import { getApis } from "@/apiServices";
 import { RecentPageContent } from "./recent/RecentPageContent";
 import { getCacheOptions } from "@/features/cacheOption";
 import { auth } from "@/auth";
+import { LoginPage } from "@/components/LoginPage";
 
 export default async function Home() {
   const session =await auth() 
@@ -22,7 +23,7 @@ export default async function Home() {
   return <RecentPageContent projectData={projectData}/>;
 
   }else{
-  return <h2>Please Login In </h2>;
+  return <LoginPage />;
 
   }
 

@@ -4,12 +4,11 @@ FROM python:3.11-slim
 # Set the working directory in the container
 WORKDIR /app
 
-# Install required packages for mysqlclient
+# Install required packages for PostgreSQL
 RUN apt-get update 
 RUN apt-get install -y \
     pkg-config \
-    libmariadb-dev-compat \
-    libmariadb-dev \
+    libpq-dev \
     gcc &&  apt-get clean
 # Copy pyproject.toml and poetry.lock files to the container
 COPY pyproject.toml poetry.lock ./
