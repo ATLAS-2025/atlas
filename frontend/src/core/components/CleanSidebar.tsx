@@ -298,17 +298,9 @@ export const CleanSidebar: React.FC<CleanSidebarProps> = ({ routes }) => {
       {/* Header */}
       <div
         className={clsx(
-          "h-12 flex items-center",
+          "h-12 flex items-center border-r border-b border-border bg-muted/50",
           isCollapsed ? "px-2 justify-center" : "px-4 py-2 justify-between"
         )}
-        style={{
-          // to do change to proper variables
-          borderRight:
-            "1.25px solid var(--ATLAS-Variables-border-tertiary, #CBCCCD)",
-          borderBottom:
-            "1.25px solid var(--ATLAS-Variables-border-tertiary, #CBCCCD)",
-          background: "var(--ATLAS-Variables-background-bg-surface, #DDDDE0)",
-        }}
       >
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
