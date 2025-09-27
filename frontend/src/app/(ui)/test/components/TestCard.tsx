@@ -51,7 +51,7 @@ export function TestCard({ test }: TestCardProps) {
 
           {/* Test Name */}
           <div className="text-sm font-medium text-foreground flex-1">
-            {test.summary}
+            {test.title}
           </div>
         </div>
 

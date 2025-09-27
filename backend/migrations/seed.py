@@ -77,8 +77,8 @@ async def seed():
             await conn.execute(
                 text(
                     """
-                INSERT INTO users (id, uuid, email, password, username, is_admin, created_at, updated_at)
-                VALUES (:id, :uuid, :email, :password, :username, :is_admin, :created_at, :updated_at)
+                INSERT INTO users ( uuid, email, password, username, is_admin, created_at, updated_at)
+                VALUES ( :uuid, :email, :password, :username, :is_admin, :created_at, :updated_at)
                 """
                 ),
                 params, # Execute one row at a time
