@@ -6,55 +6,167 @@ import {
   Info,
   PanelsTopLeftIcon,
   PieChart,
-  Settings,
   Sheet,
   SquareUser,
-  Database,
-  Calendar,
 } from "lucide-react";
 import {
   RecentIcon,
   AllProjectsIcon,
   TrashIcon,
+  PreferencesIcon,
+  ManageDatabaseIcon,
+  GlobalTestScheduleIcon,
+  AdminIcon,
+  ResourcesIcon,
+  PeopleIcon,
+  FacilitiesIcon,
+  LogisticsIcon,
+  SubjectProfileIcon,
+  MeasurementEquipmentIcon,
+  ScheduleIcon,
+  TestLayoutSimulationIcon,
+  DocumentsInstructionsIcon,
+  TestSummaryIcon,
 } from "@/shared/components/icons";
 
 export function useRoutes() {
   const { t } = useTranslation("core.hooks.useRoutes");
 
-  const COMMON_ROUTES: IAppRoute[] = [
+  // const COMMON_ROUTES: IAppRoute[] = [
+  //   {
+  //     title: "Recent",
+  //     url: "/",
+  //     icon: RecentIcon,
+  //   },
+  //   {
+  //     title: "All Projects",
+  //     url: "/projects",
+  //     icon: AllProjectsIcon,
+  //   },
+  //   {
+  //     title: "Trash",
+  //     url: "/trash",
+  //     icon: TrashIcon,
+  //   },
+  // ];
+
+  // Admin and Resources Routes
+  const ADMIN_ROUTES: IAppRoute[] = [
     {
-      title: "Recent",
+      title: "Admin",
       url: "/",
-      icon: RecentIcon,
+      icon: AdminIcon,
     },
     {
-      title: "All Projects",
-      url: "/projects",
-      icon: AllProjectsIcon,
+      title: "Resources",
+      url: "/resources",
+      icon: ResourcesIcon,
+      subRoutes: [
+        {
+          title: "People",
+          url: "/resources/people",
+          icon: PeopleIcon,
+        },
+        {
+          title: "Facilities",
+          url: "/resources/facilities",
+          icon: FacilitiesIcon,
+        },
+        {
+          title: "Logistics",
+          url: "/resources/logistics",
+          icon: LogisticsIcon,
+        },
+      ],
+    },
+  ];
+
+  // Additional Navigation Routes
+  const NAVIGATION_ROUTES: IAppRoute[] = [
+    {
+      title: "Subject Profile",
+      url: "/subject-profile",
+      icon: SubjectProfileIcon,
     },
     {
-      title: "Trash",
-      url: "/trash",
-      icon: TrashIcon,
+      title: "Measurement Equipment",
+      url: "/measurement-equipment",
+      icon: MeasurementEquipmentIcon,
+      subRoutes: [
+        {
+          title: "item",
+          url: "/measurement-equipment/setup",
+          icon: Info,
+        },
+        {
+          title: "item",
+          url: "/measurement-equipment/calibration",
+          icon: Info,
+        },
+      ],
+    },
+    {
+      title: "Schedule",
+      url: "/schedule",
+      icon: ScheduleIcon,
+    },
+    {
+      title: "Test layout & Simulation",
+      url: "/test-layout-simulation",
+      icon: TestLayoutSimulationIcon,
+    },
+    {
+      title: "Documents & Instructions",
+      url: "/documents-instructions",
+      icon: DocumentsInstructionsIcon,
+      subRoutes: [
+        {
+          title: "item",
+          url: "/documents-instructions/manuals",
+          icon: Info,
+        },
+        {
+          title: "item",
+          url: "/documents-instructions/procedures",
+          icon: Info,
+        },
+      ],
+    },
+    {
+      title: "Test Summary",
+      url: "/test-summary",
+      icon: TestSummaryIcon,
+      subRoutes: [
+        {
+          title: "item",
+          url: "/test-summary/reports",
+          icon: Info,
+        },
+        {
+          title: "item",
+          url: "/test-summary/analytics",
+          icon: Info,
+        },
+      ],
     },
   ];
 
   // Settings and Management Routes
   const SETTINGS_ROUTES: IAppRoute[] = [
     {
-      title: "Preferences and Settings",
+      title: "Preferences",
       url: "/settings",
-      icon: Settings,
+      icon: PreferencesIcon,
     },
     {
       title: "Manage Database",
       url: "/database",
-      icon: Database,
+      icon: ManageDatabaseIcon,
     },
     {
       title: "Global Test Schedule",
       url: "/schedule",
-      icon: Calendar,
+      icon: GlobalTestScheduleIcon,
     },
   ];
 
@@ -93,13 +205,15 @@ export function useRoutes() {
     return map;
   }
   const FLATTENED_ROUTES = flattenRoutes([
-    ...COMMON_ROUTES,
+    ...ADMIN_ROUTES,
+    ...NAVIGATION_ROUTES,
     ...SETTINGS_ROUTES,
     ...MANAGER_ROUTES,
   ]);
 
   return {
-    COMMON_ROUTES,
+    ADMIN_ROUTES,
+    NAVIGATION_ROUTES,
     SETTINGS_ROUTES,
     MANAGER_ROUTES,
     FLATTENED_ROUTES,

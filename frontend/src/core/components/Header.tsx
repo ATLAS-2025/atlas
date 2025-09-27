@@ -48,11 +48,6 @@ export function Header() {
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className="rounded-xl"
           >
-            <SidebarTrigger
-              variant="outline"
-              size="icon"
-              className="bg-background rounded-xl p-0 size-9"
-            />
           </motion.div>
           <div className="w-px h-5 bg-primary" />
           <DynamicBreadcrumb />
