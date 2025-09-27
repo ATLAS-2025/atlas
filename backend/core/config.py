@@ -14,7 +14,7 @@ class EnvironmentType:
 class Config(BaseSettings):
     DEBUG: int = 0
     DEFAULT_LOCALE: str = "en_US"
-    ENVIRONMENT: str = EnvironmentType.DEVELOPMENT
+    ENVIRONMENT: str = EnvironmentType.PRODUCTION
 
     # DATABASE_URL from env, fallback to sqlite
     DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///app.db")

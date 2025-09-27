@@ -2,9 +2,9 @@ from sqlalchemy import Column, Integer, String, DateTime, Text
 
 from datetime import datetime
 
-from core.database import Base
+from core.database import Base, TimestampMixin
 
-class Sensor(Base):
+class Sensor(TimestampMixin,Base):
     __tablename__ = "sensors"
 
     id = Column(Integer, primary_key=True, index=True)

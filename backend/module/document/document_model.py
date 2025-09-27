@@ -2,9 +2,9 @@ from sqlalchemy import Column, Integer, String, Text, DateTime
 
 from datetime import datetime
 
-from core.database import Base
+from core.database import Base,TimestampMixin
 
-class Document(Base):
+class Document(TimestampMixin,Base):
     __tablename__ = "documents"
 
     id = Column(Integer, primary_key=True, index=True)

@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String, Text
 
-from core.database import Base
+from core.database import Base,TimestampMixin
 
-class Equipment(Base):
+class Equipment(TimestampMixin,Base):
     __tablename__ = "equipment"
 
     id = Column(Integer, primary_key=True, index=True)

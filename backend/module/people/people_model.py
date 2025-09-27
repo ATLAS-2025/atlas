@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String, Text
 
-from core.database import Base
+from core.database import Base,TimestampMixin
 
-class People(Base):
+class People(TimestampMixin,Base):
     __tablename__ = "people"
 
     id = Column(Integer, primary_key=True, index=True)
