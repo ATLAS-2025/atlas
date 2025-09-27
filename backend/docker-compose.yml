@@ -25,9 +25,6 @@ services:
       - ./campaigns:/app/campaigns
     env_file:
       - .env
-    depends_on:
-      postgresql:
-        condition: service_healthy
       
 
 
