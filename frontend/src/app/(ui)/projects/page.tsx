@@ -1,7 +1,7 @@
 
 
 import { AllProjectsPageContent } from "./AllProjectsPageContent";
-
+import { LoginPage } from "@/components/LoginPage";
 
 import { getApis } from "@/apiServices";
 import { getCacheOptions } from "@/features/cacheOption";
@@ -25,7 +25,7 @@ export default async function AllProjectsPage() {
   return <AllProjectsPageContent projectData={projectData}/>;
 
   }else{
-  return <h2>Please Login In </h2>;
+  return <LoginPage />;
 
   }
 
