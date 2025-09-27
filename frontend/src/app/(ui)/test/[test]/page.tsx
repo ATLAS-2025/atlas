@@ -126,17 +126,17 @@ export default async function Page({ params }: { params: Promise<Params> }) {
                           People ({category.people.length})
                         </h3>
                         <div className="space-y-3">
-                          {category.people.map((personRef) => (
-                            personRef.person && (
+                          {category.people
+                            .filter((personRef) => personRef.person)
+                            .map((personRef) => (
                               <div key={personRef.peopleId} className="border rounded-lg p-3">
-                                <div className="font-medium">{personRef.person.name}</div>
-                                <div className="text-sm text-gray-600">{personRef.person.role}</div>
-                                <div className="text-sm text-gray-500">{personRef.person.organization}</div>
-                                <div className="text-sm text-gray-500">{personRef.person.email}</div>
-                                <div className="text-sm text-gray-500">{personRef.person.phone}</div>
+                                <div className="font-medium">{personRef.person!.name}</div>
+                                <div className="text-sm text-gray-600">{personRef.person!.role}</div>
+                                <div className="text-sm text-gray-500">{personRef.person!.organization}</div>
+                                <div className="text-sm text-gray-500">{personRef.person!.email}</div>
+                                <div className="text-sm text-gray-500">{personRef.person!.phone}</div>
                               </div>
-                            )
-                          ))}
+                            ))}
                         </div>
                       </div>
                     )}
@@ -149,28 +149,28 @@ export default async function Page({ params }: { params: Promise<Params> }) {
                           Equipment ({category.equipment.length})
                         </h3>
                         <div className="space-y-3">
-                          {category.equipment.map((equipmentRef) => (
-                            equipmentRef.equipment && (
+                          {category.equipment
+                            .filter((equipmentRef) => equipmentRef.equipment)
+                            .map((equipmentRef) => (
                               <div key={equipmentRef.equipmentId} className="border rounded-lg p-3">
-                                <div className="font-medium">{equipmentRef.equipment.name}</div>
-                                <div className="text-sm text-gray-600">{equipmentRef.equipment.type}</div>
+                                <div className="font-medium">{equipmentRef.equipment!.name}</div>
+                                <div className="text-sm text-gray-600">{equipmentRef.equipment!.type}</div>
                                 <div className="text-sm text-gray-500">
-                                  {equipmentRef.equipment.manufacturer} {equipmentRef.equipment.model}
+                                  {equipmentRef.equipment!.manufacturer} {equipmentRef.equipment!.model}
                                 </div>
                                 <div className="text-sm text-gray-500">
-                                  Serial: {equipmentRef.equipment.serialNumber}
+                                  Serial: {equipmentRef.equipment!.serialNumber}
                                 </div>
                                 <div className="text-sm text-gray-500">
-                                  Location: {equipmentRef.equipment.location}
+                                  Location: {equipmentRef.equipment!.location}
                                 </div>
-                                {equipmentRef.equipment.notes && (
+                                {equipmentRef.equipment!.notes && (
                                   <div className="text-sm text-gray-500">
-                                    Notes: {equipmentRef.equipment.notes}
+                                    Notes: {equipmentRef.equipment!.notes}
                                   </div>
                                 )}
                               </div>
-                            )
-                          ))}
+                            ))}
                         </div>
                       </div>
                     )}
