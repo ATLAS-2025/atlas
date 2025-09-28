@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  // output: "standalone",
+  output: 'export',
   outputFileTracingIncludes: {
     "*": ["public/**/*", ".next/static/**/*"],
   },

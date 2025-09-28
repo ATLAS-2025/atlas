@@ -41,7 +41,7 @@ export const useDynamicBreadcrumb = () => {
       breadcrumbItems.push({
         name: route.title,
         href: pathSoFar,
-        icon: route.icon,
+        icon: route.icon as LucideIcon,
       });
     } else {
       breadcrumbItems.push({

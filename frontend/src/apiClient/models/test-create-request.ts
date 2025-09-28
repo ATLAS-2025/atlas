@@ -35,7 +35,25 @@ export interface TestCreateRequest {
      * @type {string}
      * @memberof TestCreateRequest
      */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TestCreateRequest
+     */
+    tags?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TestCreateRequest
+     */
     safety?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TestCreateRequest
+     */
+    date?: string;
     /**
      * 
      * @type {string}

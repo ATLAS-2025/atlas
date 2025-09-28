@@ -41,6 +41,24 @@ export interface ModuleTestsTestSchemaResponseTestResponse {
      * @type {string}
      * @memberof ModuleTestsTestSchemaResponseTestResponse
      */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModuleTestsTestSchemaResponseTestResponse
+     */
+    tags?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModuleTestsTestSchemaResponseTestResponse
+     */
+    date?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModuleTestsTestSchemaResponseTestResponse
+     */
     safety?: string;
     /**
      * 
