@@ -274,7 +274,7 @@ const CollapsibleSidebarItem: React.FC<SidebarItemProps> = ({
 };
 
 interface CleanSidebarProps {
-  routes: {
+  routes?: {
     ADMIN_ROUTES: IAppRoute[];
     NAVIGATION_ROUTES: IAppRoute[];
     SETTINGS_ROUTES: IAppRoute[];
@@ -287,6 +287,72 @@ export const CleanSidebar: React.FC<CleanSidebarProps> = ({ routes }) => {
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
+
+  const defaultRoutes = {
+    ADMIN_ROUTES: [
+      {
+        title: "Admin",
+        url: "/admin",
+        icon: AdminIcon,
+      },
+      {
+        title: "Resources",
+        url: "/resources",
+        icon: ResourcesIcon,
+      },
+    ],
+    NAVIGATION_ROUTES: [
+      {
+        title: "Subject Profile",
+        url: "/subject-profile",
+        icon: SubjectProfileIcon,
+      },
+      {
+        title: "Measurement Equipment",
+        url: "/measurement-equipment",
+        icon: MeasurementEquipmentIcon,
+      },
+      {
+        title: "Schedule",
+        url: "/schedule",
+        icon: ScheduleIcon,
+      },
+      {
+        title: "Test layout & Simulation",
+        url: "/test-layout-simulation",
+        icon: TestLayoutSimulationIcon,
+      },
+      {
+        title: "Documents & Instructions",
+        url: "/documents-instructions",
+        icon: DocumentsInstructionsIcon,
+      },
+      {
+        title: "Test Summary",
+        url: "/test-summary",
+        icon: TestSummaryIcon,
+      },
+    ],
+    SETTINGS_ROUTES: [
+      {
+        title: "Preferences",
+        url: "/preferences",
+        icon: PreferencesIcon,
+      },
+      {
+        title: "Manage Database",
+        url: "/database",
+        icon: ManageDatabaseIcon,
+      },
+      {
+        title: "Global Test Schedule",
+        url: "/schedule",
+        icon: GlobalTestScheduleIcon,
+      },
+    ],
+  };
+
+  const { ADMIN_ROUTES, NAVIGATION_ROUTES, SETTINGS_ROUTES } = routes || defaultRoutes;
 
   return (
     <div
@@ -304,7 +370,7 @@ export const CleanSidebar: React.FC<CleanSidebarProps> = ({ routes }) => {
       >
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
-            <span className="text-white font-bold text-sm">PL</span>
+            <span className="text-white font-bold text-sm">FL</span>
           </div>
           {!isCollapsed && (
             <span className="text-sidebar-foreground font-semibold text-sm">
@@ -345,7 +411,7 @@ export const CleanSidebar: React.FC<CleanSidebarProps> = ({ routes }) => {
         <div className={clsx("space-y-1", isCollapsed ? "px-2" : "px-4")}>
           {/* Admin Routes */}
           <div>
-            {routes.ADMIN_ROUTES.map(route =>
+            {ADMIN_ROUTES.map((route: IAppRoute) =>
               route.subRoutes ? (
                 <CollapsibleSidebarItem
                   key={route.url}
@@ -364,7 +430,7 @@ export const CleanSidebar: React.FC<CleanSidebarProps> = ({ routes }) => {
 
           {/* Navigation Routes */}
           <div>
-            {routes.NAVIGATION_ROUTES.map(route =>
+            {NAVIGATION_ROUTES.map((route: IAppRoute) =>
               route.subRoutes ? (
                 <CollapsibleSidebarItem
                   key={route.url}
@@ -386,7 +452,7 @@ export const CleanSidebar: React.FC<CleanSidebarProps> = ({ routes }) => {
       {/* Footer */}
       <div className="border-t border-sidebar-border p-3">
         <div className={clsx("space-y-1", isCollapsed ? "px-2" : "px-4")}>
-          {routes.SETTINGS_ROUTES.map(route => (
+          {SETTINGS_ROUTES.map((route: IAppRoute) => (
             <SidebarItem
               key={route.url}
               route={route}

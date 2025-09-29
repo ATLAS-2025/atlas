@@ -2,7 +2,10 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSidebar } from "@/core/contexts/SidebarContext";
+import { useRoutes } from "@/core/hooks/useRoutes";
+import { CleanSidebar } from "@/core/components/CleanSidebar";
 import { X, ChevronDown } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
@@ -38,7 +41,19 @@ export function CreateTestWizard({
 categories,
 peoples,project
 }: CreateTestWizardProps) {
+  const { setMode } = useSidebar();
+  const routes = useRoutes();
   const [activeTab, setActiveTab] = useState("admin");
+
+  // Set sidebar mode to project when wizard opens
+  useEffect(() => {
+    if (open) {
+      setMode("project");
+    } else {
+      // Return to home mode when wizard closes
+      setMode("home");
+    }
+  }, [open, setMode]);
   const [testData, setTestData] = useState({
     testName: "Drop Test Project",
     projectName: project?.title,
@@ -110,7 +125,7 @@ peoples,project
               {["Project Leader", "Test Engineer/Operator", "Safety Officer", "Support Teams"].map((role, index) => (
                 <div key={index} className="flex gap-2">
                   <Input placeholder="Name" className="bg-background border-border text-foreground" />
-                  <Input value={role} className="bg-background border-border text-foreground" />
+                  <Input value={role} className="bg-background border-border text-foreground" readOnly />
                 </div>
               ))}
               <div className="flex justify-end">
@@ -426,56 +441,53 @@ peoples,project
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-background">
-      {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-border">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <ChevronDown className="h-4 w-4 text-muted-foreground" />
-            <span className="text-foreground">Untitled test</span>
-            <X className="h-4 w-4 text-muted-foreground" />
-          </div>
-        </div>
-        
-        {/* Main Navigation Tabs */}
-        <div className="flex gap-1">
-          {tabs.map((tab) => (
-            <Button
-              key={tab.id}
-              variant={activeTab === tab.id ? "default" : "ghost"}
-              size="sm"
-              onClick={() => setActiveTab(tab.id)}
-              className={activeTab === tab.id ? "bg-primary text-primary-foreground" : "text-muted-foreground"}
-            >
-              {tab.label}
-            </Button>
-          ))}
-        </div>
+    <div className="fixed inset-0 z-50 bg-background flex">
+      {/* Use the actual CleanSidebar component */}
+      <CleanSidebar 
+        routes={{
+          ADMIN_ROUTES: routes.ADMIN_ROUTES,
+          NAVIGATION_ROUTES: routes.NAVIGATION_ROUTES,
+          SETTINGS_ROUTES: routes.SETTINGS_ROUTES,
+        }}
+      />
 
-        <div className="flex items-center gap-4">
-          <Button className="bg-primary text-primary-foreground">Publish</Button>
-          <span className="text-sm text-muted-foreground">v - 0.128</span>
-          <Button variant="ghost" size="sm" onClick={() => onOpenChange(false)}>
-            <X className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="flex h-[calc(100vh-64px)]">
-        {/* Sidebar - Only show for Resources tab */}
-        {activeTab === "resources" && (
-          <div className="w-64 border-r border-border p-4">
-            <h3 className="text-lg font-semibold text-foreground mb-4">Manage Resources</h3>
-            <div className="space-y-2">
-              <Button variant="default" className="w-full justify-start bg-primary text-primary-foreground">People</Button>
-              <Button variant="ghost" className="w-full justify-start">Facilities</Button>
-              <Button variant="ghost" className="w-full justify-start">Logistics</Button>
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col">
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 border-b border-border">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <ChevronDown className="h-4 w-4 text-muted-foreground" />
+              <span className="text-foreground">Untitled test</span>
+              <X className="h-4 w-4 text-muted-foreground" />
             </div>
           </div>
-        )}
+          
+          {/* Main Navigation Tabs */}
+          <div className="flex gap-1">
+            {tabs.map((tab) => (
+              <Button
+                key={tab.id}
+                variant={activeTab === tab.id ? "default" : "ghost"}
+                size="sm"
+                onClick={() => setActiveTab(tab.id)}
+                className={activeTab === tab.id ? "bg-primary text-primary-foreground" : "text-muted-foreground"}
+              >
+                {tab.label}
+              </Button>
+            ))}
+          </div>
 
-        {/* Main Content */}
+          <div className="flex items-center gap-4">
+            <Button className="bg-primary text-primary-foreground">Publish</Button>
+            <span className="text-sm text-muted-foreground">v - 0.128</span>
+            <Button variant="ghost" size="sm" onClick={() => onOpenChange(false)}>
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+
+        {/* Content */}
         <div className="flex-1 p-6 overflow-auto">
           {renderTabContent()}
            <pre>Availabe People: {JSON.stringify(peoples)}</pre>
@@ -483,8 +495,6 @@ peoples,project
       <pre>Availabe Categories: {JSON.stringify(categories)}</pre>
         </div>
       </div>
-
-     
     </div>
   );
 }

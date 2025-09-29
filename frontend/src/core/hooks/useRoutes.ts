@@ -32,23 +32,24 @@ import {
 export function useRoutes() {
   const { t } = useTranslation("core.hooks.useRoutes");
 
-  // const COMMON_ROUTES: IAppRoute[] = [
-  //   {
-  //     title: "Recent",
-  //     url: "/",
-  //     icon: RecentIcon,
-  //   },
-  //   {
-  //     title: "All Projects",
-  //     url: "/projects",
-  //     icon: AllProjectsIcon,
-  //   },
-  //   {
-  //     title: "Trash",
-  //     url: "/trash",
-  //     icon: TrashIcon,
-  //   },
-  // ];
+  // Home Navigation Routes
+  const HOME_NAVIGATION_ROUTES: IAppRoute[] = [
+    {
+      title: "Recent Tests",
+      url: "/",
+      icon: RecentIcon,
+    },
+    {
+      title: "All Projects",
+      url: "/projects",
+      icon: AllProjectsIcon,
+    },
+    {
+      title: "Trash",
+      url: "/trash",
+      icon: TrashIcon,
+    },
+  ];
 
   // Admin and Resources Routes
   const ADMIN_ROUTES: IAppRoute[] = [
@@ -212,6 +213,7 @@ export function useRoutes() {
   ]);
 
   return {
+    HOME_NAVIGATION_ROUTES,
     ADMIN_ROUTES,
     NAVIGATION_ROUTES,
     SETTINGS_ROUTES,
