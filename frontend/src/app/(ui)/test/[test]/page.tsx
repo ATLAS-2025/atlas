@@ -128,8 +128,8 @@ export default async function Page({ params }: { params: Promise<Params> }) {
                         <div className="space-y-3">
                           {category.people
                             .filter((personRef) => personRef.person)
-                            .map((personRef) => (
-                              <div key={personRef.peopleId} className="border rounded-lg p-3">
+                            .map((personRef, index) => (
+                              <div key={personRef.peopleId || `person-${index}`} className="border rounded-lg p-3">
                                 <div className="font-medium">{personRef.person!.name}</div>
                                 <div className="text-sm text-gray-600">{personRef.person!.role}</div>
                                 <div className="text-sm text-gray-500">{personRef.person!.organization}</div>

@@ -5,6 +5,7 @@ import { SidebarInset, SidebarProvider } from "@/shared/components/ui/sidebar";
 import { AppSidebar } from "@/core/components/AppSidebar";
 import { Header } from "@/core/components/Header";
 import { Footer } from "@/core/components/Footer";
+import { SidebarProvider as CustomSidebarProvider } from "@/core/contexts/SidebarContext";
 
 export default async function UILayout({
   children,
@@ -12,16 +13,18 @@ export default async function UILayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SidebarProvider className="h-full bg-sidebar">
-      <AppSidebar />
-      <div className="relative flex w-full flex-1 flex-col p-2 pl-0 gap-2">
-        <Header />
+    <CustomSidebarProvider>
+      <SidebarProvider className="h-full bg-sidebar">
+        <AppSidebar />
+        <div className="relative flex w-full flex-1 flex-col p-2 pl-0 gap-2">
+          <Header />
 
-        <SidebarInset className="h-full rounded-xl overflow-auto border-b-none">
-          {children}
-        </SidebarInset>
-        <Footer />
-      </div>
-    </SidebarProvider>
+          <SidebarInset className="h-full rounded-xl overflow-auto border-b-none">
+            {children}
+          </SidebarInset>
+          <Footer />
+        </div>
+      </SidebarProvider>
+    </CustomSidebarProvider>
   );
 }
