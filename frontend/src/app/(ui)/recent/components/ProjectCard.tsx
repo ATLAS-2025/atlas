@@ -3,7 +3,7 @@
 "use client";
 
 import { ProjectResponse } from "@/apiClient";
-import { FolderOpenIcon } from "@/shared/components/icons";
+import { Play, Plus } from "lucide-react";
 
 interface Project {
   id: string;
@@ -20,47 +20,97 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   console.log(project)
   const date = new Date(project.date)
+  
   return (
-    <div
-      className="hover:bg-accent transition-colors cursor-pointer h-48 flex flex-col justify-between rounded-lg"
-      style={{
-        gap: "0.25rem",
-        background:
-          "var(--bg-gradient2, linear-gradient(176deg, rgba(68, 68, 86, 0.20) 0%, rgba(16, 16, 23, 0.20) 100%))",
-        boxShadow:
-          "0 56px 16px 0 rgba(0, 0, 0, 0.00), 0 36px 14px 0 rgba(0, 0, 0, 0.03), 0 20px 12px 0 rgba(0, 0, 0, 0.09), 0 9px 9px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.19)",
-        padding: "0.25rem",
-      }}
-    >
-      {/* Folder Icon */}
-      <div className="flex justify-center bg-card flex-grow rounded-lg">
-        <div className="flex items-center justify-center">
-          <FolderOpenIcon className="h-10 w-10 text-muted-foreground" />
+    <div className="project-card rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow cursor-pointer bg-gray-100 dark:bg-gray-800">
+      {/* Top Section - Gray Background with Tags */}
+      <div className="project-card-top-section p-3">
+        <div className="flex flex-wrap gap-1 text-xs">
+          {/* First Row */}
+          <div className="flex gap-1 mb-1">
+            <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300">
+              Everything
+            </span>
+            <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300">
+              Organizer
+            </span>
+            <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300">
+              Broadcast
+            </span>
+          </div>
+
+          {/* Second Row */}
+          <div className="flex gap-1 mb-1">
+            <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300">
+              Evaluation
+            </span>
+            <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300">
+              Overview
+            </span>
+            <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300">
+              Assessment
+            </span>
+            <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300">
+              Recap
+            </span>
+          </div>
+
+          {/* Third Row */}
+          <div className="flex gap-1">
+            <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300">
+              Insights
+            </span>
+            <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300">
+              Suggestions
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* Content wrapper */}
-      <div className="bg-card rounded-lg flex justify-between flex-shrink items-start p-[0.375rem]">
-        <div className="flex flex-col">
-          {/* Date */}
-          <div className="text-sm text-muted-foreground mb-2">
-            {date.toLocaleDateString('en-US')}
-          </div>
-
-          {/* Project Name */}
-          <div className="text-sm font-medium text-foreground flex-1">
+      {/* Middle Section - Title and Project Tag */}
+      <div className="project-card-middle-section p-4">
+        <div className="flex justify-between items-start mb-2">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
             {project.title}
-          </div>
+          </h3>
+          <span className="h-7 px-1 py-1.5 text-sm font-medium rounded-xs border-2 border-primary text-primary flex items-center justify-center">
+            Project Alpha
+          </span>
         </div>
 
-        {/* Tag */}
-        <div className="flex justify-center">
-          <span
-            className={`inline-flex items-center px-0.5 px-1 rounded-full text-xs font-medium border bg-transparent `}//${project.tagColor}
-          >
-            {/* {project.project_type} */}
-            Project Type
-          </span>
+        {/* Description */}
+        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+          A brief overview of the missile test conducted, highlighting its
+          objectives and outcomes.
+        </p>
+      </div>
+
+      {/* Bottom Section - Action Buttons */}
+      <div className="project-card-bottom-section p-4 pt-0">
+        <div className="flex gap-2">
+          {/* PL Button */}
+          <div className="flex items-center gap-2 px-3 py-2 border border-blue-500 rounded text-sm font-medium text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
+            <span className="text-blue-700 dark:text-blue-300 font-bold">PL</span>
+            <Play className="h-3 w-3" />
+          </div>
+
+          {/* LV Button */}
+          <div className="flex items-center gap-2 px-3 py-2 border border-green-500 rounded text-sm font-medium text-green-700 dark:text-green-300 hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors">
+            <span className="text-green-700 dark:text-green-300 font-bold">LV</span>
+            <Play className="h-3 w-3" />
+          </div>
+
+          {/* AN Button */}
+          <div className="flex items-center gap-2 px-3 py-2 border border-orange-500 rounded text-sm font-medium text-orange-700 dark:text-orange-300 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-colors">
+            <span className="text-orange-700 dark:text-orange-300 font-bold">AN</span>
+            <Play className="h-3 w-3" />
+          </div>
+
+          {/* RP Button */}
+          <div className="flex items-center gap-2 px-3 py-2 border border-blue-500 rounded text-sm font-medium text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
+            <span className="text-blue-700 dark:text-blue-300 font-bold">RP</span>
+            <Plus className="h-3 w-3" />
+          </div>
         </div>
       </div>
     </div>

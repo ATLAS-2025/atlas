@@ -15,6 +15,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { IAppRoute } from "@/core/types/routes";
+import { AtlasLogo } from "@/shared/components/AtlasLogo";
 import {
   RecentIcon,
   AllProjectsIcon,
@@ -22,8 +23,6 @@ import {
   PreferencesIcon,
   ManageDatabaseIcon,
   GlobalTestScheduleIcon,
-  PlusIcon,
-  MinusIcon,
 } from "@/shared/components/icons";
 
 interface SidebarItemProps {
@@ -157,18 +156,17 @@ export const HomeSidebar: React.FC<HomeSidebarProps> = ({ routes }) => {
       {/* Header */}
       <div
         className={clsx(
-          "h-12 flex items-center border-r border-b border-border bg-muted/50",
+          "h-12 flex items-center border-r border-b border-border bg-sidebar",
           isCollapsed ? "px-2 justify-center" : "px-4 py-2 justify-between"
         )}
       >
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
-            <span className="text-white font-bold text-sm">A</span>
-          </div>
-          {!isCollapsed && (
-            <span className="text-sidebar-foreground font-semibold text-sm">
-              ATLAS
-            </span>
+          {isCollapsed ? (
+            <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
+              <span className="text-white font-bold text-sm">A</span>
+            </div>
+          ) : (
+            <AtlasLogo className="h-7" />
           )}
         </div>
         {!isCollapsed && (
