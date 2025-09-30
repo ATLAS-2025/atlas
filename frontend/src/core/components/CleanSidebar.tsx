@@ -15,6 +15,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { IAppRoute } from "@/core/types/routes";
+import { AtlasPlannerLogo } from "@/shared/components/AtlasPlannerLogo";
 import {
   RecentIcon,
   AllProjectsIcon,
@@ -370,7 +371,7 @@ export const CleanSidebar: React.FC<CleanSidebarProps> = ({ routes }) => {
       >
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
-            <span className="text-white font-bold text-sm">FL</span>
+            <AtlasPlannerLogo size={20} />
           </div>
           {!isCollapsed && (
             <span className="text-sidebar-foreground font-semibold text-sm">

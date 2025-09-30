@@ -124,7 +124,14 @@ peoples,project
             <div className="space-y-3">
               {["Project Leader", "Test Engineer/Operator", "Safety Officer", "Support Teams"].map((role, index) => (
                 <div key={index} className="flex gap-2">
-                  <Input placeholder="Name" className="bg-background border-border text-foreground" />
+                  <select className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                    <option value="">Select Person</option>
+                    {peoples?.map((person) => (
+                      <option key={person.id} value={person.id}>
+                        {person.name} - {person.organization || 'No Organization'}
+                      </option>
+                    ))}
+                  </select>
                   <Input value={role} className="bg-background border-border text-foreground" readOnly />
                 </div>
               ))}
@@ -279,61 +286,73 @@ peoples,project
           <h3 className="text-lg font-semibold text-foreground">People</h3>
           <Input placeholder="Search people" className="w-full" />
           <div className="space-y-2">
-            <div className="text-sm text-muted-foreground">Untitled</div>
-            <div className="text-sm text-muted-foreground">HS Cameras</div>
-            <div className="pl-4 space-y-1">
-              <div className="text-sm text-foreground bg-primary/20 px-2 py-1 rounded">Ohad Zangi - Motiontech</div>
-              <div className="text-sm text-muted-foreground">Denis Itkin - Motiontech</div>
-              <div className="text-sm text-muted-foreground">Barak Alkobi - Motiontech</div>
-              <div className="text-sm text-muted-foreground">Alon Michaeli - Motiontech</div>
-              <div className="text-sm text-muted-foreground">Lior Katz - Motiontech</div>
-              <div className="text-sm text-muted-foreground">Ohad Mitrani - Motiontech</div>
-              <div className="text-sm text-muted-foreground">Dianne Russell - [AI]</div>
-              <div className="text-sm text-muted-foreground">Cameron Williamson - [AI]</div>
-              <div className="text-sm text-muted-foreground">Theresa Webb - [AI]</div>
-            </div>
-            <div className="text-sm text-muted-foreground">DAQ</div>
-            <div className="pl-4 space-y-1">
-              <div className="text-sm text-foreground">Lila Chen - DesignHub</div>
-              <div className="text-sm text-muted-foreground">Ravi Patel - InnovateX</div>
-              <div className="text-sm text-muted-foreground">Sofia Kim - CreativePulse</div>
-              <div className="text-sm text-muted-foreground">Jasmine Chen - DesignHub</div>
-              <div className="text-sm text-muted-foreground">Raj Patel - InnovateX</div>
-            </div>
-            <div className="text-sm text-muted-foreground">Radar</div>
-            <div className="pl-4 space-y-1">
-              <div className="text-sm text-muted-foreground">Omar Patel - CreativeWorks</div>
-              <div className="text-sm text-muted-foreground">Ava Gomez - Innovate Studio</div>
-              <div className="text-sm text-muted-foreground">Rajesh Kumar - Pixel Artistry</div>
-              <div className="text-sm text-muted-foreground">Sofia Martinez - Visionary Designs</div>
-              <div className="text-sm text-muted-foreground">Ethan Lee - NextGen Creatives</div>
-            </div>
+            {categories?.map((category) => (
+              <div key={category.id}>
+                <div className="text-sm text-muted-foreground">{category.name}</div>
+                <div className="pl-4 space-y-1">
+                  {category.people?.map((categoryPerson) => (
+                    <div key={categoryPerson.peopleId} className="text-sm text-muted-foreground cursor-pointer hover:text-foreground hover:bg-primary/10 px-2 py-1 rounded">
+                      {categoryPerson.person?.name} - {categoryPerson.person?.organization || 'No Organization'}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+            {peoples && peoples.filter(person => 
+              !categories?.some(cat => cat.people?.some(cp => cp.peopleId === person.id))
+            ).length > 0 && (
+              <div>
+                <div className="text-sm text-muted-foreground">Uncategorized</div>
+                <div className="pl-4 space-y-1">
+                  {peoples?.filter(person => 
+                    !categories?.some(cat => cat.people?.some(cp => cp.peopleId === person.id))
+                  ).map((person) => (
+                    <div key={person.id} className="text-sm text-muted-foreground cursor-pointer hover:text-foreground hover:bg-primary/10 px-2 py-1 rounded">
+                      {person.name} - {person.organization || 'No Organization'}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Middle Panel - Resource Categories */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">Recent Categories</span>
-            <div className="flex gap-1">
-              <Badge variant="secondary" className="text-xs bg-primary/20 text-primary">Engineer</Badge>
-              <Badge variant="secondary" className="text-xs">System Architect</Badge>
-              <Badge variant="secondary" className="text-xs">Telemetry</Badge>
-              <Badge variant="secondary" className="text-xs">Validation</Badge>
-              <Badge variant="secondary" className="text-xs">Finance</Badge>
-              <Badge variant="secondary" className="text-xs">Security</Badge>
+            <span className="text-sm text-muted-foreground">Equipment Categories</span>
+            <div className="flex gap-1 flex-wrap">
+              {categories?.map((category) => (
+                <Badge key={category.id} variant="secondary" className="text-xs bg-primary/20 text-primary">
+                  {category.name}
+                </Badge>
+              ))}
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">Total People 0</span>
+            <span className="text-sm text-muted-foreground">Total Equipment: {equiqments?.length || 0}</span>
             <div className="w-4 h-4 bg-muted rounded"></div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            {Array.from({ length: 8 }, (_, i) => (
-              <div key={i} className="bg-card border border-border rounded-lg p-4 flex items-center justify-center">
-                <X className="h-8 w-8 text-muted-foreground" />
+            {equiqments?.map((equipment) => (
+              <div key={equipment.id} className="bg-card border border-border rounded-lg p-4 flex flex-col items-center justify-center hover:bg-primary/5 cursor-pointer">
+                <div className="text-sm font-medium text-foreground text-center">{equipment.name}</div>
+                {equipment.notes && (
+                  <div className="text-xs text-muted-foreground text-center mt-1">{equipment.notes}</div>
+                )}
+                <div className="text-xs text-muted-foreground text-center mt-1">
+                  {equipment.manufacturer} {equipment.model}
+                </div>
+                <div className="text-xs text-muted-foreground text-center">
+                  {equipment.type} - {equipment.location}
+                </div>
               </div>
             ))}
+            {(!equiqments || equiqments.length === 0) && (
+              <div className="col-span-2 text-center text-muted-foreground py-8">
+                No equipment available
+              </div>
+            )}
           </div>
         </div>
 
@@ -375,24 +394,19 @@ peoples,project
                 </Button>
               </div>
               <div className="flex flex-wrap gap-2 mt-2">
-                <Badge variant="secondary" className="bg-primary/20 text-primary">
-                  High Speed Cameras
-                  <X className="ml-1 h-3 w-3" />
-                </Badge>
-                <Badge variant="secondary" className="bg-primary/20 text-primary">
-                  DAQ
-                  <X className="ml-1 h-3 w-3" />
-                </Badge>
+                {categories?.map((category) => (
+                  <Badge key={category.id} variant="secondary" className="bg-primary/20 text-primary">
+                    {category.name}
+                    <X className="ml-1 h-3 w-3" />
+                  </Badge>
+                ))}
               </div>
               <div className="flex flex-wrap gap-1 mt-2">
-                <Button variant="outline" size="sm" className="text-xs">UAV</Button>
-                <Button variant="outline" size="sm" className="text-xs">Flight</Button>
-                <Button variant="outline" size="sm" className="text-xs">Product Manager</Button>
-                <Button variant="outline" size="sm" className="text-xs">Safety</Button>
-                <Button variant="outline" size="sm" className="text-xs">Radar</Button>
-                <Button variant="outline" size="sm" className="text-xs">Logistics</Button>
-                <Button variant="outline" size="sm" className="text-xs">Navigation</Button>
-                <Button variant="outline" size="sm" className="text-xs">Control</Button>
+                {categories?.map((category) => (
+                  <Button key={category.id} variant="outline" size="sm" className="text-xs">
+                    {category.name}
+                  </Button>
+                ))}
               </div>
             </div>
 
@@ -490,9 +504,6 @@ peoples,project
         {/* Content */}
         <div className="flex-1 p-6 overflow-auto">
           {renderTabContent()}
-           <pre>Availabe People: {JSON.stringify(peoples)}</pre>
-      <pre>Availabe Equipments: {JSON.stringify(equiqments)}</pre>
-      <pre>Availabe Categories: {JSON.stringify(categories)}</pre>
         </div>
       </div>
     </div>
