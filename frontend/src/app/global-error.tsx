@@ -10,12 +10,9 @@ export default function GlobalError({
   reset: () => void;
 }) {
   return (
-    // global-error must include html and body tags
-    <html>
-      <body>
-        <h2>Something went wrong!</h2>
-        <button onClick={() => reset()}>Try again</button>
-      </body>
-    </html>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <h2>Something went wrong!</h2>
+      <button onClick={() => reset()}>Try again</button>
+    </div>
   );
 }

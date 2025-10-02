@@ -54,7 +54,8 @@
     "build",
     ".next",
     "node_modules",
-    "src/apiClient"
+    "src/apiClient",
+    "src-electron"
     //    "**/*.test.ts"
   ],
   "ts-node": {

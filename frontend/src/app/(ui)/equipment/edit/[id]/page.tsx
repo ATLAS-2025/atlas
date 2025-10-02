@@ -18,6 +18,14 @@ interface Params {
   id: string;
 }
 
+export function generateStaticParams() {
+  return [
+    { id: "1" },
+    { id: "2" },
+    { id: "3" },
+  ];
+}
+
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { id } = await params;
   const { equipmentApi } = await getApis();
