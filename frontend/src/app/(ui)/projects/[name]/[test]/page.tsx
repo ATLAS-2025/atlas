@@ -22,6 +22,14 @@ interface Params {
   test: string;
 }
 
+export function generateStaticParams() {
+  return [
+    { name: "1", test: "1" },
+    { name: "2", test: "2" },
+    { name: "3", test: "3" },
+  ];
+}
+
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { name,test } = await params;
   console.log(params)
