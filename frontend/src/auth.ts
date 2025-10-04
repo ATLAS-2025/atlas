@@ -1,5 +1,4 @@
 
-
 import NextAuth, { CredentialsSignin } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
@@ -37,7 +36,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       name: "Register",
       credentials: {
         email: {},
-        username: {},
+        username:{},
         // firstname: {},
         // lastname: {},
         // middle_name: {},
@@ -57,7 +56,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           throw new InvalidLoginError(error.errors[0]?.message || "");
         }
         try {
-          const { usersApi } = await getApis();
+          const {usersApi} = await getApis()
           const response = await usersApi.registerUserV1UsersPost(data);
           console.log("✅ Registered user:", response.data);
 
@@ -88,23 +87,23 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         // 2. Attempt to login user
-        try {
-          const { usersApi } = await getApis();
+       try {
+          const {usersApi} = await getApis()
 
-          const response = await usersApi.loginUserV1UsersLoginPost(data);
-          console.log("✅ Registered user:", response.data);
+         const response = await usersApi.loginUserV1UsersLoginPost(data);
+         console.log("✅ Registered user:", response.data);
 
-          return {
-            id: response.data.uuid,
-            name: response.data.username,
-            email: response.data.email,
-            access: response.data.accessToken,
-            refresh: response.data.refreshToken,
-          };
-        } catch (error) {
-          console.error("❌ Registration failed:", error);
-          throw new InvalidLoginError("Registration failed");
-        }
+         return {
+           id: response.data.uuid,
+           name: response.data.username,
+           email: response.data.email,
+           access:  response.data.accessToken,
+           refresh:  response.data.refreshToken,
+         };
+       } catch (error) {
+         console.error("❌ Registration failed:", error);
+         throw new InvalidLoginError("Registration failed");
+       }
       },
     }),
   ],

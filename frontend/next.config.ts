@@ -2,11 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // output: "standalone",
-  // output: 'export', // Disabled for now due to Server Actions
+  output: 'export', // Disabled for now due to Server Actions
   outputFileTracingIncludes: {
     "*": ["public/**/*", ".next/static/**/*"],
   },
-  serverExternalPackages: ["electron"], // to prevent bundling Electron
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
